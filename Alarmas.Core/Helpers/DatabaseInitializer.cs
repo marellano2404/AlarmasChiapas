@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Alarmas.Core.Models;
+using Microsoft.Extensions.DependencyInjection;
 //using Almacen.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,9 @@ namespace Alarmas.Core.Helpers
         /// <param name="serviceProvider">IServiceProvider</param>
         public static void Inicializar(IServiceProvider serviceProvider)
         {
-            //var context = serviceProvider.GetRequiredService<InventarioDbContext>();
-            //context.Database.EnsureCreated();
-            //context.SaveChanges();
+            var context = serviceProvider.GetRequiredService<CAlarmasDBContext>();
+            context.Database.EnsureCreated();
+            context.SaveChanges();
         }
     }
 }
