@@ -1,6 +1,5 @@
 ﻿using Alarmas.Core.BL.Seguridad;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace Alarmas.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class SeguridadController : Controller
     {
         #region PROPIEDADES
 
@@ -20,20 +19,21 @@ namespace Alarmas.API.Controllers
         #endregion
 
         #region CONTRUCTOR
-        public WeatherForecastController(ISeguridad SeguridadService)
+        public SeguridadController(ISeguridad SeguridadService)
         {
             _SeguridadService = SeguridadService;
         }
-        #endregion        
+        #endregion
+        #region Metodos 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetListaAlarmas()
         {
             try
             {
-                var Result = await _SeguridadService.VerificaConexion();
-                if (Result == true)
+                var Result = await _SeguridadService.GetListaTipoAlarmas();
+                if (Result != null)
                 {
-                    return Ok("La conexion es Exitosa");
+                    return Ok(Result);
                 }
                 else
                 {
@@ -47,5 +47,9 @@ namespace Alarmas.API.Controllers
             }
 
         }
+        #endregion
+
+
+
     }
 }

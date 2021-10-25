@@ -7,7 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{15B64537-76C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alarmas.API", "Alarmas.API\Alarmas.API.csproj", "{A0E9BF9C-8A47-4A88-A565-43AE585D34A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alarmas.Core", "Alarmas.Core\Alarmas.Core.csproj", "{A5D88043-C6BD-4A8D-A837-671035C0A517}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alarmas.Core", "Alarmas.Core\Alarmas.Core.csproj", "{A5D88043-C6BD-4A8D-A837-671035C0A517}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{6CB493E2-9B5F-49A5-A1AE-A6470238E209}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

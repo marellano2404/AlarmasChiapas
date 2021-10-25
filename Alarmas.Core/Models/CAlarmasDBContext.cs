@@ -36,8 +36,10 @@ namespace Alarmas.Core.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS2019;Database=CA_Chiapas;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(Helpers.ContextConfiguration.ConexionString, builder =>
+                {
+                    builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+                });
             }
         }
 
@@ -82,6 +84,7 @@ namespace Alarmas.Core.Models
             modelBuilder.Entity<CodigosAlarma>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Clave).IsUnicode(false);
 
                 entity.Property(e => e.Descripcion).IsUnicode(false);
             });

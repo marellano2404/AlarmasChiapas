@@ -13,7 +13,7 @@ namespace Alarmas.Core.Helpers
         /// <summary>
         ///Clave para encriptar y desencriptar cadenas
         /// </summary>
-        private const string SHARED_SECRET = "Cobach2020";
+        private const string SHARED_SECRET = "Arellano2021";
 
         /// <summary>
         /// Encrypt the given string using AES.  The string can be decrypted using 

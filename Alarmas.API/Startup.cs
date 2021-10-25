@@ -1,9 +1,12 @@
+using Alarmas.Core.BL.Seguridad;
 using Alarmas.Core.Helpers;
+using Alarmas.Core.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,7 +35,7 @@ namespace Alarmas.API
         {
 
             services.AddControllers();
-            ContextConfiguration.ConexionString = Configuration.GetConnectionString("InventarioDbContext");
+            ContextConfiguration.ConexionString = Configuration.GetConnectionString("CAlarmasDBContext");
             services.AddControllers();
             services.AddCors(o => o.AddPolicy(MyAllowSpecificOrigins, builder =>
             {
@@ -59,10 +62,12 @@ namespace Alarmas.API
             });
 
             services.Configure<JWTSettings>(Configuration.GetSection("JWT"));
+            services.AddDbContext<CAlarmasDBContext>(options => options.UseSqlServer(ContextConfiguration.ConexionString));
+            services.AddTransient<ISeguridad, ServicesSeguridad>();
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Alarmas.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AlarmasChiapas", Version = "v1" });
             });
         }
 
@@ -73,7 +78,7 @@ namespace Alarmas.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Alarmas.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Alarmas.API"));
             }
 
             app.UseHttpsRedirection();
