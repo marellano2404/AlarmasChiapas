@@ -42,6 +42,9 @@ namespace AlarmasWPF
 
         }
 
-        
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
     }
 }

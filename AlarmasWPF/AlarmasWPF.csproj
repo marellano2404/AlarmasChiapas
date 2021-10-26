@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Clientes\Buscar.png" />
+    <None Remove="fondo3.png" />
+    <None Remove="Recursos\Buscar.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
   </ItemGroup>
 
@@ -14,6 +20,12 @@
     <Folder Include="Core\Models\" />
     <Folder Include="Catalogos\" />
     <Folder Include="Core\Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Clientes\Buscar.png" />
+    <Resource Include="fondo3.png" />
+    <Resource Include="Recursos\Buscar.png" />
   </ItemGroup>
 
 </Project>
