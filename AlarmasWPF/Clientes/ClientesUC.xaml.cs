@@ -26,8 +26,7 @@ namespace AlarmasWPF.Clientes
     public partial class ClientesUC : UserControl
     {
         public event EventHandler Regresar;
-
-        HttpClient client = new HttpClient();  
+        private static HttpClient client = new HttpClient();  
         public ClientesUC()
         {            
             InitializeComponent();
@@ -39,18 +38,14 @@ namespace AlarmasWPF.Clientes
         private async void CargasClientes()
         {
             DatosStackPanel.Children.Clear();
-            var response = client.GetStringAsync("api/Clientes/").Result;
-            var clientes_ = JsonConvert.DeserializeObject<List<Cliente>>(response);
-            //DatosStackPanel = clientes_;
-            
+            var response = client.GetStringAsync("api/Clientes/GetListaClientes").Result;
+            var clientes_ = JsonConvert.DeserializeObject<List<Cliente>>(response);            
             foreach (var item in clientes_)
             {
                 DatosStackPanelUC control = new DatosStackPanelUC();
                 control.ClienteDataConext = item;
                 DatosStackPanel.Children.Add(control);
             }
-
-
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

@@ -25,7 +25,7 @@ namespace Alarmas.API.Controllers
         }
         #endregion
         #region Metodos 
-        [HttpGet]
+        [HttpGet("GetListaClientes")]
         public async Task<IActionResult> GetListaClientes()
         {
             try
@@ -45,7 +45,6 @@ namespace Alarmas.API.Controllers
             {
                 return BadRequest("La Conexión no ha sido encontrado!");
             }
-
         }
         #endregion
     }
