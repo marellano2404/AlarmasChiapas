@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Clientes\AgregarElement.png" />
     <None Remove="Clientes\Buscar.png" />
     <None Remove="Clientes\Eliminar.png" />
+    <None Remove="Clientes\MasElementos.png" />
     <None Remove="Clientes\Modificar.png" />
     <None Remove="Clientes\Usuario.png" />
     <None Remove="fondo3.png" />
@@ -26,8 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Clientes\AgregarElement.png" />
     <Resource Include="Clientes\Buscar.png" />
     <Resource Include="Clientes\Eliminar.png" />
+    <Resource Include="Clientes\MasElementos.png" />
     <Resource Include="Clientes\Modificar.png" />
     <Resource Include="Clientes\Usuario.png" />
     <Resource Include="fondo3.png" />

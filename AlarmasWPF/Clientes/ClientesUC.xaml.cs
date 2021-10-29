@@ -51,5 +51,21 @@ namespace AlarmasWPF.Clientes
         {
             Regresar?.Invoke(this, new EventArgs());
         }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Agregar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            FormCliente modal = new FormCliente();
+            //modal.OnClickAceptar += (se, en) =>
+            //{
+            //    CargarListaEmpleados();
+            //    modal.Close();
+            //};
+            modal.ShowDialog();
+        }
     }
 }

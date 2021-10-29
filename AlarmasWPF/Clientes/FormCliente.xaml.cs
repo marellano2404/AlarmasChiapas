@@ -10,29 +10,35 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AlarmasWPF.Clientes
 {
     /// <summary>
-    /// Lógica de interacción para DatosClienteUC.xaml
+    /// Lógica de interacción para FormCliente.xaml
     /// </summary>
-    public partial class DatosClienteUC : UserControl
+    public partial class FormCliente : Window
     {
-        public DatosClienteUC()
+        public event EventHandler ClickAceptar;
+        public event EventHandler ClickAgregar;
+        public FormCliente()
         {
             InitializeComponent();
         }
-
+             
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ClickAceptar != null) ClickAceptar(this, new EventArgs());
         }
 
         private void btnAceptar_Click(object sender, RoutedEventArgs e)
         {
+            Close();
+        }
 
+        private void btnAgregar_Click(object sender, RoutedEventArgs e)
+        {
+            if (ClickAgregar != null) ClickAgregar(this, new EventArgs());
         }
     }
 }
