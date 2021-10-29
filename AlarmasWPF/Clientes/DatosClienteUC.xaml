@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="AlarmasWPF.Clientes.DatosClienteUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AlarmasWPF.Clientes"
+             mc:Ignorable="d" 
+             d:DesignHeight="750" d:DesignWidth="800">
+    <Border Margin="10" BorderThickness="1,1,1,1" CornerRadius="10">
+        <Border.BorderBrush>
+            <SolidColorBrush Color="{DynamicResource ColorSubtitulo}"/>
+        </Border.BorderBrush>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                
+
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="txtTitulo" Text="Formulario de registro" VerticalAlignment="Center" Margin="10,2" Style="{DynamicResource TituloTextBlock}"/>
+            <Rectangle Grid.Row="1" Height="1"  >
+                <Rectangle.Stroke>
+                    <SolidColorBrush Color="{DynamicResource ColorSubtitulo}"/>
+                </Rectangle.Stroke>
+            </Rectangle>
+            <TextBlock Text="Empresa" Grid.Row="2" Margin="3"/>
+            <TextBox x:Name="txtClave" Grid.Row="3" Margin="3" Text="{Binding Clave}" MaxLength="6" />
+            <TextBlock Text="Nombre Completo" Grid.Row="4" Margin="3"/>
+            <TextBox x:Name="txtNombre" Grid.Row="5" Margin="3" Text="{Binding Nombre}" MaxLength="60"  />
+            <Grid Grid.Row="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Rfc" Grid.Row="0" Grid.Column="0" Margin="3"/>
+                <TextBox x:Name="txtSalario" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding Salario}" MaxLength="10"  />
+                <TextBlock Text="Dirección" Grid.Row="0" Grid.Column="1" Margin="3"/>
+                <TextBox x:Name="txtBono" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Bono}" MaxLength="10"  />
+            </Grid>
+            <Grid Grid.Row="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Tel Particular" Grid.Row="0" Grid.Column="0" Margin="3"/>
+                <TextBox x:Name="txtTabla93" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding Tabla93}" MaxLength="10"  />
+                <TextBlock Text="Referencias de Ubicación" Grid.Row="0" Grid.Column="1" Margin="3"/>
+                <TextBox x:Name="txtTabla94" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Tabla94}" MaxLength="10"  />
+            </Grid>
+            <Grid Grid.Row="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="103*"/>
+                    <ColumnDefinition Width="177*"/>
+                    <ColumnDefinition Width="99*"/>
+                    <ColumnDefinition Width="379*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Tel. Celular" Grid.Row="0" Grid.Column="0" Margin="3" Grid.ColumnSpan="3"/>
+                <TextBox x:Name="txtHorasJornada" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding HorasJornada}" MaxLength="6" Grid.ColumnSpan="3"  />
+                <TextBlock Text="Correo" Grid.Row="0" Grid.Column="3" Margin="3"/>
+                <TextBox x:Name="txtHomologado" Grid.Row="1" Grid.Column="3" Margin="3" Text="{Binding Homologado}" MaxLength="10"  />
+            </Grid>
+            <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnCancelar" Width="110" Height="30" Style="{StaticResource ButtonAdd}" Click="btnCancelar_Click" Cursor="Hand" Margin="4,2">
+                    <TextBlock Text="Cancelar" Foreground="White"></TextBlock>
+                </Button>
+                <Button x:Name="btnAceptar" Width="110" Height="30" Style="{StaticResource ButtonAction}" Click="btnAceptar_Click" Cursor="Hand" Margin="4,2">
+                    <TextBlock Text="Aceptar" Foreground="White"></TextBlock>
+                </Button>
+            </StackPanel>
+            <Grid Grid.Row="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="37"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Grid Grid.Row="10" Margin="5" x:Name="GridDatos">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="36*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.ColumnSpan="8" Grid.Row="0">
+                    <Border.Background>
+                        <SolidColorBrush Color="{DynamicResource ColorMenu}"/>
+                    </Border.Background>
+                </Border>
+
+                <TextBlock Grid.Row="0" Margin="5,0,0,0" FontSize="12" Text="No." Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
+                <TextBlock Grid.Row="0" Margin="5,0,0,0" FontSize="13" Text="Usuario" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
+                <TextBlock Grid.Row="0" FontSize="13" Text="Contraseña" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
+                <TextBlock Grid.Row="0" FontSize="13" Text="Puesto" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="White" />
+
+            </Grid>
+            
+            <Grid/>
+        </Grid>
+    </Border>
+</UserControl>

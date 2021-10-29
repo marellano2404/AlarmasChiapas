@@ -20,6 +20,7 @@ namespace Alarmas.Core.Models
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<ClienteUsuario> ClienteUsuarios { get; set; }
         public virtual DbSet<CodigosAlarma> CodigosAlarmas { get; set; }
+        public virtual DbSet<TaskModel> TaskModels { get; set; }
         public virtual DbSet<Empresa> Empresas { get; set; }
         public virtual DbSet<Estado> Estados { get; set; }
         public virtual DbSet<Funcione> Funciones { get; set; }
@@ -87,6 +88,13 @@ namespace Alarmas.Core.Models
                 entity.Property(e => e.Clave).IsUnicode(false);
 
                 entity.Property(e => e.Descripcion).IsUnicode(false);
+            });
+            modelBuilder.Entity<TaskModel>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.TaskName).IsUnicode(false);
+                entity.Property(e => e.Description).IsUnicode(false);
+                entity.Property(e => e.DueDate).IsUnicode(false);
             });
 
             modelBuilder.Entity<Empresa>(entity =>

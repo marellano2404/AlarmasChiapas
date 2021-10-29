@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace AlarmasWPF.Clientes
 {
     /// <summary>
-    /// Lógica de interacción para FormDatosClUC.xaml
+    /// Lógica de interacción para UsuariosClienteUC.xaml
     /// </summary>
-    public partial class FormDatosClUC : UserControl
+    public partial class UsuariosClienteUC : UserControl
     {
-        public FormDatosClUC()
+        public UsuariosClienteUC()
         {
             InitializeComponent();
         }

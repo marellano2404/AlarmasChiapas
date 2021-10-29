@@ -10,6 +10,6 @@ namespace Alarmas.Core.BL.Seguridad
     public interface ISeguridad
     {
         Task<bool> VerificaConexion();
-        Task<List<CodigosAlarma>> GetListaTipoAlarmas();
+        Task<List<TaskModel>> GetListaTipoAlarmas();
     }
 }

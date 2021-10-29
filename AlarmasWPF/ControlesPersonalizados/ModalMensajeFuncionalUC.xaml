@@ -1,0 +1,49 @@
+﻿<Window x:Class="AlarmasWPF.ControlesPersonalizados.ModalMensajeFuncionalUC"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AlarmasWPF.ControlesPersonalizados"
+        mc:Ignorable="d"
+        Title="ModalMensajeFuncionalUC" Height="250" Width="400" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent">
+    <Grid>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="20" Color="#000000" Opacity="100" ShadowDepth="2"/>
+        </Grid.Effect>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <SolidColorBrush Color="{DynamicResource ColorMenu}"/>
+            </Grid.Background>
+            <TextBlock Name="TituloTextBlock" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="bold" Foreground="white"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="1" Background="white">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <TextBox Grid.Row="1" Name="MensajeTextBox" Width="350" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center" MaxLength="250"
+                       TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Margin="5" FontSize="15">
+                    <TextBox.Foreground>
+                        <SolidColorBrush Color="{DynamicResource ColorSubtitulo}"/>
+                    </TextBox.Foreground>
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"/>
+                            <Setter Property="BorderBrush" Value="Gray"></Setter>
+                            <Setter Property="BorderThickness" Value="2"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBlock Name="MensajeValidacionTextBlock" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="Red"></TextBlock>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2" Background="LightGray">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Width="100" Height="25" Content="ACEPTAR" BorderBrush="#FF395690" Background="White" Margin="0 0 10 0" Cursor="Hand" Click="Button_OnClickAceptar"></Button>
+                <Button Width="100" Height="25" Content="CANCELAR" BorderBrush="#FF395690" Background="White" Cursor="Hand" Click="Button_OnClickCancelar"></Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

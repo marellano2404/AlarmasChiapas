@@ -4,45 +4,49 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AlarmasWPF"
-        mc:Ignorable="d" Width="900" Height="750" Title="Central de Alarmas Chiapas" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize" 
-        WindowStyle="SingleBorderWindow" Background="#666f88">
-<Grid>        
-        <Image Source="/fondo3.png" Stretch="UniformToFill" Opacity=".4" Panel.ZIndex="-1"/>          
-        <Grid x:Name="GridContenedor">     
-                <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="25"></RowDefinition>
-                </Grid.RowDefinitions>                   
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                    <ColumnDefinition Width="1*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>           
+        mc:Ignorable="d" Width="950" Height="750" Title="Central de Alarmas Chiapas" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize" 
+        WindowStyle="SingleBorderWindow" Background="#737b92">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="23*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="/fondo3.png" Stretch="UniformToFill" Opacity=".4" Panel.ZIndex="-1" Grid.ColumnSpan="2"/>
+        <Grid x:Name="GridContenedor" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" x:Name="MenuGrid">
-                    <StackPanel  Orientation="Horizontal" Margin="-28,30,0,0">
-                        <StackPanel>
-                            <Border MouseLeftButtonDown="MouseClientesEvent_MouseLeftButtonDown" Width="180" Height="40" Background="#bdbfbf"  Margin="0,0,0,0" CornerRadius="13">
+                <StackPanel  Orientation="Horizontal" Margin="-28,20,0,0">
+                    <StackPanel>
+                        <Border MouseLeftButtonDown="MouseClientesEvent_MouseLeftButtonDown" Width="180" Height="40" Background="#bdbfbf"  Margin="0,0,0,0" CornerRadius="13">
                             <TextBlock Margin="35,0,9,4" Foreground="White" FontSize="25">Clientes</TextBlock>
-                            </Border>                               
-                            <Border Width="180" Height="40" Background="#fdfd96"   Margin="0,20,0,0" CornerRadius="13">
-                                <TextBlock Margin="35,0,9,4" FontSize="25">Eventos</TextBlock>
-                            </Border>
-                            <Border Width="180" Height="40" Background="#bf9780"  Margin="0,20,0,0" CornerRadius="13">
+                        </Border>
+                        <Border Width="180" Height="40" Background="#fdfd96"   Margin="0,20,0,0" CornerRadius="13">
+                            <TextBlock Margin="35,0,9,4" FontSize="25">Eventos</TextBlock>
+                        </Border>
+                        <Border Width="180" Height="40" Background="#bf9780"  Margin="0,20,0,0" CornerRadius="13">
                             <TextBlock Margin="35,0,9,4" Foreground="White" FontSize="25">Catalogos</TextBlock>
-                            </Border>
-                            <Border Width="180" Height="40" Background="#fdfd96"  Margin="0,20,0,0"  CornerRadius="13">
-                                <TextBlock Margin="35,0,9,4" FontSize="25">Reportes</TextBlock>
-                            </Border>
-                            <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" Width="180" Height="40" Background="#bdbfbf" Margin="0,20,0,0"  CornerRadius="13">
+                        </Border>
+                        <Border Width="180" Height="40" Background="#fdfd96"  Margin="0,20,0,0"  CornerRadius="13">
+                            <TextBlock Margin="35,0,9,4" FontSize="25">Reportes</TextBlock>
+                        </Border>
+                        <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" Width="180" Height="40" Background="#bdbfbf" Margin="0,20,0,0"  CornerRadius="13">
                             <TextBlock Margin="35,0,9,4" Foreground="White" FontSize="25">Salir</TextBlock>
-                            </Border>
-                        </StackPanel>
+                        </Border>
                     </StackPanel>
-                </Grid>
+                </StackPanel>
+            </Grid>
             <Grid x:Name="DetallesGrid" Grid.ColumnSpan="2" Grid.Row="0"></Grid>
-        
-        <Border Grid.ColumnSpan="2" Background="Black" Grid.Row="1">
-            <TextBlock HorizontalAlignment="Right" Foreground="White" Margin="15,0" FontSize="10" Text="Ver. 1.15" VerticalAlignment="Center"></TextBlock>
-        </Border> 
+
+            <Border Grid.ColumnSpan="2" Background="Black" Grid.Row="1">
+                <TextBlock HorizontalAlignment="Right" Foreground="White" Margin="15,0" FontSize="10" Text="Ver. 1.15" VerticalAlignment="Center"></TextBlock>
+            </Border>
         </Grid>
     </Grid>
 </Window>

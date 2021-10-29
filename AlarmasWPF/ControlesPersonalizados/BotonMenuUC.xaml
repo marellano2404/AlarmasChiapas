@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="AlarmasWPF.ControlesPersonalizados.BotonMenuUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AlarmasWPF.ControlesPersonalizados"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="250" MouseLeftButtonDown="UserControl_MouseLeftButtonDown">
+    <UserControl.Resources>
+        <Storyboard x:Key="NormalStoryboard">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BotonMenuGrid">
+                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource MenuAlternoSistema}"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="{DynamicResource ColorMenu}"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="EnterStoryboard">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BotonMenuGrid">
+                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource ColorMenu}"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="{DynamicResource MenuAlternoSistema}"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+            <BeginStoryboard Storyboard="{StaticResource NormalStoryboard}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+            <BeginStoryboard x:Name="EnterStoryboard_BeginStoryboard" Storyboard="{StaticResource EnterStoryboard}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <Grid x:Name="BotonMenuGrid" Cursor="Hand" >
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource ColorMenu}"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="63*"/>
+        </Grid.ColumnDefinitions>
+        <Image Name="IconoImage" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,2"  />
+        <TextBlock Name="TituloTextBlock" Text="Titulo" VerticalAlignment="Center" Grid.Column="1" Foreground="white" TextWrapping="Wrap" FontSize="16" />
+    </Grid>
+</UserControl>

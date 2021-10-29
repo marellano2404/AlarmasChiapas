@@ -1,4 +1,4 @@
-﻿using Alarmas.Core.BL.Seguridad;
+﻿using Alarmas.Core.BL.Clientes;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,28 +9,28 @@ namespace Alarmas.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class SeguridadController : Controller
+    public class ClientesController : Controller
     {
         #region PROPIEDADES
 
-        private readonly ISeguridad _SeguridadService;
+        private readonly IClientes _ClientesService;
 
 
         #endregion
 
         #region CONTRUCTOR
-        public SeguridadController(ISeguridad SeguridadService)
+        public ClientesController(IClientes ClientesService)
         {
-            _SeguridadService = SeguridadService;
+            _ClientesService = ClientesService;
         }
         #endregion
         #region Metodos 
         [HttpGet]
-        public async Task<IActionResult> GetListaAlarmas()
+        public async Task<IActionResult> GetListaClientes()
         {
             try
             {
-                var Result = await _SeguridadService.GetListaTipoAlarmas();
+                var Result = await _ClientesService.GetListaClientes();
                 if (Result != null)
                 {
                     return Ok(Result);
@@ -48,8 +48,5 @@ namespace Alarmas.API.Controllers
 
         }
         #endregion
-
-
-
     }
 }

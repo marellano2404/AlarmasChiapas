@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlarmasWPF.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,24 @@ namespace AlarmasWPF.Clientes
     /// </summary>
     public partial class DatosStackPanelUC : UserControl
     {
+        public Cliente ClienteDataConext 
+        {
+            get
+            {
+                try
+                {
+                    return this.DataContext as Cliente;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                this.DataContext = value;              
+            }
+        }
         public DatosStackPanelUC()
         {
             InitializeComponent();

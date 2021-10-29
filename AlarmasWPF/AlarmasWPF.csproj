@@ -8,22 +8,28 @@
 
   <ItemGroup>
     <None Remove="Clientes\Buscar.png" />
+    <None Remove="Clientes\Eliminar.png" />
+    <None Remove="Clientes\Modificar.png" />
+    <None Remove="Clientes\Usuario.png" />
     <None Remove="fondo3.png" />
     <None Remove="Recursos\Buscar.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="GemBox.Pdf" Version="17.0.1042" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Models\" />
     <Folder Include="Catalogos\" />
-    <Folder Include="Core\Services\" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Clientes\Buscar.png" />
+    <Resource Include="Clientes\Eliminar.png" />
+    <Resource Include="Clientes\Modificar.png" />
+    <Resource Include="Clientes\Usuario.png" />
     <Resource Include="fondo3.png" />
     <Resource Include="Recursos\Buscar.png" />
   </ItemGroup>

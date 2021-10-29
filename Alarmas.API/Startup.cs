@@ -1,3 +1,4 @@
+using Alarmas.Core.BL.Clientes;
 using Alarmas.Core.BL.Seguridad;
 using Alarmas.Core.Helpers;
 using Alarmas.Core.Models;
@@ -64,6 +65,7 @@ namespace Alarmas.API
             services.Configure<JWTSettings>(Configuration.GetSection("JWT"));
             services.AddDbContext<CAlarmasDBContext>(options => options.UseSqlServer(ContextConfiguration.ConexionString));
             services.AddTransient<ISeguridad, ServicesSeguridad>();
+            services.AddTransient<IClientes, ClientesServices>();
 
             services.AddSwaggerGen(c =>
             {

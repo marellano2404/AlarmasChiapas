@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alarmas.Core", "Alarmas.Cor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{6CB493E2-9B5F-49A5-A1AE-A6470238E209}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlarmasWPF", "AlarmasWPF\AlarmasWPF.csproj", "{37BEA238-B1AC-4F9F-B219-135BBD8BA168}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlarmasWPF", "AlarmasWPF\AlarmasWPF.csproj", "{37BEA238-B1AC-4F9F-B219-135BBD8BA168}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

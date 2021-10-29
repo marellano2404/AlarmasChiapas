@@ -85,11 +85,11 @@ namespace Alarmas.Core.BL.Seguridad
             return false;
         }
 
-        public async Task<List<CodigosAlarma>> GetListaTipoAlarmas()
+        public async Task<List<TaskModel>> GetListaTipoAlarmas()
         {
             using (var conexion = new CAlarmasDBContext())
             {
-                var consulta = await (from e in conexion.CodigosAlarmas select e).ToListAsync();
+                var consulta = await (from e in conexion.TaskModels select e).ToListAsync();
                 return consulta;               
             }
         }
