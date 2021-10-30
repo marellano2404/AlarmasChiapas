@@ -21,6 +21,7 @@ namespace AlarmasWPF.Clientes
     /// </summary>
     public partial class DatosStackPanelUC : UserControl
     {
+        public event EventHandler OpcionUsuariosOnClick;
         public Cliente ClienteDataConext 
         {
             get
@@ -42,6 +43,11 @@ namespace AlarmasWPF.Clientes
         public DatosStackPanelUC()
         {
             InitializeComponent();
+        }
+
+        private void UsuariosImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            OpcionUsuariosOnClick?.Invoke(this, new EventArgs());
         }
     }
 }

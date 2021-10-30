@@ -27,7 +27,7 @@
             <StackPanel Grid.Column="6" Orientation="Horizontal">
                 <Image x:Name="ModificarImage" Source="/Clientes/Modificar.png" Margin="2" Cursor="Hand"  />
                 <Image x:Name="EliminarImage" Source="/Clientes/Eliminar.png" Margin="2" Cursor="Hand" />
-                <Image x:Name="UsuariosImage" Source="/Clientes/Usuario.png" Margin="2" Cursor="Hand" ToolTip="Ver Usuarios" />
+                <Image x:Name="UsuariosImage" Source="/Clientes/Usuario.png" Margin="2" Cursor="Hand" ToolTip="Ver Usuarios" MouseLeftButtonDown="UsuariosImage_MouseLeftButtonDown" />
             </StackPanel>
         </Grid>
     </Border>
