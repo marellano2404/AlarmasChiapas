@@ -8,5 +8,6 @@ namespace Alarmas.Core.BL.Clientes
     {
         Task<List<Cliente>> GetListaClientes();
         Task<bool> PostNuevoCliente(Cliente cliente);
+        Task<bool> PostNuevoUsuario(ClienteUsuario usuario);
     }
 }
