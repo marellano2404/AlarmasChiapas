@@ -192,7 +192,7 @@ namespace Alarmas.Core.BL.Clientes
                     comando.CommandText = "Procesos.[AdministracionCliente]";
                     comando.CommandType = System.Data.CommandType.StoredProcedure;
                     /*Agregando los parametros*/
-                    comando.Parameters.AddWithValue("@Opcion", "Eliminar");
+                    comando.Parameters.AddWithValue("@Opcion", "Borrar");
                     comando.Parameters.AddWithValue("@IdCliente", idcliente);
                     Conexion.Open();
                     var Lectura = await comando.ExecuteReaderAsync();
