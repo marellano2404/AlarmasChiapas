@@ -16,11 +16,11 @@ namespace Alarmas.Core.Models
         public Guid? IdCliente { get; set; }
         [StringLength(250)]
         public string NombreCompleto { get; set; }
-        [StringLength(19)]
+        [StringLength(100)]
         public string Usuario { get; set; }
         [StringLength(50)]
         public string Contraseña { get; set; }
-        [StringLength(15)]
+        [StringLength(25)]
         public string Puesto { get; set; }
         public DateTime FechaAlta { get; set; }
     }
