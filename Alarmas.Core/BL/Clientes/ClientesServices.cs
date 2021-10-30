@@ -101,5 +101,42 @@ namespace Alarmas.Core.BL.Clientes
                 }
             }
         }
+        public async Task<bool> PostNuevaInstalacion(Instalacion instalacion)
+        {
+            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
+            {
+                bool resultado = false;
+                try
+                {
+
+                    var comando = new SqlCommand();
+                    comando.Connection = Conexion;
+                    comando.CommandText = "Procesos.[AdministracionInstalacion]";
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    /*Agregando los parametros*/
+                    comando.Parameters.AddWithValue("@Opcion", "Agregar");
+                    comando.Parameters.AddWithValue("@Zona", instalacion.Zona);
+                    comando.Parameters.AddWithValue("@LugarInstalacion", instalacion.LugarInstalacion.Trim());
+                    Conexion.Open();
+                    var Lectura = await comando.ExecuteReaderAsync();
+                    if (Lectura.HasRows)
+                    {
+                        while (Lectura.Read())
+                        {
+                            resultado = Lectura.GetBoolean(0);
+                        }
+                    }
+                    Conexion.Close();
+                    return resultado;
+
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message.ToString();
+                    return resultado;
+                }
+            }
+        }
+
     }
 }
