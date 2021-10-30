@@ -19,5 +19,6 @@ namespace AlarmasWPF.Core.ViewModels
         public string Celular { get; set; }
         public string Correo { get; set; }
         public DateTime? FechaAlta { get; set; }
+
     }
 }
