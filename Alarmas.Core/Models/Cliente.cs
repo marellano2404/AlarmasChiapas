@@ -19,13 +19,13 @@ namespace Alarmas.Core.Models
         [StringLength(50)]
         public string Propietario { get; set; }
         [Column("RFC")]
-        [StringLength(13)]
+        [StringLength(100)]
         public string Rfc { get; set; }
         [StringLength(150)]
         public string Direccion { get; set; }
         [StringLength(150)]
         public string Referencias { get; set; }
-        [StringLength(13)]
+        [StringLength(100)]
         public string TelParticular { get; set; }
         [StringLength(50)]
         public string Celular { get; set; }
