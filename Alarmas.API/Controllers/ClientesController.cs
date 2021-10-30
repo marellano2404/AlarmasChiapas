@@ -1,4 +1,5 @@
 ﻿using Alarmas.Core.BL.Clientes;
+using Alarmas.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,20 @@ namespace Alarmas.API.Controllers
                 {
                     return Unauthorized();
                 }
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+        [HttpPost("PostNuevoCliente")]
+        public async Task<IActionResult>  PostNuevoCliente([FromBody]Cliente cliente)
+        {
+            try
+            {
+                var Result = await _ClientesService.PostNuevoCliente(cliente);
+                return Ok(Result);              
 
             }
             catch (Exception)

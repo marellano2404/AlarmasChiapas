@@ -7,5 +7,6 @@ namespace Alarmas.Core.BL.Clientes
     public interface IClientes
     {
         Task<List<Cliente>> GetListaClientes();
+        Task<bool> PostNuevoCliente(Cliente cliente);
     }
 }
