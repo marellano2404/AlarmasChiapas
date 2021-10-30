@@ -61,6 +61,20 @@ namespace Alarmas.API.Controllers
                 return BadRequest("La Conexión no ha sido encontrado!");
             }
         }
+        [HttpPut("PutCliente")]
+        public async Task<IActionResult> PutCliente([FromBody] Cliente cliente)
+        {
+            try
+            {
+                var Result = await _ClientesService.PostNuevoCliente(cliente);
+                return Ok(Result);
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
         [HttpPost("PostNuevoUsuario")]
         public async Task<IActionResult> PostNuevoUsuario([FromBody] ClienteUsuario usuario)
         {
