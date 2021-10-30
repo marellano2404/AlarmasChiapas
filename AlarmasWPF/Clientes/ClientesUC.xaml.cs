@@ -1,4 +1,5 @@
-﻿using AlarmasWPF.Core.ViewModels;
+﻿using AlarmasWPF.Clientes.Usuarios;
+using AlarmasWPF.Core.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -26,27 +27,17 @@ namespace AlarmasWPF.Clientes
     public partial class ClientesUC : UserControl
     {
         public event EventHandler Regresar;
-        private static HttpClient client = new HttpClient();  
+        private static HttpClient client = new HttpClient();
+        #region Constructor
         public ClientesUC()
         {            
             InitializeComponent();
             client.BaseAddress = new Uri("https://localhost:44310/");
             client.DefaultRequestHeaders.Accept.Add(
-                 new MediaTypeWithQualityHeaderValue("application/json"));
+                 new MediaTypeWithQualityHeaderValue("application/json"));            
             CargasClientes();
         }
-        private async void CargasClientes()
-        {
-            DatosStackPanel.Children.Clear();
-            var response = client.GetStringAsync("api/Clientes/GetListaClientes").Result;
-            var clientes_ = JsonConvert.DeserializeObject<List<Cliente>>(response);            
-            foreach (var item in clientes_)
-            {
-                DatosStackPanelUC control = new DatosStackPanelUC();
-                control.ClienteDataConext = item;
-                DatosStackPanel.Children.Add(control);
-            }
-        }
+        #endregion        
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Regresar?.Invoke(this, new EventArgs());
@@ -67,5 +58,48 @@ namespace AlarmasWPF.Clientes
             //};
             modal.ShowDialog();
         }
+
+        #region Métodos
+        private void CargasClientes()
+        {
+            DatosStackPanel.Children.Clear();
+            var response = ObtenerClientes();
+            foreach (var item in response)
+            {
+                DatosStackPanelUC control = new DatosStackPanelUC();
+                control.ClienteDataConext = item;
+                control.OpcionUsuariosOnClick += (s, a) =>
+                {
+                    UsuariosUC vistaUsuarios = new UsuariosUC();
+                    vistaUsuarios.SalirOnClick += (sen, ev) =>
+                    {
+                        GridListadoClientes.Visibility = Visibility.Visible;
+                        GridListadoUsuarios.Visibility = Visibility.Collapsed;
+                        CargasClientes();
+                    };
+                    GridListadoClientes.Visibility = Visibility.Collapsed;
+                    GridListadoUsuarios.Visibility = Visibility.Visible;
+                    GridListadoUsuarios.Children.Clear();
+                    GridListadoUsuarios.Children.Add(vistaUsuarios);
+                };
+                DatosStackPanel.Children.Add(control);
+            }
+        }
+
+        private List<Cliente> ObtenerClientes()
+        {
+            var _clientes = new List<Cliente>();
+            try
+            {
+                var response = client.GetStringAsync("api/Clientes/GetListaClientes").Result;
+                _clientes = JsonConvert.DeserializeObject<List<Cliente>>(response);
+                return _clientes;
+            }
+            catch(Exception e)
+            {
+                return _clientes;
+            }
+        }
+        #endregion
     }
 }
