@@ -21,8 +21,7 @@ namespace Alarmas.Core.BL.Clientes
         }
 
         public async Task<bool> PostNuevoCliente(Cliente cliente)
-        {
-           
+        {           
             using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
             {
                  bool resultado = false;
@@ -43,6 +42,45 @@ namespace Alarmas.Core.BL.Clientes
                     comando.Parameters.AddWithValue("@TelParticular", cliente.TelParticular.Trim());
                     comando.Parameters.AddWithValue("@Celular", cliente.Celular.Trim());
                     comando.Parameters.AddWithValue("@Correo", cliente.Correo.Trim());
+                    Conexion.Open();
+                    var Lectura = await comando.ExecuteReaderAsync();
+                    if (Lectura.HasRows)
+                    {
+                        while (Lectura.Read())
+                        {
+                            resultado = Lectura.GetBoolean(0);
+                        }
+                    }
+                    Conexion.Close();
+                    return resultado;
+
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message.ToString();
+                    return resultado;
+                }
+            }
+        }
+
+        public async Task<bool> PostNuevoUsuario(ClienteUsuario usuario)
+        {
+            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
+            {
+                bool resultado = false;
+                try
+                {
+
+                    var comando = new SqlCommand();
+                    comando.Connection = Conexion;
+                    comando.CommandText = "Procesos.[AdministracionUsuariosCliente]";
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    /*Agregando los parametros*/
+                    comando.Parameters.AddWithValue("@Opcion", "Agregar");
+                    comando.Parameters.AddWithValue("@Contraseña", usuario.Contraseña.Trim());
+                    comando.Parameters.AddWithValue("@NombreCompleto", usuario.NombreCompleto.Trim());
+                    comando.Parameters.AddWithValue("@Puesto", usuario.Puesto.Trim());
+                    comando.Parameters.AddWithValue("@Usuario", usuario.Usuario.Trim());
                     Conexion.Open();
                     var Lectura = await comando.ExecuteReaderAsync();
                     if (Lectura.HasRows)

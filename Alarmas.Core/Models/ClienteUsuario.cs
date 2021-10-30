@@ -22,5 +22,6 @@ namespace Alarmas.Core.Models
         public string Contraseña { get; set; }
         [StringLength(15)]
         public string Puesto { get; set; }
+        public DateTime FechaAlta { get; set; }
     }
 }
