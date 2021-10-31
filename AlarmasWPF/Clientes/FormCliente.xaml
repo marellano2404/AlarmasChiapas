@@ -35,9 +35,9 @@
                 </Rectangle.Stroke>
             </Rectangle>
             <TextBlock Text="Empresa" Grid.Row="2" Margin="3"/>
-            <TextBox x:Name="txtClave" Grid.Row="3" Margin="3" Text="{Binding Empresa}" MaxLength="6" />
+            <TextBox x:Name="txtClave" Grid.Row="3" Margin="3" Text="{Binding Empresa}" MaxLength="50" />
             <TextBlock Text="Nombre Completo" Grid.Row="4" Margin="3"/>
-            <TextBox x:Name="txtNombre" Grid.Row="5" Margin="3" Text="{Binding NombreCompleto}" MaxLength="60"  />
+            <TextBox x:Name="txtNombre" Grid.Row="5" Margin="3" Text="{Binding Propietario}" MaxLength="60"  />
             <Grid Grid.Row="6">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -48,9 +48,9 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Rfc" Grid.Row="0" Grid.Column="0" Margin="3"/>
-                <TextBox x:Name="txtSalario" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding Rfc}" MaxLength="10"  />
+                <TextBox x:Name="txtSalario" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding Rfc}" MaxLength="13"  />
                 <TextBlock Text="Dirección" Grid.Row="0" Grid.Column="1" Margin="3"/>
-                <TextBox x:Name="txtBono" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Direccion}" MaxLength="10"  />
+                <TextBox x:Name="txtBono" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Direccion}" MaxLength="60"  />
             </Grid>
             <Grid Grid.Row="7">
                 <Grid.RowDefinitions>
@@ -64,7 +64,7 @@
                 <TextBlock Text="Tel Particular" Grid.Row="0" Grid.Column="0" Margin="3"/>
                 <TextBox x:Name="txtTabla93" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding TelParticular}" MaxLength="10"  />
                 <TextBlock Text="Referencias de Ubicación" Grid.Row="0" Grid.Column="1" Margin="3"/>
-                <TextBox x:Name="txtTabla94" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Referencias}" MaxLength="10"  />
+                <TextBox x:Name="txtTabla94" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Referencias}" MaxLength="60"  />
             </Grid>
             <Grid Grid.Row="8">
                 <Grid.RowDefinitions>
@@ -78,16 +78,16 @@
                     <ColumnDefinition Width="379*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Tel. Celular" Grid.Row="0" Grid.Column="0" Margin="3" Grid.ColumnSpan="3"/>
-                <TextBox x:Name="txtHorasJornada" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding TelCelular}" MaxLength="6" Grid.ColumnSpan="3"  />
+                <TextBox x:Name="txtHorasJornada" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding Celular}" MaxLength="10" Grid.ColumnSpan="3"  />
                 <TextBlock Text="Correo" Grid.Row="0" Grid.Column="3" Margin="3"/>
-                <TextBox x:Name="txtHomologado" Grid.Row="1" Grid.Column="3" Margin="3" Text="{Binding Correo}" MaxLength="10"  />
+                <TextBox x:Name="txtHomologado" Grid.Row="1" Grid.Column="3" Margin="3" Text="{Binding Correo}" MaxLength="25"  />
             </Grid>
             <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="btnCancelar" Width="110" Height="30" Style="{StaticResource ButtonAdd}" Click="btnCancelar_Click" Cursor="Hand" Margin="4,2">
                     <TextBlock Text="Cancelar" Foreground="White"></TextBlock>
                 </Button>
                 <Button x:Name="btnAceptar" Width="110" Height="30" Style="{StaticResource ButtonAction}" Click="btnAceptar_Click" Cursor="Hand" Margin="4,2">
-                    <TextBlock Text="Aceptar" Foreground="White"></TextBlock>
+                    <TextBlock Text="Guardar" Foreground="White"></TextBlock>
                 </Button>
             </StackPanel>
             <Grid Grid.Row="10">
@@ -164,7 +164,7 @@
                 <TextBox x:Name="txtPuestp" Grid.Row="2"  Grid.Column="1" Margin="3" Text="{Binding Puesto}" MaxLength="60"  />
                 
                 <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">                   
-                    <Button x:Name="btnAgregar" Width="150" Height="30" Style="{StaticResource ButtonAction}" Click="btnAgregar_Click" Cursor="Hand" Margin="4,2">
+                    <Button x:Name="btnAgregar" Width="150" Height="30" Style="{StaticResource ButtonAction}" Cursor="Hand" Margin="4,2">
                         <TextBlock Text="Agregar Usuario" Foreground="White"></TextBlock>
                     </Button>
                 </StackPanel>
