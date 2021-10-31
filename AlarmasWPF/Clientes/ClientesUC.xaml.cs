@@ -72,7 +72,7 @@ namespace AlarmasWPF.Clientes
                 control.ClienteDataConext = item;
                 control.EliminarUsuarioOnClick += (s, a) =>
                 {
-                    Console.WriteLine("Eliminando");
+                    EliminarCliente(item.Id);
                 };
                 control.ModificarUsuarioOnClick += (s, a) =>
                 {
@@ -124,10 +124,39 @@ namespace AlarmasWPF.Clientes
             }
         }
 
+        private async void EliminarCliente(Guid Id)
+        {            
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    var response = await client.DeleteAsync("api/Clientes/DeleteCliente/" + Id);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        CargasClientes();
+                        MostrarMensaje("El cliente se elimino correctamente");
+                    }
+                    else
+                    {
+                        MostrarMensaje("No se pudo eliminar el cliente.");
+                    }
+                }            
+            }
+            catch(Exception e)
+            {
+                MostrarMensaje(e.Message);
+            }
+        }
+
         private void MostrarMensaje(string mensaje)
         {
             var modal = new MensajeWindowAccion();
             modal.Mensaje = mensaje;
+            modal.OnClickAceptar += (s, e) =>
+            {
+                modal.Close();
+            };
             modal.ShowDialog();
         }
         #endregion
