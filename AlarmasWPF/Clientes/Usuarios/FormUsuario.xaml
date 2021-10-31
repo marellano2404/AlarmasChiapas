@@ -1,0 +1,36 @@
+﻿<Window x:Class="AlarmasWPF.Clientes.Usuarios.FormUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AlarmasWPF.Clientes.Usuarios"
+        mc:Ignorable="d"
+        Title="FormUsuario" Height="170" Width="400">
+    <Grid Margin="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Nombre de Usuario" Grid.Row="0" Grid.Column="0" Margin="3"/>
+            <TextBox x:Name="txtUsuario" Grid.Row="0" Grid.Column="1"  Margin="3" Text="{Binding NombreUsuario}" MaxLength="6" />
+            <TextBlock Text="Password de Usuario" Grid.Row="1"  Grid.Column="0" Margin="3"/>
+            <TextBox x:Name="txtPassword" Grid.Row="1"  Grid.Column="1" Margin="3" Text="{Binding Password}" MaxLength="60"  />
+            <TextBlock Text="puesto del Usuario" Grid.Row="2"  Grid.Column="0" Margin="3"/>
+            <TextBox x:Name="txtPuestp" Grid.Row="2"  Grid.Column="1" Margin="3" Text="{Binding Puesto}" MaxLength="60"  />
+
+            <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnAgregar" Width="150" Height="30" Style="{StaticResource ButtonAction}" Cursor="Hand" Margin="4,2">
+                    <TextBlock Text="Agregar Usuario" Foreground="White"></TextBlock>
+                </Button>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Window>
