@@ -25,8 +25,8 @@
             <TextBlock Name="CelularTextBox" FontSize="11"  Grid.Column="4" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Celular}"/>
             <TextBlock Name="FechaAltaTextBox" FontSize="11" Grid.Column="5" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding FechaAlta, StringFormat='dd/MM/yyyy'}"/>
             <StackPanel Grid.Column="6" Orientation="Horizontal">
-                <Image x:Name="ModificarImage" Source="/Clientes/Modificar.png" Margin="2" Cursor="Hand"  />
-                <Image x:Name="EliminarImage" Source="/Clientes/Eliminar.png" Margin="2" Cursor="Hand" />
+                <Image x:Name="ModificarImage" Source="/Clientes/Modificar.png" Margin="2" Cursor="Hand" MouseLeftButtonDown="ModificarImage_MouseLeftButtonDown" />
+                <Image x:Name="EliminarImage" Source="/Clientes/Eliminar.png" Margin="2" Cursor="Hand" PreviewMouseLeftButtonDown="EliminarImage_PreviewMouseLeftButtonDown" />
                 <Image x:Name="UsuariosImage" Source="/Clientes/Usuario.png" Margin="2" Cursor="Hand" ToolTip="Ver Usuarios" MouseLeftButtonDown="UsuariosImage_MouseLeftButtonDown" />
             </StackPanel>
         </Grid>
