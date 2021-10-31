@@ -81,7 +81,7 @@ namespace AlarmasWPF.Clientes
                     }
                     else
                     {
-                        //Modificar
+                        result = await client.PutAsync("api/Clientes/PutCliente", data);                        
                     }
                     var respuesta = await result.Content.ReadAsStringAsync();
                     if (respuesta == "true") //si el resultado de exito es true

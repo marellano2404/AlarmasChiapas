@@ -75,12 +75,12 @@ namespace Alarmas.API.Controllers
                 return BadRequest("La Conexión no ha sido encontrado!");
             }
         }
-        [HttpDelete("DeleteCliente")]
-        public async Task<IActionResult> DeletetCliente([FromBody] Guid Idcliente)
+        [HttpDelete("DeleteCliente/{Id}")]
+        public async Task<IActionResult> DeletetCliente(Guid Id)
         {
             try
             {
-                var Result = await _ClientesService.DeleteCliente(Idcliente);
+                var Result = await _ClientesService.DeleteCliente(Id);
                 return Ok(Result);
 
             }
