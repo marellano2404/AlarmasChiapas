@@ -21,4 +21,15 @@ namespace AlarmasWPF.Core.ViewModels
         public DateTime? FechaAlta { get; set; }
 
     }
+
+    public class UsuarioVM
+    {
+        public Guid Id { get; set; }    
+        public Guid IdCliente { get; set; }    
+        public string NombreCompleto { get; set; }    
+        public string Usuario { get; set; }    
+        public string Contraseña { get; set; }    
+        public string Puesto { get; set; }
+        public DateTime? FechaAlta { get; set; }
+    }
 }

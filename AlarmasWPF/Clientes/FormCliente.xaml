@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AlarmasWPF.Clientes"
         mc:Ignorable="d"
-        Title="FormCliente" Height="750" Width="700">
+        Title="FormCliente" Height="500" Width="700">
     <Border Margin="10" BorderThickness="1,1,1,1" CornerRadius="10">
         <Border.BorderBrush>
             <SolidColorBrush Color="{DynamicResource ColorSubtitulo}"/>
@@ -90,86 +90,7 @@
                     <TextBlock Text="Guardar" Foreground="White"></TextBlock>
                 </Button>
             </StackPanel>
-            <Grid Grid.Row="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="37"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-            </Grid>
-            <Grid Grid.Row="10" Margin="5" x:Name="GridDatos">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="36*"/>
-                    <ColumnDefinition Width="17*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Border Grid.ColumnSpan="8" Grid.Row="0">
-                    <Border.Background>
-                        <SolidColorBrush Color="{DynamicResource ColorMenu}"/>
-                    </Border.Background>
-                </Border>
-
-                <TextBlock Grid.Row="0" Margin="5,0,0,0" FontSize="12" Text="No." Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
-                <TextBlock Grid.Row="0" Margin="5,0,0,0" FontSize="13" Text="Usuario" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
-                <TextBlock Grid.Row="0" FontSize="13" Text="Contraseña" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
-                <TextBlock Grid.Row="0" FontSize="13" Text="Puesto" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="White" />
-                <StackPanel Grid.Row="0"  Grid.Column="4" Orientation="Horizontal">
-                    <TextBlock FontSize="13" Text="Acciones" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="White" />
-                    <Image x:Name="AgregarUserImage" Source="/Clientes/MasElementos.png" Margin="4" Cursor="Hand" />
-                </StackPanel>
-                
-            </Grid>
-            
-            <Border BorderThickness="0,0,0,1" BorderBrush="#FFE7AA" Grid.Row="11">
-                <Grid Name="lineaGridClientes" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="30*"/>
-                        <ColumnDefinition Width="36*"/>
-                        <ColumnDefinition Width="17*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Name="NumClienteTextBox" FontSize="11" Grid.Column="0" Foreground="White" TextAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding NumUsuario}" />
-                    <TextBlock Name="RfcTextBox" FontSize="11" Grid.Column="1" TextAlignment="Left"  Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Rfc}"  />
-                    <TextBlock Name="ClienteTextBox" FontSize="11"  Grid.Column="2" TextAlignment="Left" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" Text="{Binding Propietario}"/>
-                    <TextBlock Name="EmpresaTextBox" FontSize="11"  Grid.Column="3" TextAlignment="Left" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Empresa}"/>
-                    <StackPanel Grid.Column="4" Orientation="Horizontal">
-                        <Image x:Name="ModificarImage" Source="/Clientes/Modificar.png" Margin="2" Cursor="Hand"  />
-                        <Image x:Name="EliminarImage" Source="/Clientes/Eliminar.png" Margin="2" Cursor="Hand" />
-                    </StackPanel>
-                </Grid>
-            </Border>
-            <Grid/>
-            <Grid Grid.Row="12">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Nombre de Usuario" Grid.Row="0" Grid.Column="0" Margin="3"/>
-                <TextBox x:Name="txtUsuario" Grid.Row="0" Grid.Column="1"  Margin="3" Text="{Binding NombreUsuario}" MaxLength="6" />
-                <TextBlock Text="Password de Usuario" Grid.Row="1"  Grid.Column="0" Margin="3"/>
-                <TextBox x:Name="txtPassword" Grid.Row="1"  Grid.Column="1" Margin="3" Text="{Binding Password}" MaxLength="60"  />
-                <TextBlock Text="puesto del Usuario" Grid.Row="2"  Grid.Column="0" Margin="3"/>
-                <TextBox x:Name="txtPuestp" Grid.Row="2"  Grid.Column="1" Margin="3" Text="{Binding Puesto}" MaxLength="60"  />
-                
-                <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">                   
-                    <Button x:Name="btnAgregar" Width="150" Height="30" Style="{StaticResource ButtonAction}" Cursor="Hand" Margin="4,2">
-                        <TextBlock Text="Agregar Usuario" Foreground="White"></TextBlock>
-                    </Button>
-                </StackPanel>
-                
-            </Grid>
+                       
         </Grid>
     </Border>
 </Window>
