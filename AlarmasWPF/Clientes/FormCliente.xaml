@@ -35,9 +35,9 @@
                 </Rectangle.Stroke>
             </Rectangle>
             <TextBlock Text="Empresa" Grid.Row="2" Margin="3"/>
-            <TextBox x:Name="txtClave" Grid.Row="3" Margin="3" Text="{Binding Empresa}" MaxLength="50" />
+            <TextBox x:Name="txtClave" Grid.Row="3" Margin="3" Text="{Binding Empresa}" MaxLength="150" />
             <TextBlock Text="Nombre Completo" Grid.Row="4" Margin="3"/>
-            <TextBox x:Name="txtNombre" Grid.Row="5" Margin="3" Text="{Binding Propietario}" MaxLength="60"  />
+            <TextBox x:Name="txtNombre" Grid.Row="5" Margin="3" Text="{Binding Propietario}" MaxLength="260"  />
             <Grid Grid.Row="6">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

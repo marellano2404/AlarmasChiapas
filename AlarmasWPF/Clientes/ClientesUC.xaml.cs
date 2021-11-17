@@ -41,12 +41,7 @@ namespace AlarmasWPF.Clientes
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Regresar?.Invoke(this, new EventArgs());
-        }
-
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
+        }       
 
         private void Agregar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -70,7 +65,7 @@ namespace AlarmasWPF.Clientes
             {
                 DatosStackPanelUC control = new DatosStackPanelUC();
                 control.ClienteDataConext = item;
-                control.EliminarUsuarioOnClick += (s, a) =>
+                control.EliminarClienteOnClick += (s, a) =>
                 {
                     EliminarCliente(item.Id);
                 };
@@ -94,11 +89,27 @@ namespace AlarmasWPF.Clientes
                         GridListadoUsuarios.Visibility = Visibility.Collapsed;
                         CargasClientes();
                     };
+
+                    vistaUsuarios.AgregarUserOnClick += (s, a) =>
+                    {
+                        FormUsuario modal = new FormUsuario();
+                        var entidad = new UsuarioVM();
+                        //modal.usuario = entidad;
+                        //modal.ClickAgregar += (s, e) =>
+                        //{
+                        //    CargasClientes();
+                        //    modal.Close();
+                        //};
+                        modal.ShowDialog();
+                    };
+
                     GridListadoClientes.Visibility = Visibility.Collapsed;
                     GridListadoUsuarios.Visibility = Visibility.Visible;
                     GridListadoUsuarios.Children.Clear();
                     GridListadoUsuarios.Children.Add(vistaUsuarios);
                 };
+               
+
                 DatosStackPanel.Children.Add(control);
             }
         }

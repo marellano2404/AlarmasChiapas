@@ -21,7 +21,7 @@ namespace AlarmasWPF.Clientes.Usuarios
     public partial class UsuariosUC : UserControl
     {
         public event EventHandler SalirOnClick;
-        public event EventHandler AgregarOnClick;
+        public event EventHandler AgregarUserOnClick;
         public UsuariosUC()
         {
             InitializeComponent();
@@ -32,9 +32,9 @@ namespace AlarmasWPF.Clientes.Usuarios
             SalirOnClick?.Invoke(this, new EventArgs());
         }
 
-        private void Agregar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void AgregarU_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            AgregarOnClick?.Invoke(this, new EventArgs());
+            AgregarUserOnClick?.Invoke(this, new EventArgs());
         }
     }
 }

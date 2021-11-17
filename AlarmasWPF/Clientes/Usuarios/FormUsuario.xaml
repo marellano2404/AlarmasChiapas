@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AlarmasWPF.Clientes.Usuarios"
         mc:Ignorable="d"
-        Title="FormUsuario" Height="170" Width="400">
+        Title="FormUsuario" Height="175" Width="450">
     <Grid Margin="10">
         <Grid>
             <Grid.RowDefinitions>

@@ -18,8 +18,8 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" HorizontalAlignment="Left" Grid.Column="0" Cursor="Hand">
             <StackPanel  Orientation="Horizontal"  Margin="5,17,0,0">
-                <Button x:Name="btnAgregar" Width="120" Style="{StaticResource ButtonAction}" Height="35" Cursor="Hand" ToolTip="Agregar" Margin="5,0">
-                    <TextBlock Text="Agregar" Foreground="White" MouseLeftButtonDown="Agregar_MouseLeftButtonDown" FontSize="20" VerticalAlignment="Center"/>
+                <Button x:Name="btnAgregar" Width="170" Style="{StaticResource ButtonAction}" Height="35" Cursor="Hand" ToolTip="Agregar" Margin="5,0">
+                    <TextBlock Text="Agregar Usuario" Foreground="White" MouseLeftButtonDown="AgregarU_MouseLeftButtonDown" FontSize="20" VerticalAlignment="Center"/>
                 </Button>
                 <TextBox x:Name="TextBoxBuscar" Width="300" Height="35" Margin="10 0 0 0" FontSize="20" VerticalContentAlignment="Center">
                     <TextBox.Foreground>
