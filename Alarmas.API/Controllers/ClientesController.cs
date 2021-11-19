@@ -76,12 +76,34 @@ namespace Alarmas.API.Controllers
             }
         }
         [HttpDelete("DeleteCliente/{Id}")]
-        public async Task<IActionResult> DeletetCliente(Guid Id)
+        public async Task<IActionResult> DeleteCliente(Guid Id)
         {
             try
             {
                 var Result = await _ClientesService.DeleteCliente(Id);
                 return Ok(Result);
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+
+        [HttpGet("GetListaUsuarios/{IdCliente}")]
+        public async Task<IActionResult> GetListaUsuarios(Guid IdCliente)
+        {
+            try
+            {
+                var Result = await _ClientesService.GetListaUsuarios(IdCliente);
+                if (Result != null)
+                {
+                    return Ok(Result);
+                }
+                else
+                {
+                    return Unauthorized();
+                }
 
             }
             catch (Exception)

@@ -92,14 +92,15 @@ namespace AlarmasWPF.Clientes
 
                     vistaUsuarios.AgregarUserOnClick += (s, a) =>
                     {
-                        FormUsuario modal = new FormUsuario();
+                        FormUsuario modal = new FormUsuario(true);
                         var entidad = new UsuarioVM();
-                        //modal.usuario = entidad;
-                        //modal.ClickAgregar += (s, e) =>
-                        //{
-                        //    CargasClientes();
-                        //    modal.Close();
-                        //};
+                        modal.Entidadusuario = entidad;
+                        modal.Entidadusuario.IdCliente = item.Id;
+                        modal.ClickAgregarUser += (s, e) =>
+                        {
+                            ObtenerUsuariosCliente(item.Id);
+                            modal.Close();
+                        };
                         modal.ShowDialog();
                     };
 
@@ -134,7 +135,26 @@ namespace AlarmasWPF.Clientes
                 return _clientes;
             }
         }
-
+        private List<UsuarioVM> ObtenerUsuariosCliente(Guid IdCliente)
+        {
+            var _usuarios = new List<UsuarioVM>();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.DefaultRequestHeaders.Accept.Add(
+                         new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response = client.GetStringAsync("api/Clientes/GetListaUsuarios/" + IdCliente).Result;
+                    _usuarios = JsonConvert.DeserializeObject<List<UsuarioVM>>(response);
+                    return _usuarios;
+                }
+            }
+            catch (Exception e)
+            {
+                return _usuarios;
+            }
+        }
         private async void EliminarCliente(Guid Id)
         {            
             try

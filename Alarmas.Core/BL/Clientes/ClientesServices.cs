@@ -154,6 +154,7 @@ namespace Alarmas.Core.BL.Clientes
                     /*Agregando los parametros*/
                     comando.Parameters.AddWithValue("@Opcion", "Agregar");
                     comando.Parameters.AddWithValue("@Contraseña", usuario.Contraseña.Trim());
+                    comando.Parameters.AddWithValue("@IdCliente", usuario.IdCliente);
                     comando.Parameters.AddWithValue("@NombreCompleto", usuario.NombreCompleto.Trim());
                     comando.Parameters.AddWithValue("@Puesto", usuario.Puesto.Trim());
                     comando.Parameters.AddWithValue("@Usuario", usuario.Usuario.Trim());
@@ -213,6 +214,14 @@ namespace Alarmas.Core.BL.Clientes
                 }
             }
         }
-       
+
+        public async Task<List<ClienteUsuario>> GetListaUsuarios(Guid idCliente)
+        {
+            using (var conexion = new CAlarmasDBContext())
+            {
+                var consulta = await(from e in conexion.ClienteUsuarios where e.IdCliente == idCliente select e).ToListAsync();
+                return consulta;
+            }
+        }
     }
 }

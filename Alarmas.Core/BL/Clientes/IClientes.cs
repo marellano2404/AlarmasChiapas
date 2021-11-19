@@ -13,5 +13,6 @@ namespace Alarmas.Core.BL.Clientes
         Task<bool> PostNuevaInstalacion(Instalacion instalacion);
         Task<bool> PutCliente(Cliente cliente);
         Task<bool> DeleteCliente(Guid idcliente);
+        Task<List<ClienteUsuario>> GetListaUsuarios(Guid idCliente);
     }
 }
