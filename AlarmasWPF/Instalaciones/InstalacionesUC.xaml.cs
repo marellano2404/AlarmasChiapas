@@ -14,26 +14,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AlarmasWPF.Clientes.Usuarios
+namespace AlarmasWPF.Instalaciones
 {
     /// <summary>
-    /// Lógica de interacción para FormUsuario.xaml
+    /// Lógica de interacción para InstalacionesUC.xaml
     /// </summary>
-    public partial class FormUsuario : Window
+    public partial class InstalacionesUC : UserControl
     {
-        #region Propiedades
-        //private static HttpClient client = new HttpClient();
-        public event EventHandler ClickAgregarUser;
-        public bool _esNuevo { get; set; }
-        public UsuarioVM Entidadusuario
+        public InstalacionVM EntidadInstalacion
         {
             get
             {
                 try
                 {
-                    return DataContext as UsuarioVM;
+                    return DataContext as InstalacionVM;
                 }
                 catch (Exception)
                 {
@@ -45,17 +42,25 @@ namespace AlarmasWPF.Clientes.Usuarios
                 DataContext = value;
             }
         }
-        #endregion
-
-        #region Constructor
-        public FormUsuario(bool esNuevo)
+        public event EventHandler AgregarOnClick;
+        public event EventHandler SalirOnClick;
+        public event EventHandler ClickAgregarInstalacion;
+        public InstalacionesUC()
         {
             InitializeComponent();
-            _esNuevo = esNuevo;
         }
-        #endregion
 
-        private async void btnAgregar_MouseLeftButtonDown(object sender, RoutedEventArgs e)
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SalirOnClick?.Invoke(this, new EventArgs());
+        }
+
+        private void AgregarI_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            AgregarOnClick?.Invoke(this, new EventArgs());
+        }
+
+        private async void AgregarInst_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
             {
@@ -66,22 +71,16 @@ namespace AlarmasWPF.Clientes.Usuarios
                     client.DefaultRequestHeaders.Accept.Add(
                          new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    var json = Newtonsoft.Json.JsonConvert.SerializeObject(Entidadusuario);
+                    var json = Newtonsoft.Json.JsonConvert.SerializeObject(EntidadInstalacion);
                     var data = new System.Net.Http.StringContent(json, Encoding.UTF8, "application/json");
 
-                    if (_esNuevo)
-                    {
-                        result = await client.PostAsync("api/Clientes/PostNuevoUsuario", data);
-                    }
-                    else
-                    {
-                        result = await client.PutAsync("api/Clientes/PostNuevoUsuario", data);
-                    }
+                    result = await client.PostAsync("api/Clientes/PostNuevaInstalacion", data);
+                   
                     var respuesta = await result.Content.ReadAsStringAsync();
                     if (respuesta == "true") //si el resultado de exito es true
                     {
-                        ClickAgregarUser?.Invoke(this, new EventArgs());
-                    }                  
+                        ClickAgregarInstalacion?.Invoke(this, new EventArgs());
+                    }
                 }
             }
             catch (Exception ese)

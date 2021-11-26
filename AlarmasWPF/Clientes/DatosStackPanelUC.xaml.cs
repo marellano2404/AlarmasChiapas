@@ -24,6 +24,7 @@ namespace AlarmasWPF.Clientes
         public event EventHandler OpcionUsuariosOnClick;
         public event EventHandler ModificarUsuarioOnClick;
         public event EventHandler EliminarClienteOnClick;
+        public event EventHandler InstalacionesOnClick;
         public Cliente ClienteDataConext 
         {
             get
@@ -60,6 +61,11 @@ namespace AlarmasWPF.Clientes
         private void EliminarImage_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             EliminarClienteOnClick?.Invoke(this, new EventArgs());
+        }
+
+        private void Instalaciones_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            InstalacionesOnClick?.Invoke(this, new EventArgs());
         }
     }
 }

@@ -1,13 +1,13 @@
-﻿<UserControl x:Class="AlarmasWPF.Clientes.Usuarios.ItemUsuarioUC"
+﻿<UserControl x:Class="AlarmasWPF.Usuarios.ItemUsuarioUC"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:AlarmasWPF.Clientes.Usuarios"
+             xmlns:local="clr-namespace:AlarmasWPF.Usuarios"
              mc:Ignorable="d" 
              Height="30" d:DesignWidth="800" Cursor="Hand">
     <Border BorderThickness="0,0,0,1" BorderBrush="#FFE7AA">
-        <Grid Name="lineaGridClientes" >
+        <Grid Name="lineaGridUsuarios" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="23*"/>
                 <ColumnDefinition Width="36*"/>
@@ -15,8 +15,8 @@
                 <ColumnDefinition Width="20*"/>
                 
             </Grid.ColumnDefinitions>
-            <TextBlock Name="NumUsuario" FontSize="11" Grid.Column="0" Foreground="White" TextAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding NumUsuario}" />
-            <TextBlock Name="Password" FontSize="11" Grid.Column="1" TextAlignment="Left"  Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Password}"  />
+            <TextBlock Name="NumUsuario" FontSize="11" Grid.Column="0" Foreground="White" TextAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding NombreCompleto}" />
+            <TextBlock Name="Password" FontSize="11" Grid.Column="1" TextAlignment="Left"  Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Contraseña}"  />
             <TextBlock Name="Puesto" FontSize="11"  Grid.Column="2" TextAlignment="Left" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" Text="{Binding Puesto}"/>
             <StackPanel Grid.Column="6" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Image x:Name="ModificarImage" Source="/Clientes/Modificar.png" Margin="2" Cursor="Hand" PreviewMouseLeftButtonDown="ModificarImage_PreviewMouseLeftButtonDown" />

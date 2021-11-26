@@ -125,6 +125,8 @@ namespace Alarmas.API.Controllers
                 return BadRequest("La Conexión no ha sido encontrado!");
             }
         }
+
+
         [HttpPost("PostNuevaInstalacion")]
         public async Task<IActionResult> PostNuevaInstalacion([FromBody] Instalacion instalacion)
         {
@@ -139,6 +141,7 @@ namespace Alarmas.API.Controllers
                 return BadRequest("La Conexión no ha sido encontrado!");
             }
         }
+
         #endregion
     }
 }

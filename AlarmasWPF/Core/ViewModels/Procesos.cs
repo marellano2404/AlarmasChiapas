@@ -32,4 +32,11 @@ namespace AlarmasWPF.Core.ViewModels
         public string Puesto { get; set; }
         public DateTime? FechaAlta { get; set; }
     }
+    public class InstalacionVM
+    {
+        public Guid Id { get; set; }
+        public Guid IdCliente { get; set; }
+        public int Zona { get; set; }
+        public string LugarInstalacion { get; set; }
+    }
 }

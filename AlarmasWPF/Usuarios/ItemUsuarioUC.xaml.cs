@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 
 
-namespace AlarmasWPF.Clientes.Usuarios
+namespace AlarmasWPF.Usuarios
 {
     /// <summary>
     /// Lógica de interacción para ItemUsuarioUC.xaml
@@ -17,6 +17,25 @@ namespace AlarmasWPF.Clientes.Usuarios
     {
         public event EventHandler ModificarOnClick;
         public event EventHandler EliminarOnClick;
+        public UsuarioVM UsuariosClienteDataConext
+        {
+            get
+            {
+                try
+                {
+                    return this.DataContext as UsuarioVM;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                this.DataContext = value;
+            }
+        }
+
         public ItemUsuarioUC()
         {
             InitializeComponent();

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AlarmasWPF"
-        mc:Ignorable="d" Width="950" Height="750" Title="Central de Alarmas Chiapas" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize" 
+        mc:Ignorable="d" Width="1100" Height="750" Title="Central de Alarmas Chiapas" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize" 
         WindowStyle="SingleBorderWindow" Background="#737b92">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -24,20 +24,20 @@
             <Grid Grid.Column="0" x:Name="MenuGrid">
                 <StackPanel  Orientation="Horizontal" Margin="-28,20,0,0">
                     <StackPanel>
-                        <Border MouseLeftButtonDown="MouseClientesEvent_MouseLeftButtonDown" Width="180" Height="40" Background="#bdbfbf"  Margin="0,0,0,0" CornerRadius="13">
+                        <Border MouseLeftButtonDown="MouseClientesEvent_MouseLeftButtonDown" Width="180" Height="40" Cursor="Hand" Background="#bdbfbf"  Margin="0,0,0,0" CornerRadius="13">
                             <TextBlock Margin="35,0,9,4" Foreground="White" FontSize="25">Clientes</TextBlock>
                         </Border>
-                        <Border Width="180" Height="40" Background="#fdfd96"   Margin="0,20,0,0" CornerRadius="13">
+                        <Border Width="180" Height="40" Background="#fdfd96"   Margin="0,20,0,0" CornerRadius="13" Cursor="Hand" >
                             <TextBlock Margin="35,0,9,4" FontSize="25">Eventos</TextBlock>
                         </Border>
-                        <Border Width="180" Height="40" Background="#bf9780"  Margin="0,20,0,0" CornerRadius="13">
+                        <Border Width="180" Height="40" Background="#bf9780"  Margin="0,20,0,0" CornerRadius="13" Cursor="Hand" >
                             <TextBlock Margin="35,0,9,4" Foreground="White" FontSize="25">Catalogos</TextBlock>
                         </Border>
-                        <Border Width="180" Height="40" Background="#fdfd96"  Margin="0,20,0,0"  CornerRadius="13">
+                        <Border Width="180" Height="40" Background="#fdfd96"  Margin="0,20,0,0"  CornerRadius="13" Cursor="Hand" >
                             <TextBlock Margin="35,0,9,4" FontSize="25">Reportes</TextBlock>
                         </Border>
                         <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" Width="180" Height="40" Background="#bdbfbf" Margin="0,20,0,0"  CornerRadius="13">
-                            <TextBlock Margin="35,0,9,4" Foreground="White" FontSize="25">Salir</TextBlock>
+                            <TextBlock Margin="35,0,9,4" Foreground="White" FontSize="25"  Cursor="Hand" >Salir</TextBlock>
                         </Border>
                     </StackPanel>
                 </StackPanel>
