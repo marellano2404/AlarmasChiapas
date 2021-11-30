@@ -22,6 +22,7 @@ namespace AlarmasWPF.Instalaciones
     /// <summary>
     /// Lógica de interacción para InstalacionesUC.xaml
     /// </summary>
+    /// 
     public partial class InstalacionesUC : UserControl
     {
         public InstalacionVM EntidadInstalacion
