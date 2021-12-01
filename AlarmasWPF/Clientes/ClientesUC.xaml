@@ -32,43 +32,42 @@
                                   BlurRadius="4"
                                   Color="#c2b4c2"
                                   Opacity="300"/>
-                        </TextBox.Effect>
-                    </TextBox>
-                    <Button x:Name="btnBuscar" Width="60" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand"  Style="{DynamicResource ButtoBuscar}">
-                        <Image Source="/Clientes/Buscar.png" Margin="5" ToolTip="Buscar Cliente" Cursor="Hand"/>
-                    </Button>
+                    </TextBox.Effect>
+                </TextBox>
+                <Button x:Name="btnBuscar" Width="60" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand"  Style="{DynamicResource ButtoBuscar}">
+                    <Image Source="/Clientes/Buscar.png" Margin="5" ToolTip="Buscar Cliente" Cursor="Hand"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <GridSplitter Grid.Row="1" Height="2" HorizontalAlignment="Stretch" />
+        <Grid Grid.Row="0" HorizontalAlignment="Right" Grid.Column="1">
+            <StackPanel  Orientation="Horizontal"  Margin="0,20,-39,0">
+                <StackPanel Margin="5">
+                    <Border Width="180" Height="40" MouseLeftButtonDown="Border_MouseLeftButtonDown" Background="#bf9780" CornerRadius="13">
+                        <TextBlock HorizontalAlignment="Left"  Margin="15,0,0,0" Foreground="White" FontSize="25"><Run Text="Menú"/></TextBlock>
+                    </Border>
                 </StackPanel>
-            </Grid>
-            <GridSplitter Grid.Row="1" Height="2" HorizontalAlignment="Stretch" />
-            <Grid Grid.Row="0" HorizontalAlignment="Right" Grid.Column="1">
-                <StackPanel  Orientation="Horizontal"  Margin="0,20,-39,0">
-                    <StackPanel Margin="5">
-                        <Border Width="180" Height="40" MouseLeftButtonDown="Border_MouseLeftButtonDown" Background="#bf9780" CornerRadius="13">
-                            <TextBlock HorizontalAlignment="Left"  Margin="15,0,0,0" Foreground="White" FontSize="25"><Run Text="Menú"/></TextBlock>
-                        </Border>
-                    </StackPanel>
-                </StackPanel>
-            </Grid>
-            <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="5" x:Name="GridDatos">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="15*"/>
-                    <ColumnDefinition Width="23*"/>
-                    <ColumnDefinition Width="36*"/>
-                    <ColumnDefinition Width="36*"/>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="19*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Border Grid.ColumnSpan="8" Grid.Row="0">
-                    <Border.Background>
-                        <SolidColorBrush Color="{DynamicResource ColorMenu}"/>
-                    </Border.Background>
-                </Border>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="5" x:Name="GridDatos">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="23*"/>
+                <ColumnDefinition Width="36*"/>
+                <ColumnDefinition Width="36*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="19*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.ColumnSpan="8" Grid.Row="0">
+                <Border.Background>
+                    <SolidColorBrush Color="{DynamicResource ColorMenu}"/>
+                </Border.Background>
+            </Border>
 
                 <TextBlock Grid.Row="0" Margin="5,0,0,0" FontSize="12" Text="No." Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
                 <TextBlock Grid.Row="0" Margin="5,0,0,0" FontSize="13" Text="Acciones" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
