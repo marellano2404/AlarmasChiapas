@@ -20,13 +20,13 @@ namespace Alarmas.Core.BL.Clientes
             }
         }
         public async Task<bool> PostNuevoCliente(Cliente cliente)
-        {           
+        {
             using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
             {
-                 bool resultado = false;
+                bool resultado = false;
                 try
                 {
-                    
+
                     var comando = new SqlCommand();
                     comando.Connection = Conexion;
                     comando.CommandText = "Procesos.[AdministracionCliente]";
@@ -193,6 +193,7 @@ namespace Alarmas.Core.BL.Clientes
                     /*Agregando los parametros*/
                     comando.Parameters.AddWithValue("@Opcion", "Agregar");
                     comando.Parameters.AddWithValue("@Zona", instalacion.Zona);
+                    comando.Parameters.AddWithValue("@IdCliente", instalacion.IdCliente);
                     comando.Parameters.AddWithValue("@LugarInstalacion", instalacion.LugarInstalacion.Trim());
                     Conexion.Open();
                     var Lectura = await comando.ExecuteReaderAsync();
@@ -214,115 +215,14 @@ namespace Alarmas.Core.BL.Clientes
                 }
             }
         }
-        public async Task<bool> DeleteCliente(Guid idcliente)
+
+        public async Task<List<ClienteUsuario>> GetListaUsuarios(Guid idCliente)
         {
-            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
+            using (var conexion = new CAlarmasDBContext())
             {
-                bool resultado = false;
-                try
-                {
-
-                    var comando = new SqlCommand();
-                    comando.Connection = Conexion;
-                    comando.CommandText = "Procesos.[AdministracionCliente]";
-                    comando.CommandType = System.Data.CommandType.StoredProcedure;
-                    /*Agregando los parametros*/
-                    comando.Parameters.AddWithValue("@Opcion", "Borrar");
-                    comando.Parameters.AddWithValue("@IdCliente", idcliente);
-                    Conexion.Open();
-                    var Lectura = await comando.ExecuteReaderAsync();
-                    if (Lectura.HasRows)
-                    {
-                        while (Lectura.Read())
-                        {
-                            resultado = Lectura.GetBoolean(0);
-                        }
-                    }
-                    Conexion.Close();
-                    return resultado;
-
-                }
-                catch (Exception e)
-                {
-                    var m = e.Message.ToString();
-                    return resultado;
-                }
+                var consulta = await (from e in conexion.ClienteUsuarios where e.IdCliente == idCliente select e).ToListAsync();
+                return consulta;
             }
         }
-        public async Task<bool> PostNuevoUsuario(ClienteUsuario usuario)
-        {
-            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
-            {
-                bool resultado = false;
-                try
-                {
-
-                    var comando = new SqlCommand();
-                    comando.Connection = Conexion;
-                    comando.CommandText = "Procesos.[AdministracionUsuariosCliente]";
-                    comando.CommandType = System.Data.CommandType.StoredProcedure;
-                    /*Agregando los parametros*/
-                    comando.Parameters.AddWithValue("@Opcion", "Agregar");
-                    comando.Parameters.AddWithValue("@Contraseña", usuario.Contraseña.Trim());
-                    comando.Parameters.AddWithValue("@NombreCompleto", usuario.NombreCompleto.Trim());
-                    comando.Parameters.AddWithValue("@Puesto", usuario.Puesto.Trim());
-                    comando.Parameters.AddWithValue("@Usuario", usuario.Usuario.Trim());
-                    Conexion.Open();
-                    var Lectura = await comando.ExecuteReaderAsync();
-                    if (Lectura.HasRows)
-                    {
-                        while (Lectura.Read())
-                        {
-                            resultado = Lectura.GetBoolean(0);
-                        }
-                    }
-                    Conexion.Close();
-                    return resultado;
-
-                }
-                catch (Exception e)
-                {
-                    var m = e.Message.ToString();
-                    return resultado;
-                }
-            }
-        }
-        public async Task<bool> PostNuevaInstalacion(Instalacion instalacion)
-        {
-            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
-            {
-                bool resultado = false;
-                try
-                {
-
-                    var comando = new SqlCommand();
-                    comando.Connection = Conexion;
-                    comando.CommandText = "Procesos.[AdministracionInstalacion]";
-                    comando.CommandType = System.Data.CommandType.StoredProcedure;
-                    /*Agregando los parametros*/
-                    comando.Parameters.AddWithValue("@Opcion", "Agregar");
-                    comando.Parameters.AddWithValue("@Zona", instalacion.Zona);
-                    comando.Parameters.AddWithValue("@LugarInstalacion", instalacion.LugarInstalacion.Trim());
-                    Conexion.Open();
-                    var Lectura = await comando.ExecuteReaderAsync();
-                    if (Lectura.HasRows)
-                    {
-                        while (Lectura.Read())
-                        {
-                            resultado = Lectura.GetBoolean(0);
-                        }
-                    }
-                    Conexion.Close();
-                    return resultado;
-
-                }
-                catch (Exception e)
-                {
-                    var m = e.Message.ToString();
-                    return resultado;
-                }
-            }
-        }
-       
     }
 }

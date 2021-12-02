@@ -15,7 +15,9 @@ namespace Alarmas.Core.Models
         public Guid Id { get; set; }
         public Guid? IdCliente { get; set; }
         public int? Zona { get; set; }
-        [StringLength(150)]
+        
+        [StringLength(350)]
         public string LugarInstalacion { get; set; }
+        
     }
 }

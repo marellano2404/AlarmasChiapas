@@ -38,5 +38,6 @@ namespace AlarmasWPF.Core.ViewModels
         public Guid IdCliente { get; set; }
         public int Zona { get; set; }
         public string LugarInstalacion { get; set; }
+        
     }
 }

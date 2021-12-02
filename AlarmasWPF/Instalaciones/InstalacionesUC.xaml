@@ -82,7 +82,7 @@
             <TextBlock Grid.Row="1" Margin="0,0,15,0" FontSize="14" Text="Zona" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" />
             <TextBox x:Name="txtZona" Grid.Row="1" VerticalAlignment="Center" Grid.Column="1" Margin="3" Text="{Binding Zona}" MaxLength="10"  />
             <TextBlock Grid.Row="2" Margin="0,0,15,0" FontSize="14" Text="Lugar de Instalación" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" />
-            <TextBox x:Name="txtlugarInstalacion" Grid.Row="2" VerticalAlignment="Center" Grid.Column="1" Margin="3" Text="{Binding LugarInstalacion}" MaxLength="190"  />
+            <TextBox x:Name="txtlugarInstalacion" Grid.Row="2" VerticalAlignment="Center" Grid.Column="1" Margin="3" Text="{Binding LugarInstalacion}" MaxLength="350"  />
             <Button x:Name="btnAgregarInstalacion" Width="220" Grid.Column="1" Grid.Row="3" Style="{StaticResource ButtonAction}" Height="35" HorizontalAlignment="Right" Cursor="Hand" ToolTip="Agregar" Margin="5,0">
                 <TextBlock Text="Agregar" Foreground="White" MouseLeftButtonDown="AgregarInst_MouseLeftButtonDown" FontSize="20" VerticalAlignment="Center"/>
             </Button>

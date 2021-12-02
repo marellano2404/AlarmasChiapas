@@ -144,6 +144,11 @@ namespace AlarmasWPF.Clientes
                         //};
                         //modal.ShowDialog();
                     };
+                    vistaInstalaciones.ClickAgregarInstalacion += (s, a) =>
+                    {
+                        vistaInstalaciones.GridDatos.Visibility = Visibility.Visible;
+                        vistaInstalaciones.GridForm.Visibility = Visibility.Collapsed;
+                    };
 
 
                 };

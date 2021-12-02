@@ -81,6 +81,7 @@ namespace AlarmasWPF.Instalaciones
                     if (respuesta == "true") //si el resultado de exito es true
                     {
                         ClickAgregarInstalacion?.Invoke(this, new EventArgs());
+
                     }
                 }
             }
