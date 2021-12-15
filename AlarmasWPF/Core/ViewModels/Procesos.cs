@@ -25,7 +25,8 @@ namespace AlarmasWPF.Core.ViewModels
     public class UsuarioVM
     {
         public Guid Id { get; set; }    
-        public Guid IdCliente { get; set; }    
+        public Guid IdCliente { get; set; }
+        public int? NumUsuario { get; set; }
         public string NombreCompleto { get; set; }    
         public string Usuario { get; set; }    
         public string Contraseña { get; set; }    
@@ -38,6 +39,7 @@ namespace AlarmasWPF.Core.ViewModels
         public Guid IdCliente { get; set; }
         public int Zona { get; set; }
         public string LugarInstalacion { get; set; }
-        
+        public string Dispositivo { get; set; }
+
     }
 }

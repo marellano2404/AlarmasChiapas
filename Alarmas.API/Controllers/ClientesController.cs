@@ -142,6 +142,27 @@ namespace Alarmas.API.Controllers
             }
         }
 
+        [HttpGet("GetListaInstalaciones/{IdCliente}")]
+        public async Task<IActionResult> GetListaInstalaciones(Guid IdCliente)
+        {
+            try
+            {
+                var Result = await _ClientesService.GetListaInstalaciones(IdCliente);
+                if (Result != null)
+                {
+                    return Ok(Result);
+                }
+                else
+                {
+                    return Unauthorized();
+                }
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
         #endregion
     }
 }

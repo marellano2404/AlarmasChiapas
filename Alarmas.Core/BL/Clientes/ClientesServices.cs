@@ -224,5 +224,14 @@ namespace Alarmas.Core.BL.Clientes
                 return consulta;
             }
         }
+
+        public async Task<List<Instalacion>> GetListaInstalaciones(Guid idCliente)
+        {
+            using (var conexion = new CAlarmasDBContext())
+            {
+                var consulta = await(from e in conexion.Instalacions where e.IdCliente == idCliente select e).ToListAsync();
+                return consulta;
+            }
+        }
     }
 }

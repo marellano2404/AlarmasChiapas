@@ -1,5 +1,6 @@
 ﻿using AlarmasWPF.ControlesPersonalizados;
 using AlarmasWPF.Core.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,21 +47,52 @@ namespace AlarmasWPF.Instalaciones
         public event EventHandler AgregarOnClick;
         public event EventHandler SalirOnClick;
         public event EventHandler ClickAgregarInstalacion;
-        public InstalacionesUC()
+        public InstalacionesUC(Guid _IdCliente)
         {
             InitializeComponent();
+            var lista = ObtenerInstalacionesCliente(_IdCliente);
+            CargarInstalacionesCliente(lista);
+        }
+
+        private void CargarInstalacionesCliente(List<InstalacionVM> lista)
+        {
+            foreach (var items in lista)
+            {
+                ItemInstalacionUC control = new ItemInstalacionUC();
+                control.InstalacionCteDataContext = items;
+                DatosStackPanelI.Children.Add(control);
+            }
+        }
+
+        private List<InstalacionVM> ObtenerInstalacionesCliente(Guid idCliente)
+        {
+            var _usuarios = new List<InstalacionVM>();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.DefaultRequestHeaders.Accept.Add(
+                         new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response = client.GetStringAsync("api/Clientes/GetListaInstalaciones/" + idCliente).Result;
+                    _usuarios = JsonConvert.DeserializeObject<List<InstalacionVM>>(response);
+                    return _usuarios;
+                }
+            }
+            catch (Exception e)
+            {
+                return _usuarios;
+            }
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             SalirOnClick?.Invoke(this, new EventArgs());
         }
-
         private void AgregarI_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AgregarOnClick?.Invoke(this, new EventArgs());
         }
-
         private async void AgregarInst_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
@@ -81,7 +113,6 @@ namespace AlarmasWPF.Instalaciones
                     if (respuesta == "true") //si el resultado de exito es true
                     {
                         ClickAgregarInstalacion?.Invoke(this, new EventArgs());
-
                     }
                 }
             }
