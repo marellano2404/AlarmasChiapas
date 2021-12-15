@@ -18,8 +18,8 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" HorizontalAlignment="Left" Grid.Column="0" Cursor="Hand">
             <StackPanel  Orientation="Horizontal"  Margin="5,17,0,0">
-                <Button x:Name="btnAgregar" Width="220" Style="{StaticResource ButtonAction}" Height="35" Cursor="Hand" ToolTip="Agregar" Margin="5,0">
-                    <TextBlock Text="Agregar Instalaciónes" Foreground="White" MouseLeftButtonDown="AgregarI_MouseLeftButtonDown" FontSize="20" VerticalAlignment="Center"/>
+                <Button x:Name="btnAgregar" Width="250" Style="{StaticResource ButtonAction}" Height="35" Cursor="Hand" ToolTip="Agregar" Margin="5,0">
+                    <TextBlock Text="Agregar Instalaciónes" Foreground="White" MouseLeftButtonDown="AgregarI_MouseLeftButtonDown" FontSize="22" VerticalAlignment="Center"/>
                 </Button>                
             </StackPanel>
         </Grid>
@@ -29,7 +29,7 @@
             <StackPanel  Orientation="Horizontal"  Margin="0,20,-39,0">
                 <StackPanel Margin="5">
                     <Border Width="180" Height="40"  MouseLeftButtonDown="Border_MouseLeftButtonDown" Background="Red" CornerRadius="13">
-                        <TextBlock HorizontalAlignment="Left"  Margin="15,0,0,0" Foreground="White" FontSize="25"><Run Text="Regresar"/></TextBlock>
+                        <TextBlock HorizontalAlignment="Left"  Margin="17,2,0,0" Foreground="White" FontSize="27"><Run Text="Regresar"/></TextBlock>
                     </Border>
                 </StackPanel>
             </StackPanel>
@@ -37,9 +37,9 @@
         <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="5" x:Name="GridDatos" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="30*"/>
                 <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
@@ -51,11 +51,17 @@
                 </Border.Background>
             </Border>
 
-            <TextBlock Grid.Row="0" Margin="5,0,0,0" FontSize="13" Text="Id" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
-            <TextBlock Grid.Row="0" Margin="5,0,0,0" FontSize="13" Text="Zona" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
-            <TextBlock Grid.Row="0" FontSize="13" Text="Lugar Instalación" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
-            <TextBlock Grid.Row="0" FontSize="13" Text="Acciones" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="White" />
+            <TextBlock Grid.Row="0" Margin="5,0,0,0" FontSize="14" Text="Zona" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
+            <TextBlock Grid.Row="0" FontSize="15" Text="Instalación" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
+            <TextBlock Grid.Row="0" FontSize="15" Text="Dispositivo" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
+            <TextBlock Grid.Row="0" FontSize="15" Text="Acciones" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="White" />
 
+            <Grid Grid.Row="1" Grid.ColumnSpan="4">
+                <ScrollViewer  BorderBrush="Black" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="DatosStackPanelU" Margin="5"/>
+                </ScrollViewer>
+            </Grid>
+            
             <Grid Grid.Row="1" Grid.ColumnSpan="5">
                 <ScrollViewer  BorderBrush="Black" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                     <StackPanel x:Name="DatosStackPanelI" Margin="5"/>
@@ -68,10 +74,10 @@
                 <ColumnDefinition Width="20*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             <Border Grid.ColumnSpan="2" Grid.Row="0" >
                 <TextBlock  HorizontalAlignment="Center" Text="Agregando instalación" Foreground="White" />

@@ -18,6 +18,7 @@ namespace Alarmas.Core.Models
         
         [StringLength(350)]
         public string LugarInstalacion { get; set; }
-        
+        public string Dispositivo { get; set; }
+
     }
 }

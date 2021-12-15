@@ -116,7 +116,7 @@ namespace AlarmasWPF.Clientes
                 };
                 control.InstalacionesOnClick += (s, a) =>
                 {
-                    InstalacionesUC vistaInstalaciones = new InstalacionesUC();
+                    InstalacionesUC vistaInstalaciones = new InstalacionesUC(item.Id);
                     GridListadoClientes.Visibility = Visibility.Collapsed;
                     GridListadoUsuarios.Visibility = Visibility.Collapsed;
                     GridListadoInstalaciones.Visibility = Visibility.Visible;
