@@ -3,11 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" Title="Usuario del Cliente" Height="185" Width="450" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize" 
+        mc:Ignorable="d" Title="Usuario del Cliente" Height="240" Width="450" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize" 
         WindowStyle="ToolWindow">
     <Grid Margin="10">
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -18,17 +19,19 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Usuario" Grid.Row="0" Grid.Column="0" Margin="3"/>
-            <TextBox x:Name="txtUsuario" Grid.Row="0" Grid.Column="1"  Margin="3" Text="{Binding Usuario}" MaxLength="70" />
-            <TextBlock Text="Nombre Completo" Grid.Row="1"  Grid.Column="0" Margin="3"/>
-            <TextBox x:Name="txtNombre" Grid.Row="1"  Grid.Column="1" Margin="3" Text="{Binding NombreCompleto}" MaxLength="150"  />
-            <TextBlock Text="Password de Usuario" Grid.Row="2"  Grid.Column="0" Margin="3"/>
-            <TextBox x:Name="txtPassword" Grid.Row="2"  Grid.Column="1" Margin="3" Text="{Binding Contraseña}" MaxLength="50"  />
-            <TextBlock Text="Puesto del Usuario" Grid.Row="3"  Grid.Column="0" Margin="3"/>
-            <TextBox x:Name="txtPuestp" Grid.Row="3"  Grid.Column="1" Margin="3" Text="{Binding Puesto}" MaxLength="150"  />
+            <TextBlock Text="Num.Usuario" Grid.Row="0" Grid.Column="0" Margin="3"/>
+            <TextBox x:Name="txtNUsuario" Grid.Row="0" Grid.Column="1"  Margin="3" Text="{Binding NumUsuario}" MaxLength="70" />
+            <TextBlock Text="Usuario" Grid.Row="1" Grid.Column="0" Margin="3"/>
+            <TextBox x:Name="txtUsuario" Grid.Row="1" Grid.Column="1"  Margin="3" Text="{Binding Usuario}" MaxLength="70" />
+            <TextBlock Text="Nombre Completo" Grid.Row="2"  Grid.Column="0" Margin="3"/>
+            <TextBox x:Name="txtNombre" Grid.Row="2"  Grid.Column="1" Margin="3" Text="{Binding NombreCompleto}" MaxLength="150"  />
+            <TextBlock Text="Password de Usuario" Grid.Row="3"  Grid.Column="0" Margin="3"/>
+            <TextBox x:Name="txtPassword" Grid.Row="3"  Grid.Column="1" Margin="3" Text="{Binding Contraseña}" MaxLength="50"  />
+            <TextBlock Text="Puesto del Usuario" Grid.Row="4"  Grid.Column="0" Margin="3"/>
+            <TextBox x:Name="txtPuestp" Grid.Row="4"  Grid.Column="1" Margin="3" Text="{Binding Puesto}" MaxLength="150"  />
 
-            <StackPanel Margin="2" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Button x:Name="btnAgregar" Width="150" Height="25" Style="{StaticResource ButtonAction}" Click="btnAgregar_MouseLeftButtonDown" Cursor="Hand" Margin="0,-5">
+            <StackPanel Margin="1" Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button x:Name="btnAgregar" Width="150" Height="30" Style="{StaticResource ButtonAction}" Click="btnAgregar_MouseLeftButtonDown" Cursor="Hand" Margin="0,-5">
                     <TextBlock Text="Agregar Usuario" Foreground="White"></TextBlock>
                 </Button>
             </StackPanel>

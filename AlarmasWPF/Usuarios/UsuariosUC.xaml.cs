@@ -1,4 +1,5 @@
-﻿using AlarmasWPF.Core.ViewModels;
+﻿using AlarmasWPF.Clientes;
+using AlarmasWPF.Core.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -26,11 +27,16 @@ namespace AlarmasWPF.Usuarios
     {
         public event EventHandler SalirOnClick;
         public event EventHandler AgregarUserOnClick;
-        public UsuariosUC(Guid _IdCliente)
+        public UsuariosUC(Cliente Cliente)
         {
             InitializeComponent();
-            var lista = ObtenerUsuariosCliente(_IdCliente);
+
+            var lista = ObtenerUsuariosCliente(Cliente.Id);            
             CargarUsuarioCliente(lista);
+            
+            DatosUserC datosUser = new DatosUserC();
+            datosUser.clienteUc = Cliente;
+            ContenedorUsuario.Children.Add(datosUser);
         }
         private void CargarUsuarioCliente(List<UsuarioVM> Usuarios)
         {
@@ -69,6 +75,7 @@ namespace AlarmasWPF.Usuarios
         private void AgregarU_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AgregarUserOnClick?.Invoke(this, new EventArgs());
+            
         }
     }
 }

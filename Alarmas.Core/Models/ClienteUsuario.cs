@@ -13,6 +13,8 @@ namespace Alarmas.Core.Models
     {
         [Key]
         public Guid Id { get; set; }
+        public int NumUsuario { get; set; }
+        
         public Guid? IdCliente { get; set; }
         [StringLength(250)]
         public string NombreCompleto { get; set; }

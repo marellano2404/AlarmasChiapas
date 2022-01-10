@@ -87,7 +87,7 @@ namespace AlarmasWPF.Clientes
                 };
                 control.OpcionUsuariosOnClick += (s, a) =>
                 {                                     
-                    UsuariosUC vistaUsuarios = new UsuariosUC(item.Id);
+                    UsuariosUC vistaUsuarios = new UsuariosUC(item);
 
                     vistaUsuarios.SalirOnClick += (sen, ev) =>
                     {
@@ -107,6 +107,9 @@ namespace AlarmasWPF.Clientes
                             modal.Close();
                         };
                         modal.ShowDialog();
+                        GridListadoUsuarios.Children.Clear();
+                        GridListadoUsuarios.Children.Add(vistaUsuarios);
+
                     };
                     GridListadoClientes.Visibility = Visibility.Collapsed;
                     GridListadoUsuarios.Visibility = Visibility.Visible;
@@ -116,7 +119,7 @@ namespace AlarmasWPF.Clientes
                 };
                 control.InstalacionesOnClick += (s, a) =>
                 {
-                    InstalacionesUC vistaInstalaciones = new InstalacionesUC(item.Id);
+                    InstalacionesUC vistaInstalaciones = new InstalacionesUC(item);
                     GridListadoClientes.Visibility = Visibility.Collapsed;
                     GridListadoUsuarios.Visibility = Visibility.Collapsed;
                     GridListadoInstalaciones.Visibility = Visibility.Visible;

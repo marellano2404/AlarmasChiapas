@@ -40,7 +40,7 @@
                     <ColumnDefinition Width="5*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Num Cliente" Grid.Row="0" Grid.Column="0" Margin="3"/>
-                <TextBox x:Name="txtnumcliente" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding NumCliente}" MaxLength="13"  />
+                <TextBox x:Name="txtnumcliente" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding NumCliente}" MaxLength="5"  />
                 <TextBlock Text="Nombre de la Empresa"  FontSize="16" Grid.Row="0" Grid.Column="1" Margin="3"/>
                 <TextBox x:Name="txtempresa" FontSize="16" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Empresa}" MaxLength="60"  />
             </Grid>          

@@ -1,4 +1,5 @@
-﻿using AlarmasWPF.ControlesPersonalizados;
+﻿using AlarmasWPF.Clientes;
+using AlarmasWPF.ControlesPersonalizados;
 using AlarmasWPF.Core.ViewModels;
 using Newtonsoft.Json;
 using System;
@@ -47,11 +48,16 @@ namespace AlarmasWPF.Instalaciones
         public event EventHandler AgregarOnClick;
         public event EventHandler SalirOnClick;
         public event EventHandler ClickAgregarInstalacion;
-        public InstalacionesUC(Guid _IdCliente)
+        public InstalacionesUC(Cliente _client)
         {
             InitializeComponent();
-            var lista = ObtenerInstalacionesCliente(_IdCliente);
+            var lista = ObtenerInstalacionesCliente(_client.Id);
             CargarInstalacionesCliente(lista);
+
+            DatosUserC datosUser = new DatosUserC();
+            datosUser.clienteUc = _client;
+            ContenedorUsuario.Children.Add(datosUser);
+
         }
 
         private void CargarInstalacionesCliente(List<InstalacionVM> lista)
@@ -131,5 +137,6 @@ namespace AlarmasWPF.Instalaciones
             };
             modal.ShowDialog();
         }
+
     }
 }
