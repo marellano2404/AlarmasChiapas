@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="AlarmasWPF.Clientes.DatosUserC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AlarmasWPF.Clientes"
+             mc:Ignorable="d" 
+             d:DesignHeight="70" d:DesignWidth="450">
+    <Border Margin="5" BorderThickness="1,1,1,1" CornerRadius="10" Localization.Attributes="CenterScreen">
+        <Border.BorderBrush>
+            <SolidColorBrush Color="{DynamicResource ColorSubtitulo}"/>
+        </Border.BorderBrush>
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <WrapPanel Grid.Column="0">
+                <TextBlock x:Name="tex1" Foreground="White" Text="Num. Cliente: " />
+                <TextBlock x:Name="ncliente" Foreground="White" Text="{Binding NumCliente}" />
+                <TextBlock x:Name="tex2" Foreground="White" Text=" | Empresa: " />
+                <TextBlock  Foreground="White" Text="{Binding Empresa}" />  
+            </WrapPanel>
+            <WrapPanel Grid.Row="1" >
+                <TextBlock x:Name="ddd" Foreground="White" Text="Rfc: " />
+                <TextBlock Foreground="White"  Text="{Binding Rfc}" Grid.ColumnSpan="3" />
+                <TextBlock x:Name="tex3" Foreground="White" Text=" | Propietario: " />
+                <TextBlock Foreground="White" Text="{Binding Propietario}" />
+            </WrapPanel>
+           
+        </Grid>
+    </Border>
+</UserControl>

@@ -34,6 +34,7 @@ namespace Alarmas.Core.BL.Clientes
                     /*Agregando los parametros*/
                     comando.Parameters.AddWithValue("@Opcion", "Agregar");
                     comando.Parameters.AddWithValue("@Empresa", cliente.Empresa.Trim());
+                    comando.Parameters.AddWithValue("@NumCliente", cliente.NumCliente);
                     comando.Parameters.AddWithValue("@Propietario", cliente.Propietario.Trim());
                     comando.Parameters.AddWithValue("@Rfc", cliente.Rfc.Trim());
                     comando.Parameters.AddWithValue("@Direccion", cliente.Direccion.Trim());
@@ -157,6 +158,7 @@ namespace Alarmas.Core.BL.Clientes
                     comando.Parameters.AddWithValue("@IdCliente", usuario.IdCliente);
                     comando.Parameters.AddWithValue("@NombreCompleto", usuario.NombreCompleto.Trim());
                     comando.Parameters.AddWithValue("@Puesto", usuario.Puesto.Trim());
+                    comando.Parameters.AddWithValue("@NumUsuario", usuario.NumUsuario);
                     comando.Parameters.AddWithValue("@Usuario", usuario.Usuario.Trim());
                     Conexion.Open();
                     var Lectura = await comando.ExecuteReaderAsync();
@@ -194,6 +196,7 @@ namespace Alarmas.Core.BL.Clientes
                     comando.Parameters.AddWithValue("@Opcion", "Agregar");
                     comando.Parameters.AddWithValue("@Zona", instalacion.Zona);
                     comando.Parameters.AddWithValue("@IdCliente", instalacion.IdCliente);
+                    comando.Parameters.AddWithValue("@Dispositivo", instalacion.Dispositivo);
                     comando.Parameters.AddWithValue("@LugarInstalacion", instalacion.LugarInstalacion.Trim());
                     Conexion.Open();
                     var Lectura = await comando.ExecuteReaderAsync();
