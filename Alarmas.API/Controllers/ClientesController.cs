@@ -90,6 +90,28 @@ namespace Alarmas.API.Controllers
             }
         }
 
+        [HttpGet("BuscarCliente")]
+        public async Task<IActionResult> BuscarCliente(string ValorBusqueda)
+        {
+            try
+            {
+                var Result = await _ClientesService.BuscarCliente(ValorBusqueda);
+                if (Result != null)
+                {
+                    return Ok(Result);
+                }
+                else
+                {
+                    return Unauthorized();
+                }
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+
         [HttpGet("GetListaUsuarios/{IdCliente}")]
         public async Task<IActionResult> GetListaUsuarios(Guid IdCliente)
         {
@@ -111,6 +133,8 @@ namespace Alarmas.API.Controllers
                 return BadRequest("La Conexión no ha sido encontrado!");
             }
         }
+
+
         [HttpPost("PostNuevoUsuario")]
         public async Task<IActionResult> PostNuevoUsuario([FromBody] ClienteUsuario usuario)
         {
@@ -128,11 +152,11 @@ namespace Alarmas.API.Controllers
 
 
         [HttpPost("PostNuevaInstalacion")]
-        public async Task<IActionResult> PostNuevaInstalacion([FromBody] Instalacion instalacion)
+        public async Task<IActionResult> PostNuevaInstalacion([FromBody] Instalacion EntidadInstal)
         {
             try
             {
-                var Result = await _ClientesService.PostNuevaInstalacion(instalacion);
+                var Result = await _ClientesService.PostNuevaInstalacion(EntidadInstal);
                 return Ok(Result);
 
             }

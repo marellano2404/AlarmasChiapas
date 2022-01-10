@@ -12,12 +12,13 @@ namespace Alarmas.Core.Models
     public partial class Instalacion
     {
         [Key]
-        public Guid Id { get; set; }
-        public Guid? IdCliente { get; set; }
+        public Guid? Id { get; set; }
+        public Guid IdCliente { get; set; }
         public int? Zona { get; set; }
         
         [StringLength(350)]
         public string LugarInstalacion { get; set; }
+        [StringLength(350)]
         public string Dispositivo { get; set; }
 
     }

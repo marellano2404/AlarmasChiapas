@@ -94,7 +94,7 @@
             <TextBox x:Name="txtlugarInstalacion" Grid.Row="2" VerticalAlignment="Center" Grid.Column="1" Margin="3" Text="{Binding LugarInstalacion}" MaxLength="350"  />
 
             <TextBlock Grid.Row="3" Margin="0,0,15,0" FontSize="14" Text="Dispositivo" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" />
-            <TextBox x:Name="txtDispositivo" Grid.Row="3" VerticalAlignment="Center" Grid.Column="1" Margin="3" Text="{Binding Dispositivo}" MaxLength="50"  />
+            <TextBox x:Name="txtDiskposffditiv" Grid.Row="3" VerticalAlignment="Center" Grid.Column="1" Margin="3" Text="{Binding Dispositivo,UpdateSourceTrigger=PropertyChanged}" MaxLength="150"/>
             
             <Button x:Name="btnAgregarInstalacion" Width="220" Grid.Column="1" Grid.Row="4" Style="{StaticResource ButtonAction}" Height="35" HorizontalAlignment="Right" Cursor="Hand" ToolTip="Agregar" Margin="5,0">
                 <TextBlock Text="Agregar" Foreground="White" MouseLeftButtonDown="AgregarInst_MouseLeftButtonDown" FontSize="20" VerticalAlignment="Center"/>

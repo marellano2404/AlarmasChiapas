@@ -105,6 +105,54 @@ namespace Alarmas.Core.BL.Clientes
                 }
             }
         }
+        public async Task<List<Cliente>> BuscarCliente(string valorBusqueda)
+        {
+            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
+            {
+                List<Cliente> Listaclientes = new List<Cliente>();
+                try
+                {
+                    var comando = new SqlCommand();
+                    comando.Connection = Conexion;
+                    comando.CommandText = "Procesos.[AdministracionCliente]";
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    /*Agregando los parametros*/
+                    comando.Parameters.AddWithValue("@Opcion", "BuscarCliente");
+                    comando.Parameters.AddWithValue("@Valor", valorBusqueda.Trim());
+                    Conexion.Open();
+                    var Lectura = await comando.ExecuteReaderAsync();
+                    if (Lectura.HasRows)
+                    {
+                        while (Lectura.Read())
+                        {
+                            Listaclientes.Add(
+                                new Cliente
+                                {
+                                    Id = Lectura.GetGuid(0),
+                                    NumCliente = Lectura.GetInt32(1),
+                                    Empresa = Lectura.GetString(2),
+                                    Propietario = Lectura.GetString(3),
+                                    Rfc = Lectura.GetString(4),
+                                    Direccion = Lectura.GetString(5),
+                                    Referencias = Lectura.GetString(6),
+                                    TelParticular = Lectura.GetString(7),
+                                    Celular = Lectura.GetString(8),
+                                    Correo = Lectura.GetString(9),
+                                    FechaAlta = Lectura.GetDateTime(10)
+                                });
+                        }
+                    }
+                    Conexion.Close();
+                    return Listaclientes;
+
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message.ToString();
+                    return Listaclientes;
+                }
+            }
+        }
         public async Task<bool> DeleteCliente(Guid idcliente)
         {
             using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
@@ -236,5 +284,7 @@ namespace Alarmas.Core.BL.Clientes
                 return consulta;
             }
         }
+
+
     }
 }

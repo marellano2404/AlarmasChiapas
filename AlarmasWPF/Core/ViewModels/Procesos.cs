@@ -19,9 +19,7 @@ namespace AlarmasWPF.Core.ViewModels
         public string Celular { get; set; }
         public string Correo { get; set; }
         public DateTime? FechaAlta { get; set; }
-
     }
-
     public class UsuarioVM
     {
         public Guid Id { get; set; }    
@@ -35,11 +33,11 @@ namespace AlarmasWPF.Core.ViewModels
     }
     public class InstalacionVM
     {
-        public Guid Id { get; set; }
+        public string Dispositivo { get; set; }
+        public Guid? Id { get; set; }
         public Guid IdCliente { get; set; }
         public int Zona { get; set; }
-        public string LugarInstalacion { get; set; }
-        public string Dispositivo { get; set; }
+        public string LugarInstalacion { get; set; }      
 
     }
 }

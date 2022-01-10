@@ -33,8 +33,9 @@ namespace AlarmasWPF.Clientes
         #region Constructor
         public ClientesUC()
         {            
-            InitializeComponent();            
-            CargasClientes();                                 
+            InitializeComponent();
+            var response = ObtenerClientes();
+            CargasClientes(response);                                 
         }
         #endregion
 
@@ -51,7 +52,9 @@ namespace AlarmasWPF.Clientes
             modal.cliente = entidad;
             modal.ClickAgregar += (s, e) =>
             {
-                CargasClientes();
+                var response = ObtenerClientes();
+                CargasClientes(response);
+                //CargasClientes();
                 modal.Close();
             };
             modal.ShowDialog();
@@ -62,11 +65,11 @@ namespace AlarmasWPF.Clientes
         //}
         #endregion
         #region Métodos
-        private void CargasClientes()
+        private void CargasClientes(List<Cliente> listado)
         {
             DatosStackPanel.Children.Clear();
-            var response = ObtenerClientes();
-            foreach (var item in response)
+            //var response = ObtenerClientes();
+            foreach (var item in listado)
             {
                 DatosStackPanelUC control = new DatosStackPanelUC();
                 control.ClienteDataConext = item;
@@ -80,7 +83,8 @@ namespace AlarmasWPF.Clientes
                     modal.cliente = item;
                     modal.ClickAgregar += (s, e) =>
                     {
-                        CargasClientes();
+                        var response = ObtenerClientes();
+                        CargasClientes(response);
                         modal.Close();
                     };
                     modal.ShowDialog();
@@ -93,24 +97,10 @@ namespace AlarmasWPF.Clientes
                     {
                         GridListadoClientes.Visibility = Visibility.Visible;
                         GridListadoUsuarios.Visibility = Visibility.Collapsed;
-                        CargasClientes();
+                        var response = ObtenerClientes();
+                        CargasClientes(response);
                     };
 
-                    vistaUsuarios.AgregarUserOnClick += (s, a) =>
-                    {
-                        FormUsuario modal = new FormUsuario(true);
-                        var entidad = new UsuarioVM();
-                        modal.Entidadusuario = entidad;
-                        modal.Entidadusuario.IdCliente = item.Id;
-                        modal.ClickAgregarUser += (s, e) =>
-                        {
-                            modal.Close();
-                        };
-                        modal.ShowDialog();
-                        GridListadoUsuarios.Children.Clear();
-                        GridListadoUsuarios.Children.Add(vistaUsuarios);
-
-                    };
                     GridListadoClientes.Visibility = Visibility.Collapsed;
                     GridListadoUsuarios.Visibility = Visibility.Visible;
                     GridListadoUsuarios.Children.Clear();
@@ -131,22 +121,23 @@ namespace AlarmasWPF.Clientes
                         GridListadoClientes.Visibility = Visibility.Visible;
                         GridListadoUsuarios.Visibility = Visibility.Collapsed;
                         GridListadoInstalaciones.Visibility = Visibility.Collapsed;
-                        CargasClientes();
+                        var response = ObtenerClientes();
+                        CargasClientes(response);
                     };
-                    vistaInstalaciones.AgregarOnClick += (s, a) =>
-                    {
-                        var entidad = new InstalacionVM();
-                        vistaInstalaciones.EntidadInstalacion = entidad;
-                        vistaInstalaciones.EntidadInstalacion.IdCliente = item.Id;
-                        vistaInstalaciones.GridDatos.Visibility = Visibility.Collapsed;
-                        vistaInstalaciones.GridForm.Visibility = Visibility.Visible;
+                    //vistaInstalaciones.AgregarOnClick += (s, a) =>
+                    //{
+                    //    var entidad = new InstalacionVM();
+                    //    vistaInstalaciones.EntidadInstalacion = entidad;
+                    //    vistaInstalaciones.EntidadInstalacion.IdCliente = item.Id;
+                    //    vistaInstalaciones.GridDatos.Visibility = Visibility.Collapsed;
+                    //    vistaInstalaciones.GridForm.Visibility = Visibility.Visible;
 
-                        //modal.ClickAgregarUser += (s, e) =>
-                        //{
-                        //    modal.Close();
-                        //};
-                        //modal.ShowDialog();
-                    };
+                    //    //modal.ClickAgregarUser += (s, e) =>
+                    //    //{
+                    //    //    modal.Close();
+                    //    //};
+                    //    //modal.ShowDialog();
+                    //};
                     vistaInstalaciones.ClickAgregarInstalacion += (s, a) =>
                     {
                         vistaInstalaciones.GridDatos.Visibility = Visibility.Visible;
@@ -190,7 +181,7 @@ namespace AlarmasWPF.Clientes
                     var response = await client.DeleteAsync("api/Clientes/DeleteCliente/" + Id);
                     if (response.IsSuccessStatusCode)
                     {
-                        CargasClientes();
+                        //CargasClientes();
                         MostrarMensaje("El cliente se elimino correctamente");
                     }
                     else
@@ -216,5 +207,27 @@ namespace AlarmasWPF.Clientes
             modal.ShowDialog();
         }
         #endregion
+
+        private void btnBuscar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var _clientes = new List<Cliente>();
+                using (var client = new HttpClient())
+                {                    
+                client.BaseAddress = new Uri("https://localhost:44310/");
+                client.DefaultRequestHeaders.Accept.Add(
+                        new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetStringAsync("api/Clientes/BuscarCliente" + TextBoxBuscar.Text.Trim()).Result;
+                _clientes = JsonConvert.DeserializeObject<List<Cliente>>(response);
+
+                CargasClientes(_clientes);                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MostrarMensaje(ex.Message);
+            }
+        }
     }
 }

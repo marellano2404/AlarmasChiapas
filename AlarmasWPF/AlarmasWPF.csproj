@@ -10,11 +10,13 @@
     <None Remove="Clientes\AgregarElement.png" />
     <None Remove="Clientes\Buscar.png" />
     <None Remove="Clientes\Eliminar.png" />
+    <None Remove="Clientes\Instalaciones.png" />
     <None Remove="Clientes\instalacionIcon2.jpg" />
     <None Remove="Clientes\instalacionIcon3.png" />
     <None Remove="Clientes\MasElementos.png" />
     <None Remove="Clientes\Modificar.png" />
     <None Remove="Clientes\Usuario.png" />
+    <None Remove="Clientes\Usuarios.png" />
     <None Remove="fondo3.png" />
     <None Remove="Recursos\Buscar.png" />
   </ItemGroup>
@@ -33,11 +35,13 @@
     <Resource Include="Clientes\AgregarElement.png" />
     <Resource Include="Clientes\Buscar.png" />
     <Resource Include="Clientes\Eliminar.png" />
+    <Resource Include="Clientes\Instalaciones.png" />
     <Resource Include="Clientes\instalacionIcon2.jpg" />
     <Resource Include="Clientes\instalacionIcon3.png" />
     <Resource Include="Clientes\MasElementos.png" />
     <Resource Include="Clientes\Modificar.png" />
     <Resource Include="Clientes\Usuario.png" />
+    <Resource Include="Clientes\Usuarios.png" />
     <Resource Include="fondo3.png" />
     <Resource Include="Recursos\Buscar.png" />
   </ItemGroup>

@@ -31,6 +31,9 @@
             <TextBox x:Name="txtPuestp" Grid.Row="4"  Grid.Column="1" Margin="3" Text="{Binding Puesto}" MaxLength="150"  />
 
             <StackPanel Margin="1" Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button x:Name="btnCAncelar" Width="150" Height="30" Style="{StaticResource ButtonAction}" Click="btnCAncelar_Click" Cursor="Hand" Margin="0,-5">
+                    <TextBlock Text="Cancelar" Foreground="White"></TextBlock>
+                </Button>
                 <Button x:Name="btnAgregar" Width="150" Height="30" Style="{StaticResource ButtonAction}" Click="btnAgregar_MouseLeftButtonDown" Cursor="Hand" Margin="0,-5">
                     <TextBlock Text="Agregar Usuario" Foreground="White"></TextBlock>
                 </Button>
