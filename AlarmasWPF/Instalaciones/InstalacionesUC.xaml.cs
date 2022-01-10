@@ -43,15 +43,21 @@ namespace AlarmasWPF.Instalaciones
             set
             {
                 DataContext = value;
+                //if (string.IsNullOrEmpty(value.Dispositivo))
+                //{
+                //    MostrarMensaje("Campo d!!");
+                //}
             }
         }
-        public event EventHandler AgregarOnClick;
+        public Cliente _cliente;
+        //public event EventHandler AgregarOnClick;
         public event EventHandler SalirOnClick;
         public event EventHandler ClickAgregarInstalacion;
         public InstalacionesUC(Cliente _client)
         {
             InitializeComponent();
             var lista = ObtenerInstalacionesCliente(_client.Id);
+            _cliente = _client;
             CargarInstalacionesCliente(lista);
 
             DatosUserC datosUser = new DatosUserC();
@@ -97,30 +103,44 @@ namespace AlarmasWPF.Instalaciones
         }
         private void AgregarI_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            AgregarOnClick?.Invoke(this, new EventArgs());
+            
+            EntidadInstalacion = new InstalacionVM();
+            EntidadInstalacion.IdCliente = _cliente.Id;
+            GridDatos.Visibility = Visibility.Collapsed;
+            GridForm.Visibility = Visibility.Visible;
         }
         private async void AgregarInst_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
             {
-                var result = new HttpResponseMessage();
-                using (var client = new HttpClient())
+                if (string.IsNullOrEmpty(EntidadInstalacion.Dispositivo))
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
-                    client.DefaultRequestHeaders.Accept.Add(
-                         new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    var json = Newtonsoft.Json.JsonConvert.SerializeObject(EntidadInstalacion);
-                    var data = new System.Net.Http.StringContent(json, Encoding.UTF8, "application/json");
-
-                    result = await client.PostAsync("api/Clientes/PostNuevaInstalacion", data);
-                   
-                    var respuesta = await result.Content.ReadAsStringAsync();
-                    if (respuesta == "true") //si el resultado de exito es true
+                    MostrarMensaje("Campo Vacio!!");
+                }
+                else
+                {
+                    var result = new HttpResponseMessage();
+                    using (var client = new HttpClient())
                     {
-                        ClickAgregarInstalacion?.Invoke(this, new EventArgs());
+                        client.BaseAddress = new Uri("https://localhost:44310/");
+                        client.DefaultRequestHeaders.Accept.Add(
+                             new MediaTypeWithQualityHeaderValue("application/json"));
+
+                        var json = Newtonsoft.Json.JsonConvert.SerializeObject(EntidadInstalacion);
+                        var data = new System.Net.Http.StringContent(json, Encoding.UTF8, "application/json");
+
+                        result = await client.PostAsync("api/Clientes/PostNuevaInstalacion", data);
+
+                        var respuesta = await result.Content.ReadAsStringAsync();
+                        if (respuesta == "true") //si el resultado de exito es true
+                        {
+                            ClickAgregarInstalacion?.Invoke(this, new EventArgs());
+                            var lista = ObtenerInstalacionesCliente(_cliente.Id);
+                            CargarInstalacionesCliente(lista);
+                        }
                     }
                 }
+               
             }
             catch (Exception ese)
             {

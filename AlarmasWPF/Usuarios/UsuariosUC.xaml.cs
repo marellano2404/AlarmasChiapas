@@ -27,10 +27,12 @@ namespace AlarmasWPF.Usuarios
     {
         public event EventHandler SalirOnClick;
         public event EventHandler AgregarUserOnClick;
+
+        public Cliente _cliente;
         public UsuariosUC(Cliente Cliente)
         {
             InitializeComponent();
-
+            _cliente = Cliente;
             var lista = ObtenerUsuariosCliente(Cliente.Id);            
             CargarUsuarioCliente(lista);
             
@@ -74,8 +76,19 @@ namespace AlarmasWPF.Usuarios
 
         private void AgregarU_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            AgregarUserOnClick?.Invoke(this, new EventArgs());
-            
+            FormUsuario modal = new FormUsuario(true);
+            var entidad = new UsuarioVM();
+            modal.Entidadusuario = entidad;
+            modal.Entidadusuario.IdCliente = _cliente.Id;
+            modal.ClickAgregarUser += (s, e) =>
+            {
+                modal.Close();
+                var lista = ObtenerUsuariosCliente(_cliente.Id);
+                CargarUsuarioCliente(lista);
+                
+            };
+            modal.ShowDialog();
+
         }
     }
 }

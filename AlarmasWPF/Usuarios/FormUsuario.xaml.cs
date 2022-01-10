@@ -26,6 +26,7 @@ namespace AlarmasWPF.Usuarios
         #region Propiedades
         //private static HttpClient client = new HttpClient();
         public event EventHandler ClickAgregarUser;
+        public event EventHandler ClickCancelarUser;
         public bool _esNuevo { get; set; }
         public UsuarioVM Entidadusuario
         {
@@ -98,6 +99,11 @@ namespace AlarmasWPF.Usuarios
                 modal.Close();
             };
             modal.ShowDialog();
+        }
+
+        private void btnCAncelar_Click(object sender, RoutedEventArgs e)
+        {
+            ClickCancelarUser?.Invoke(this, new EventArgs());
         }
     }
 }
