@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Alarmas.Core.BL.Eventos;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,42 @@ namespace Alarmas.API.Controllers
     [ApiController]
     public class EventosController : ControllerBase
     {
+        #region PROPIEDADES
 
+        private readonly IEventos _EventosService;
+
+
+        #endregion
+
+        #region CONTRUCTOR
+        public EventosController(IEventos ServicesEventos)
+        {
+            _EventosService = ServicesEventos;
+        }
+        #endregion
+        #region Metodos
+        [HttpGet("GetListaCodigosAlarmas")]
+        public async Task<IActionResult> GetListaCodigosAlarmas()
+        {
+            try
+            {
+                var Result = await _EventosService.GetCodigoAlarmas();
+                if (Result != null)
+                {
+                    return Ok(Result);
+                }
+                else
+                {
+                    return Unauthorized();
+                }
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+
+        #endregion
     }
 }
