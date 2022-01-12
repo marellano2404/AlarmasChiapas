@@ -31,10 +31,10 @@
                         <Border MouseLeftButtonDown="MouseClientesEvent_MouseLeftButtonDown" Width="200" Height="45" Cursor="Hand" Background="#bdbfbf"  Margin="0,0,0,0" CornerRadius="13">
                             <TextBlock Margin="35,0,9,5" Foreground="White" FontSize="30">Clientes</TextBlock>
                         </Border>
-                        <Border Width="200" Height="40" Background="#fdfd96"   Margin="0,20,0,0" CornerRadius="13" Cursor="Hand" >
+                        <Border Width="200" Height="40" Background="#fdfd96" MouseLeftButtonDown="Eventos_MouseLeftButtonDown"  Margin="0,20,0,0" CornerRadius="13" Cursor="Hand" >
                             <TextBlock Margin="35,0,9,4" FontSize="30">Eventos</TextBlock>
                         </Border>
-                        <Border Width="200" Height="40" Background="#bf9780"  Margin="0,20,0,0" CornerRadius="13" Cursor="Hand" >
+                        <Border Width="200" Height="40" Background="#bf9780" MouseLeftButtonDown="Codigos_MouseLeftButtonDown"  Margin="0,20,0,0" CornerRadius="13" Cursor="Hand" >
                             <TextBlock Margin="35,0,9,4" Foreground="White" FontSize="30">Catalogos</TextBlock>
                         </Border>
                         <Border Width="200" Height="40" Background="#fdfd96"  Margin="0,20,0,0"  CornerRadius="13" Cursor="Hand" >

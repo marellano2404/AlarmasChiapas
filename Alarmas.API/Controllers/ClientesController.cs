@@ -90,7 +90,7 @@ namespace Alarmas.API.Controllers
             }
         }
 
-        [HttpGet("BuscarCliente")]
+        [HttpGet("BuscarCliente/{ValorBusqueda}")]
         public async Task<IActionResult> BuscarCliente(string ValorBusqueda)
         {
             try

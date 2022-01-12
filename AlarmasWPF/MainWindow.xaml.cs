@@ -38,10 +38,38 @@ namespace AlarmasWPF
                 DetallesGrid.Visibility = Visibility.Collapsed;
                 MenuGrid.Visibility = Visibility.Visible;
             };
+        }       
+        private void Eventos_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var EventosUC = new Eventos.EventosUC();
 
+            MenuGrid.Visibility = Visibility.Collapsed;
 
+            DetallesGrid.Visibility = Visibility.Visible;
+            DetallesGrid.Children.Clear();
+            DetallesGrid.Children.Add(EventosUC);
+            EventosUC.Regresar += (s, e) =>
+            {
+                DetallesGrid.Visibility = Visibility.Collapsed;
+                MenuGrid.Visibility = Visibility.Visible;
+            };
         }
 
+        private void Codigos_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var CodigosUC = new Catalogos.CodigosAlarmasUC();
+
+            MenuGrid.Visibility = Visibility.Collapsed;
+
+            DetallesGrid.Visibility = Visibility.Visible;
+            DetallesGrid.Children.Clear();
+            DetallesGrid.Children.Add(CodigosUC);
+            CodigosUC.Regresar += (s, e) =>
+            {
+                DetallesGrid.Visibility = Visibility.Collapsed;
+                MenuGrid.Visibility = Visibility.Visible;
+            };
+        } 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             App.Current.Shutdown();

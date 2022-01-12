@@ -28,10 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Catalogos\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Clientes\AgregarElement.png" />
     <Resource Include="Clientes\Buscar.png" />
     <Resource Include="Clientes\Eliminar.png" />
