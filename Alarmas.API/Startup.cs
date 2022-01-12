@@ -1,4 +1,5 @@
 using Alarmas.Core.BL.Clientes;
+using Alarmas.Core.BL.Eventos;
 using Alarmas.Core.BL.Seguridad;
 using Alarmas.Core.Helpers;
 using Alarmas.Core.Models;
@@ -66,6 +67,7 @@ namespace Alarmas.API
             services.AddDbContext<CAlarmasDBContext>(options => options.UseSqlServer(ContextConfiguration.ConexionString));
             services.AddTransient<ISeguridad, ServicesSeguridad>();
             services.AddTransient<IClientes, ClientesServices>();
+            services.AddTransient<IEventos, ServicesEventos>();
 
             services.AddSwaggerGen(c =>
             {

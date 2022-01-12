@@ -170,7 +170,6 @@ namespace AlarmasWPF.Clientes
                 return _clientes;
             }
         }
-        
         private async void EliminarCliente(Guid Id)
         {            
             try
@@ -195,7 +194,6 @@ namespace AlarmasWPF.Clientes
                 MostrarMensaje(e.Message);
             }
         }
-
         private void MostrarMensaje(string mensaje)
         {
             var modal = new MensajeWindowAccion();
@@ -205,10 +203,8 @@ namespace AlarmasWPF.Clientes
                 modal.Close();
             };
             modal.ShowDialog();
-        }
-        #endregion
-
-        private void btnBuscar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        }     
+        private void Buscar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
             {
@@ -218,7 +214,7 @@ namespace AlarmasWPF.Clientes
                 client.BaseAddress = new Uri("https://localhost:44310/");
                 client.DefaultRequestHeaders.Accept.Add(
                         new MediaTypeWithQualityHeaderValue("application/json"));
-                var response = client.GetStringAsync("api/Clientes/BuscarCliente" + TextBoxBuscar.Text.Trim()).Result;
+                var response = client.GetStringAsync("api/Clientes/BuscarCliente/" + TextBoxBuscar.Text.Trim()).Result;
                 _clientes = JsonConvert.DeserializeObject<List<Cliente>>(response);
 
                 CargasClientes(_clientes);                    
@@ -228,6 +224,7 @@ namespace AlarmasWPF.Clientes
             {
                 MostrarMensaje(ex.Message);
             }
-        }
+        } 
+        #endregion
     }
 }
