@@ -42,4 +42,10 @@
     <Resource Include="Recursos\Buscar.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Catalogos\DatosCodigosAlarmaUC.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
 </Project>
