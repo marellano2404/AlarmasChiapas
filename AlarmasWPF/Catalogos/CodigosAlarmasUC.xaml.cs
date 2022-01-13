@@ -91,5 +91,10 @@ namespace AlarmasWPF.Catalogos
         {
 
         }
+
+        private void AgregaClave_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

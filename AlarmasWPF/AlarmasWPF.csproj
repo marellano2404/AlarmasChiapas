@@ -18,7 +18,22 @@
     <None Remove="Clientes\Usuario.png" />
     <None Remove="Clientes\Usuarios.png" />
     <None Remove="fondo3.png" />
+    <None Remove="Recursos\AgregarElement.png" />
     <None Remove="Recursos\Buscar.png" />
+    <None Remove="Recursos\Eliminar.png" />
+    <None Remove="Recursos\Events.png" />
+    <None Remove="Recursos\fondo.png" />
+    <None Remove="Recursos\fondo2.png" />
+    <None Remove="Recursos\fondo3.png" />
+    <None Remove="Recursos\FondoLogin.png" />
+    <None Remove="Recursos\Guardar.png" />
+    <None Remove="Recursos\iconPDF.png" />
+    <None Remove="Recursos\Instalaciones.png" />
+    <None Remove="Recursos\MasElementos.png" />
+    <None Remove="Recursos\Modificar.png" />
+    <None Remove="Recursos\ReportesWhite.png" />
+    <None Remove="Recursos\Usuario.png" />
+    <None Remove="Recursos\Usuarios.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,23 +43,46 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Clientes\AgregarElement.png" />
-    <Resource Include="Clientes\Buscar.png" />
-    <Resource Include="Clientes\Eliminar.png" />
-    <Resource Include="Clientes\Instalaciones.png" />
-    <Resource Include="Clientes\instalacionIcon2.jpg" />
-    <Resource Include="Clientes\instalacionIcon3.png" />
-    <Resource Include="Clientes\MasElementos.png" />
-    <Resource Include="Clientes\Modificar.png" />
-    <Resource Include="Clientes\Usuario.png" />
-    <Resource Include="Clientes\Usuarios.png" />
     <Resource Include="fondo3.png" />
+    <Resource Include="Recursos\AgregarElement.png" />
     <Resource Include="Recursos\Buscar.png" />
+    <Resource Include="Recursos\Eliminar.png" />
+    <Resource Include="Recursos\Events.png" />
+    <Resource Include="Recursos\fondo.png" />
+    <Resource Include="Recursos\fondo2.png" />
+    <Resource Include="Recursos\fondo3.png" />
+    <Resource Include="Recursos\FondoLogin.png" />
+    <Resource Include="Recursos\Guardar.png" />
+    <Resource Include="Recursos\iconPDF.png" />
+    <Resource Include="Recursos\Instalaciones.png" />
+    <Resource Include="Recursos\MasElementos.png" />
+    <Resource Include="Recursos\Modificar.png" />
+    <Resource Include="Recursos\ReportesWhite.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\Usuario.png" />
+    <Resource Include="Recursos\Usuarios.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Eventos\FormEvento.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <Page Update="Catalogos\DatosCodigosAlarmaUC.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Eventos\DatosEventosUC.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Eventos\EventosListaUC.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Eventos\FormEvento.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
 

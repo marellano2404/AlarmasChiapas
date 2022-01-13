@@ -23,10 +23,10 @@ namespace AlarmasWPF.Eventos
     /// <summary>
     /// Lógica de interacción para EventosUC.xaml
     /// </summary>
-    public partial class EventosUC : UserControl
+    public partial class EventosListaUC : UserControl
     {
         public event EventHandler Regresar;
-        public EventosUC()
+        public EventosListaUC()
         {
             InitializeComponent();
             var response = ObtenerClientes();
