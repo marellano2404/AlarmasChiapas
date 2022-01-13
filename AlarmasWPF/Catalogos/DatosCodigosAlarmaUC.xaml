@@ -5,15 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AlarmasWPF.Catalogos"
              xmlns:ViewModel ="clr-namespace:AlarmasWPF.Core.ViewModels"
-             mc:Ignorable="d" Height="35" Width="1160">
+             mc:Ignorable="d" Height="35" Width="890">
     <Border BorderThickness="0,0,0,1" BorderBrush="#FFE7AA">
         <Grid Name="lineaGridClaves" >
-            <Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>                
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="15*"/>
                 <ColumnDefinition Width="35*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel  Orientation="Horizontal" Grid.Column="0" >
+            <StackPanel  Orientation="Horizontal" Grid.Column="0"  HorizontalAlignment="Left" >
                         
                 <Image x:Name="ModificarImage" Source="/Clientes/Modificar.png" Margin="2" Cursor="Hand" MouseLeftButtonDown="ModificarImage_MouseLeftButtonDown" />
                 <Image x:Name="EliminarImage" Source="/Clientes/Eliminar.png" Margin="2" Cursor="Hand" PreviewMouseLeftButtonDown="EliminarImage_PreviewMouseLeftButtonDown" />

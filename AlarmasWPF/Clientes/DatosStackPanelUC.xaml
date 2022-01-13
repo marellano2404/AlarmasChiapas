@@ -19,15 +19,15 @@
             </Grid.ColumnDefinitions>
             <TextBlock Name="NumClienteTextBox" FontSize="17" Grid.Column="0" Foreground="White" TextAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding NumCliente}" />
             <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <Image x:Name="ModificarImage" Source="/Clientes/Modificar.png" Margin="2" Cursor="Hand" MouseLeftButtonDown="ModificarImage_MouseLeftButtonDown" />
-                <Image x:Name="EliminarImage" Source="/Clientes/Eliminar.png" Margin="2" Cursor="Hand" PreviewMouseLeftButtonDown="EliminarImage_PreviewMouseLeftButtonDown" />
+                <Image x:Name="ModificarImage" Source="/Recursos/Modificar.png" Margin="2" Cursor="Hand" MouseLeftButtonDown="ModificarImage_MouseLeftButtonDown" />
+                <Image x:Name="EliminarImage" Source="/Recursos/Eliminar.png" Margin="2" Cursor="Hand" PreviewMouseLeftButtonDown="EliminarImage_PreviewMouseLeftButtonDown" />
             </StackPanel>
             <TextBlock Name="RfcTextBox" FontSize="15" Grid.Column="2" TextAlignment="Left"  Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Rfc}"  />
             <TextBlock Name="ClienteTextBox" FontSize="17"  Grid.Column="3" TextAlignment="Left" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" Text="{Binding Propietario}"/>
             <TextBlock Name="EmpresaTextBox" FontSize="17"  Grid.Column="4" TextAlignment="Left" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Empresa}"/>
             <StackPanel Grid.Column="5" Orientation="Horizontal">
-                <Image x:Name="InstalacionImage" Margin="2" Cursor="Hand" ToolTip="Instalaciones" MouseLeftButtonDown="Instalaciones_MouseLeftButtonDown" Source="/Clientes/Instalaciones.png" />
-                <Image x:Name="UsuariosImage" Source="/Clientes/Usuarios.png" Margin="2" Cursor="Hand" ToolTip="Usuarios" MouseLeftButtonDown="UsuariosImage_MouseLeftButtonDown" Width="30" Height="30" />
+                <Image x:Name="InstalacionImage" Margin="2" Cursor="Hand" ToolTip="Instalaciones" MouseLeftButtonDown="Instalaciones_MouseLeftButtonDown" Source="/Recursos/Instalaciones.png" />
+                <Image x:Name="UsuariosImage" Source="/Recursos/Usuarios.png" Margin="2" Cursor="Hand" ToolTip="Usuarios" MouseLeftButtonDown="UsuariosImage_MouseLeftButtonDown" Width="30" Height="30" />
             </StackPanel>
         </Grid>
     </Border>
