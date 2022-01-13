@@ -25,7 +25,7 @@ namespace Alarmas.API.Controllers
             _EventosService = ServicesEventos;
         }
         #endregion
-        #region Metodos
+        #region M E T O D O S
         [HttpGet("GetListaCodigosAlarmas")]
         public async Task<IActionResult> GetListaCodigosAlarmas()
         {
