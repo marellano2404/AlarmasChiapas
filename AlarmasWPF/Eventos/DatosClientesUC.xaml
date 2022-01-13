@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="AlarmasWPF.Eventos.DatosClientesUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AlarmasWPF.Eventos"
+             mc:Ignorable="d" 
+              Height="35" d:DesignWidth="800" Cursor="Hand">
+
+    <Border BorderThickness="0,0,0,1" BorderBrush="#FFE7AA">
+        <Grid Name="lineaGridClientes" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="9*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="NumClienteTextBox" FontSize="17" Grid.Column="0" Foreground="White" TextAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding NumCliente}" />            
+            <TextBlock Name="RfcTextBox" FontSize="15" Grid.Column="1" TextAlignment="Left"  Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Rfc}"  />
+            <TextBlock Name="ClienteTextBox" FontSize="17"  Grid.Column="2" TextAlignment="Left" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" Text="{Binding Propietario}"/>
+            <TextBlock Name="EmpresaTextBox" FontSize="17"  Grid.Column="3" TextAlignment="Left" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Empresa}"/>
+            <StackPanel Grid.Column="4" Orientation="Horizontal">
+                <Image x:Name="InstalacionImage" Margin="2" Cursor="Hand" ToolTip="Instalaciones" MouseLeftButtonDown="Eventos_MouseLeftButtonDown" Source="/Clientes/Instalaciones.png" />
+                <Image x:Name="UsuariosImage" Source="/Clientes/Usuarios.png" Margin="2" Cursor="Hand" ToolTip="Usuarios" MouseLeftButtonDown="Reporte_MouseLeftButtonDown" Width="30" Height="30" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

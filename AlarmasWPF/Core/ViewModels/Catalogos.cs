@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace AlarmasWPF.Core.ViewModels
 {
-    public class Catalogos
+    public class CodigosAlarmaVM
     {
-        public class CodigosAlarma
-        {
-            public int Id { get; set; }
-            public string Clave { get; set; }
-            public string Descripcion { get; set; }
-        }
+        public int Id { get; set; }
+        public string Clave { get; set; }
+        public string Descripcion { get; set; }
     }
 }

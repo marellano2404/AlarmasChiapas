@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlarmasWPF.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,15 +22,27 @@ namespace AlarmasWPF.Catalogos
     public partial class DatosCodigosAlarmaUC : UserControl
     {
         public event EventHandler Regresar;
+        public CodigosAlarmaVM CodigoAlarmaEntities
+        {
+            get
+            {
+                try
+                {
+                    return DataContext as CodigosAlarmaVM;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                DataContext = value;
+            }
+        }
         public DatosCodigosAlarmaUC()
         {
             InitializeComponent();
-            CargarCodigoAlarmas();
-        }
-
-        private void CargarCodigoAlarmas()
-        {
-            throw new NotImplementedException();
         }
 
         private void Regresar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -42,5 +55,14 @@ namespace AlarmasWPF.Catalogos
 
         }
 
+        private void ModificarImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void EliminarImage_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
