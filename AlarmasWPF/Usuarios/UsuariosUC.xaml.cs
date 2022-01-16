@@ -26,7 +26,6 @@ namespace AlarmasWPF.Usuarios
     public partial class UsuariosUC : UserControl
     {
         public event EventHandler SalirOnClick;
-        public event EventHandler AgregarUserOnClick;
 
         public Cliente _cliente;
         public UsuariosUC(Cliente Cliente)

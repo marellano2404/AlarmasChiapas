@@ -1,4 +1,5 @@
 ﻿using Alarmas.Core.BL.Eventos;
+using Alarmas.Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -47,7 +48,92 @@ namespace Alarmas.API.Controllers
                 return BadRequest("La Conexión no ha sido encontrado!");
             }
         }
+        [HttpGet("GetListaEventosCte/{IdCliente}")]
+        public async Task<IActionResult> GetListaEventosCte(Guid IdCliente)
+        {
+            try
+            {
+                var Result = await _EventosService.GetListaEventosCte(IdCliente);
+                if (Result != null)
+                {
+                    return Ok(Result);
+                }
+                else
+                {
+                    return Unauthorized();
+                }
 
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+        [HttpPost("PostHistorialAlarmaCte")]
+        public async Task<IActionResult> PostHistorialAlarmaCte([FromBody] HistorialAlarma historialAlarma)
+        {
+            try
+            {
+                var Result = await _EventosService.PostHistorialAlarmaCte(historialAlarma);
+                return Ok(Result);
+                
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+        [HttpPut("PutHistorialAlarmaCte")]
+        public async Task<IActionResult> PutHistorialAlarmaCte([FromBody] HistorialAlarma historialAlarma)
+        {
+            try
+            {
+                var Result = await _EventosService.PutHistorialAlarmaCte(historialAlarma);
+                return Ok(Result);
+
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+        [HttpPost("DelHistorialAlarmaCte/{IdhistorialAlarma}")]
+        public async Task<IActionResult> DelHistorialAlarmaCte([FromBody] Guid IdhistorialAlarma)
+        {
+            try
+            {
+                var Result = await _EventosService.DelHistorialAlarmaCte(IdhistorialAlarma);
+                return Ok(Result);
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+
+        [HttpGet("GetEventoAlarma/{IdhistoriaAlarma}")]
+        public async Task<IActionResult> GetEventoAlarma(Guid IdhistoriaAlarma)
+        {
+            try
+            {
+                var Result = await _EventosService.GetHistoriaAlarma(IdhistoriaAlarma);
+                if (Result != null)
+                {
+                    return Ok(Result);
+                }
+                else
+                {
+                    return Unauthorized();
+                }
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
         #endregion
     }
 }

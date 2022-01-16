@@ -28,9 +28,57 @@ namespace AlarmasWPF.Eventos
         public event EventHandler Regresar;
         public EventosUC()
         {
-            InitializeComponent();
+            InitializeComponent();           
+            CargarDatos();           
+        }
+        private void CargarDatos()
+        { 
             var response = ObtenerClientes();
             CargarClientes(response);
+        }
+        private List<CodigosAlarmaVM> CargarClavesAlarma()
+        {
+            var _codigosAl = new List<CodigosAlarmaVM>();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.DefaultRequestHeaders.Accept.Add(
+                         new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response = client.GetStringAsync("api/Eventos/GetListaCodigosAlarmas").Result;
+                    _codigosAl = JsonConvert.DeserializeObject<List<CodigosAlarmaVM>>(response);
+
+                    return _codigosAl;
+
+                }
+            }
+            catch (Exception e)
+            {
+                return _codigosAl;
+            }
+
+        }
+
+        private List<UsuarioVM> ObtenerUsuariosCliente(Guid IdCliente)
+        {
+            var _usuarios = new List<UsuarioVM>();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.DefaultRequestHeaders.Accept.Add(
+                         new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response = client.GetStringAsync("api/Clientes/GetListaUsuarios/" + IdCliente).Result;
+                    _usuarios = JsonConvert.DeserializeObject<List<UsuarioVM>>(response);
+                    return _usuarios;
+                }
+            }
+            catch (Exception e)
+            {
+                return _usuarios;
+            }
         }
 
         private void CargarClientes(List<Cliente> listado)
@@ -42,6 +90,115 @@ namespace AlarmasWPF.Eventos
                 DatosClientesUC control = new DatosClientesUC();
                 control.ClienteDataConext = item;
                 DatosStackPanel.Children.Add(control);
+
+                control.EventosOnClick += (s, a) =>
+                {
+                    EventosListaUC eventosUC = new EventosListaUC(item);
+                    GridListadoClientes.Visibility = Visibility.Collapsed;
+                    
+                    var listaHistorialAlarmas = GetHistorialAlarmas(item.Id);
+                    //CargarHistorialAlarmasCliente(listaHistorialAlarmas);
+
+                    foreach (var items in listaHistorialAlarmas)
+                    {
+                        DatosStackPanel.Children.Clear();
+                        DatosEventosUC datosLEventosUC = new DatosEventosUC();
+                        datosLEventosUC.AlarmaEmitidaDxC = items;                        
+                        eventosUC.DatosStackPanel.Children.Add(datosLEventosUC);
+                        datosLEventosUC.ModificarEventoClick += (s, a) =>
+                        {
+                            var listaUsuario = ObtenerUsuariosCliente(item.Id);
+                            var listaAlarmas = CargarClavesAlarma();
+
+                            var modal = new FormEvento(items.Id, false);
+                            modal.ComboBoxUser.ItemsSource = listaUsuario;   
+                            modal.ComboBoxClave.ItemsSource = listaAlarmas;
+                            modal.ClickAgregarH += (s, a) =>
+                            {
+                                eventosUC.DatosStackPanel.Children.Clear();
+                                var listaHistorialAlarmas = GetHistorialAlarmas(item.Id);
+                                foreach (var items in listaHistorialAlarmas)
+                                {
+                                    DatosEventosUC datosLEventosUC = new DatosEventosUC();
+                                    datosLEventosUC.AlarmaEmitidaDxC = items;
+                                    eventosUC.DatosStackPanel.Children.Add(datosLEventosUC);
+                                }
+                                modal.Close();
+                            };
+                            modal.ShowDialog();
+                        };
+                        //datosLEventosUC.EliminarEventoClick += (s,a) =>
+                        //{
+                        //    eliminarHistorialEvento(item.Id);
+                        //};
+                       
+                    }           
+
+                    GridListadoEventos.Visibility = Visibility.Visible;
+                    GridListadoEventos.Children.Clear();
+                    GridListadoEventos.Children.Add(eventosUC);
+
+                    eventosUC.RegresarClick += (s, a) =>
+                    {
+                        GridListadoClientes.Visibility = Visibility.Visible;
+                        GridListadoEventos.Visibility = Visibility.Collapsed;
+                        var response = ObtenerClientes();
+                        CargarClientes(response);
+                    };
+                    eventosUC.AgregarClick += (s, a) =>
+                    {
+                        var listaUsuario = ObtenerUsuariosCliente(item.Id);                        
+                        var listaAlarmas = CargarClavesAlarma();
+                        
+
+                        var modal = new FormEvento(item.Id, true);
+                        modal.ComboBoxUser.ItemsSource = listaUsuario;
+                        modal.historialAlarmaEntidad = new HistorialAlarmaVM();
+                        modal.historialAlarmaEntidad.IdCliente = item.Id;
+                        modal.ComboBoxClave.ItemsSource = listaAlarmas;                      
+
+                        modal.ClickAgregarH += (s, a) =>
+                        { 
+                            eventosUC.DatosStackPanel.Children.Clear();
+                            var listaHistorialAlarmas = GetHistorialAlarmas(item.Id);
+                            foreach (var items in listaHistorialAlarmas)
+                            {                               
+                                DatosEventosUC datosLEventosUC = new DatosEventosUC();
+                                datosLEventosUC.AlarmaEmitidaDxC = items;
+                                eventosUC.DatosStackPanel.Children.Add(datosLEventosUC);
+                            }
+                            modal.Close();
+                        };
+                        modal.ShowDialog();
+                    };
+                    
+                };
+            }
+        }
+
+        //private void CargarHistorialAlarmasCliente(List<AlarmasEmitidasVM> response)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        private List<AlarmasEmitidasVM> GetHistorialAlarmas(Guid IdCliente)
+        {
+            var _alarmasEm = new List<AlarmasEmitidasVM>();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.DefaultRequestHeaders.Accept.Add(
+                         new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response = client.GetStringAsync("api/Eventos/GetListaEventosCte/" + IdCliente).Result;
+                    _alarmasEm = JsonConvert.DeserializeObject<List<AlarmasEmitidasVM>>(response);
+                    return _alarmasEm;
+                }
+            }
+            catch (Exception e)
+            {
+                return _alarmasEm;
             }
         }
 

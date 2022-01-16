@@ -21,13 +21,15 @@ namespace AlarmasWPF.Eventos
     /// </summary>
     public partial class DatosEventosUC : UserControl
     {
-        public Cliente ClienteDataConext
+        public event EventHandler ModificarEventoClick;
+        public event EventHandler EliminarEventoClick;
+        public AlarmasEmitidasVM AlarmaEmitidaDxC
         {
             get
             {
                 try
                 {
-                    return this.DataContext as Cliente;
+                    return this.DataContext as AlarmasEmitidasVM;
                 }
                 catch (Exception)
                 {
@@ -44,14 +46,14 @@ namespace AlarmasWPF.Eventos
             InitializeComponent();
         }
 
-        private void Eventos_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Modificar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            ModificarEventoClick?.Invoke(this, new EventArgs());
         }
 
-        private void Reporte_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Eliminar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            EliminarEventoClick?.Invoke(this, new EventArgs());
         }
     }
 }
