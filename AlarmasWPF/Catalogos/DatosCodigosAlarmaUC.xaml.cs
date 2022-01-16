@@ -21,7 +21,8 @@ namespace AlarmasWPF.Catalogos
     /// </summary>
     public partial class DatosCodigosAlarmaUC : UserControl
     {
-        public event EventHandler Regresar;
+        public event EventHandler EliminarClaveOnClick;
+        public event EventHandler EditarClaveOnclick;
         public CodigosAlarmaVM CodigoAlarmaEntities
         {
             get
@@ -44,25 +45,14 @@ namespace AlarmasWPF.Catalogos
         {
             InitializeComponent();
         }
-
-        private void Regresar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ModificarCodigo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Regresar?.Invoke(this, new EventArgs());
+            EditarClaveOnclick?.Invoke(this, new EventArgs());
         }
 
-        private void Agregar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void EliminarCodigo_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
-        }
-
-        private void ModificarImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void EliminarImage_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
+            EliminarClaveOnClick?.Invoke(this, new EventArgs());
         }
     }
 }

@@ -99,12 +99,13 @@ namespace Alarmas.API.Controllers
                 return BadRequest("La Conexión no ha sido encontrado!");
             }
         }
-        [HttpPost("DelHistorialAlarmaCte/{IdhistorialAlarma}")]
-        public async Task<IActionResult> DelHistorialAlarmaCte([FromBody] Guid IdhistorialAlarma)
+        
+        [HttpDelete("DelHistorialAlarmaCte/{Id}")]
+        public async Task<IActionResult> DelHistorialAlarmaCte(Guid Id)
         {
             try
             {
-                var Result = await _EventosService.DelHistorialAlarmaCte(IdhistorialAlarma);
+                var Result = await _EventosService.DelHistorialAlarmaCte(Id);
                 return Ok(Result);
             }
             catch (Exception)
