@@ -132,7 +132,7 @@ namespace Alarmas.Core.Models
             {
                 entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
 
-                entity.Property(e => e.IdCodigo).ValueGeneratedOnAdd();
+                entity.Property(e => e.IdClaveAlarma).ValueGeneratedOnAdd();
             });
 
             modelBuilder.Entity<HistorialUsuario>(entity =>

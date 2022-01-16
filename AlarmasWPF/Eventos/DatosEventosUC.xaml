@@ -10,19 +10,22 @@
     <Border BorderThickness="0,0,0,1" BorderBrush="#FFE7AA">
         <Grid Name="lineaGridClientes" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="15*"/>
-                <ColumnDefinition Width="30*"/>
-                <ColumnDefinition Width="31*"/>
                 <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="24*"/>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="14*"/>
+                <ColumnDefinition Width="8*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Name="NumClienteTextBox" FontSize="17" Grid.Column="0" Foreground="White" TextAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding NumCliente}" />            
-            <TextBlock Name="RfcTextBox" FontSize="15" Grid.Column="1" TextAlignment="Left"  Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Rfc}"  />
-            <TextBlock Name="ClienteTextBox" FontSize="17"  Grid.Column="2" TextAlignment="Left" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" Text="{Binding Propietario}"/>
-            <TextBlock Name="EmpresaTextBox" FontSize="17"  Grid.Column="3" TextAlignment="Left" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Empresa}"/>
-            <StackPanel Grid.Column="4" Orientation="Horizontal">
-                <Image x:Name="InstalacionImage" Margin="2" Cursor="Hand" ToolTip="Eventos de Alarma" MouseLeftButtonDown="Eventos_MouseLeftButtonDown" Source="/Recursos/Events.png" />
-                <Image x:Name="UsuariosImage" Source="/Recursos/ReportesWhite.png" Margin="2" Cursor="Hand" ToolTip="Reportes" MouseLeftButtonDown="Reporte_MouseLeftButtonDown" Width="30" Height="30" />
+            <TextBlock Name="AlarmaTextBox" FontSize="17" Grid.Column="0" Foreground="White" TextAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding ClaveAlarma}" />            
+            <TextBlock Name="ClaveTextBox" FontSize="15" Grid.Column="1" TextAlignment="Left"  Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Alarma}"  />
+            <TextBlock Name="UsuarioTextBox" FontSize="17"  Grid.Column="2" TextAlignment="Left" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" Text="{Binding Usuario}"/>
+            <TextBlock Name="FechaTextBox" FontSize="17"  Grid.Column="3" TextAlignment="Left" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Fecha, StringFormat=d, ConverterCulture=es-MX}"/>
+            <TextBlock Name="HoraTextBox" FontSize="17"  Grid.Column="4" TextAlignment="Left" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Hora}"/>
+
+            <StackPanel Grid.Column="5" Orientation="Horizontal">
+                <Image x:Name="InstalacionImage" Margin="2" Cursor="Hand" ToolTip="Editar Alarma" MouseLeftButtonDown="Modificar_MouseLeftButtonDown" Source="/Recursos/Modificar.png" />
+                <Image x:Name="UsuariosImage" Source="/Recursos/Eliminar.png" Margin="2" Cursor="Hand" ToolTip="Eliminar Registro" MouseLeftButtonDown="Eliminar_MouseLeftButtonDown" Width="30" Height="30" />
             </StackPanel>
         </Grid>
     </Border>

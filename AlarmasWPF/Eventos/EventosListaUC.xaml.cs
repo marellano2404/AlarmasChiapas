@@ -1,4 +1,5 @@
-﻿using AlarmasWPF.ControlesPersonalizados;
+﻿using AlarmasWPF.Clientes;
+using AlarmasWPF.ControlesPersonalizados;
 using AlarmasWPF.Core.ViewModels;
 using Newtonsoft.Json;
 using System;
@@ -25,27 +26,21 @@ namespace AlarmasWPF.Eventos
     /// </summary>
     public partial class EventosListaUC : UserControl
     {
-        public event EventHandler Regresar;
-        public EventosListaUC()
+        public event EventHandler RegresarClick;
+        public event EventHandler AgregarClick;
+        public event EventHandler BuscarEventoClick;
+        public EventosListaUC(Cliente _cliente)
         {
             InitializeComponent();
-            var response = ObtenerClientes();
-            CargarClientes(response);
-        }
+            var response = ObtenerEventos(_cliente.Id);
 
-        private void CargarClientes(List<Cliente> listado)
-        {
-            DatosStackPanel.Children.Clear();
-            //var response = ObtenerClientes();
-            foreach (var item in listado)
-            {
-                DatosClientesUC control = new DatosClientesUC();
-                control.ClienteDataConext = item;
-                DatosStackPanel.Children.Add(control);
-            }
-        }
+            DatosUserC datosUser = new DatosUserC();
+            datosUser.clienteUc = _cliente;
+            ContenedorUsuario.Children.Add(datosUser);
 
-        private List<Cliente> ObtenerClientes()
+            CargarEventos(response);
+        }
+        private List<Cliente> ObtenerEventos(Guid IdCliente)
         {
             var _clientes = new List<Cliente>();
             try
@@ -55,7 +50,7 @@ namespace AlarmasWPF.Eventos
                     client.BaseAddress = new Uri("https://localhost:44310/");
                     client.DefaultRequestHeaders.Accept.Add(
                          new MediaTypeWithQualityHeaderValue("application/json"));
-                    var response = client.GetStringAsync("api/Clientes/GetListaClientes").Result;
+                    var response = client.GetStringAsync("api/Clientes/ListarAlarmas/" + IdCliente).Result;
                     _clientes = JsonConvert.DeserializeObject<List<Cliente>>(response);
                     return _clientes;
                 }
@@ -65,28 +60,16 @@ namespace AlarmasWPF.Eventos
                 return _clientes;
             }
         }
-
-        private void Buscar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void CargarEventos(List<Cliente> listado)
         {
-            try
+            DatosStackPanel.Children.Clear();
+            foreach (var item in listado)
             {
-                var _clientes = new List<Cliente>();
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
-                    client.DefaultRequestHeaders.Accept.Add(
-                            new MediaTypeWithQualityHeaderValue("application/json"));
-                    var response = client.GetStringAsync("api/Clientes/BuscarCliente/" + TextBoxBuscar.Text.Trim()).Result;
-                    _clientes = JsonConvert.DeserializeObject<List<Cliente>>(response);
-
-                    CargarClientes(_clientes);
-                }
+                DatosClientesUC control = new DatosClientesUC();
+                control.ClienteDataConext = item;
+                DatosStackPanel.Children.Add(control);
             }
-            catch (Exception ex)
-            {
-                MostrarMensaje(ex.Message);
-            }
-        }
+        }      
 
         private void MostrarMensaje(string message)
         {
@@ -101,7 +84,17 @@ namespace AlarmasWPF.Eventos
 
         private void Regresar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Regresar?.Invoke(this, new EventArgs());
+            RegresarClick?.Invoke(this, new EventArgs());
+        }
+
+        private void Agregar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            AgregarClick?.Invoke(this, new EventArgs());
+        }
+
+        private void BuscarH_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            BuscarEventoClick?.Invoke(this, new EventArgs());
         }
     }
 }

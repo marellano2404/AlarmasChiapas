@@ -17,7 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AlarmasWPF.Clientes
+namespace AlarmasWPF.Eventos
 {
     /// <summary>
     /// Lógica de interacción para FormCliente.xaml
@@ -26,15 +26,15 @@ namespace AlarmasWPF.Clientes
     {
         #region Propiedades
         //private static HttpClient client = new HttpClient();
-        public event EventHandler ClickAgregar;
+        public event EventHandler ClickAgregarH;
         public bool _esNuevo { get; set; }
-        public Cliente cliente
+        public HistorialAlarmaVM historialAlarmaEntidad
         {
             get
             {
                 try
                 {
-                    return this.DataContext as Cliente;
+                    return this.DataContext as HistorialAlarmaVM;
                 }
                 catch (Exception)
                 {
@@ -49,11 +49,35 @@ namespace AlarmasWPF.Clientes
         #endregion
 
         #region Constructor
-        public FormEvento(bool esNuevo)
+        public FormEvento(Guid IdEvento,bool esNuevo)
         {
             InitializeComponent();
+            var Evento = GetEventoSeleccionado(IdEvento);
+            historialAlarmaEntidad = Evento;
             _esNuevo = esNuevo;
         }
+
+        private HistorialAlarmaVM GetEventoSeleccionado(Guid IdhistoriaAlarma)
+        {
+            var _eventoAlarma = new HistorialAlarmaVM();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.DefaultRequestHeaders.Accept.Add(
+                         new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response = client.GetStringAsync("api/Eventos/GetEventoAlarma/" + IdhistoriaAlarma).Result;
+                    _eventoAlarma = JsonConvert.DeserializeObject<HistorialAlarmaVM>(response);                    
+                    return _eventoAlarma;
+                }
+            }
+            catch (Exception e)
+            {
+                return _eventoAlarma;
+            }
+        }
+
         #endregion
 
         #region Eventos
@@ -61,11 +85,17 @@ namespace AlarmasWPF.Clientes
         {
             Close();
         }
+        
+        #endregion
 
-        private async void btnAceptar_Click(object sender, RoutedEventArgs e)
+        private async void btnGuardarEvento_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                if (historialAlarmaEntidad.Descripcion is null)
+                {
+                    historialAlarmaEntidad.Descripcion = "S/D";
+                }
                 var result = new HttpResponseMessage();
                 using (var client = new HttpClient())
                 {
@@ -73,40 +103,34 @@ namespace AlarmasWPF.Clientes
                     client.DefaultRequestHeaders.Accept.Add(
                          new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    var json = Newtonsoft.Json.JsonConvert.SerializeObject(cliente);
+                    var json = Newtonsoft.Json.JsonConvert.SerializeObject(historialAlarmaEntidad);
                     var data = new System.Net.Http.StringContent(json, Encoding.UTF8, "application/json");
                     if (_esNuevo)
                     {
-                        result = await client.PostAsync("api/Clientes/PostNuevoCliente", data);
+                        result = await client.PostAsync("api/Eventos/PostHistorialAlarmaCte", data);
                     }
                     else
                     {
-                        result = await client.PutAsync("api/Clientes/PutCliente", data);                       
+                        result = await client.PutAsync("api/Eventos/PutHistorialAlarmaCte", data);
                     }
                     var respuesta = await result.Content.ReadAsStringAsync();
                     if (respuesta == "true") //si el resultado de exito es true
                     {
-                        ClickAgregar?.Invoke(this, new EventArgs());
+                        ClickAgregarH?.Invoke(this, new EventArgs());
                     }
-                }                
+                }
             }
             catch (Exception ex)
             {
                 MostrarMensaje(ex.Message);
-            }
+            }           
         }
-
         private void MostrarMensaje(string mensaje)
         {
             var modal = new MensajeWindowAccion();
             modal.Mensaje = mensaje;
             modal.ShowDialog();
         }
-        #endregion
 
-        private void txtFecha_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

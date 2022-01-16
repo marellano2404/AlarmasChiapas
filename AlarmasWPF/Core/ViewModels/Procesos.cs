@@ -40,4 +40,27 @@ namespace AlarmasWPF.Core.ViewModels
         public string LugarInstalacion { get; set; }      
 
     }
+    public class HistorialAlarmaVM
+    {
+        public Guid? Id { get; set; }
+        public int IdClaveAlarma { get; set; }
+        public Guid? IdCliente { get; set; }
+        public Guid? IdUsuario { get; set; }
+        public string Descripcion { get; set; }
+        public DateTime? Fecha { get; set; }
+        public string Hora { get; set; }
+    }
+    public class AlarmasEmitidasVM
+    {
+        public Guid Id { get; set; }
+        public int NumCliente { get; set; }
+        public string Empresa { get; set; }
+        public string ClaveAlarma { get; set; }
+        public string Alarma { get; set; }
+        public string Usuario { get; set; }
+        public string DetalleAlarma { get; set; }
+        public DateTime? Fecha { get; set; }
+        public string Hora { get; set; }
+    }
+
 }

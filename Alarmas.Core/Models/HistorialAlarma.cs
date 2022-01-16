@@ -12,13 +12,13 @@ namespace Alarmas.Core.Models
     public partial class HistorialAlarma
     {
         [Key]
-        public Guid Id { get; set; }
-        public int IdCodigo { get; set; }
+        public Guid? Id { get; set; }
+        public int IdClaveAlarma { get; set; }
         public Guid? IdCliente { get; set; }
-        public int? IdTipo { get; set; }
-        [StringLength(150)]
+        public Guid? IdUsuario { get; set; }
         public string Descripcion { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime? FechaHora { get; set; }
+        public DateTime? Fecha { get; set; }
+        public string Hora { get; set; }
     }
 }
