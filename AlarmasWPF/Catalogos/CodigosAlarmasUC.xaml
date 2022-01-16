@@ -19,7 +19,7 @@
             <Grid Grid.Row="0" HorizontalAlignment="Left" Grid.Column="0" Cursor="Hand">
                 <StackPanel  Orientation="Horizontal"  Margin="5,17,0,0">
                     <Button x:Name="btnAgregar" Width="220" Style="{StaticResource ButtonAction}" Height="35" Cursor="Hand" ToolTip="Agregar" Margin="5,0">
-                        <TextBlock Text="Agregar Codigo" Foreground="White" MouseLeftButtonDown="Agregar_MouseLeftButtonDown" FontSize="22" VerticalAlignment="Center"/>
+                        <TextBlock Text="Agregar Codigo" Foreground="White" MouseLeftButtonDown="AgregarCodigo_MouseLeftButtonDown" FontSize="22" VerticalAlignment="Center"/>
                     </Button>                    
                 </StackPanel>
             </Grid>
@@ -39,14 +39,14 @@
                     <ColumnDefinition Width="10*"/>
                     <ColumnDefinition Width="15*"/>
                     <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="8*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 
-                <Grid x:Name="GridFormCodigos" Grid.RowSpan="2">
-                    
+                <Grid x:Name="GridFormCodigos" Grid.RowSpan="2" Visibility="Collapsed">                    
                     <Grid.RowDefinitions>
                         <RowDefinition Height="8"/>
                         <RowDefinition Height="20"/>
@@ -65,13 +65,16 @@
                     <Button x:Name="btnAgregarInstalacion" Width="220" Grid.Row="5" Style="{StaticResource ButtonAction}" Height="30" HorizontalAlignment="Right" Cursor="Hand" ToolTip="Agregar" Margin="5,0">
                         <TextBlock Text="Agregar" Foreground="White" MouseLeftButtonDown="AgregaClave_MouseLeftButtonDown" FontSize="20" VerticalAlignment="Center"/>
                     </Button>
+                    <Button x:Name="btnActualizarInstalacion" Width="220" Grid.Row="5" Style="{StaticResource ButtonAction}" Height="30" HorizontalAlignment="Right" Cursor="Hand" ToolTip="Actualizar" Margin="5,0">
+                        <TextBlock Text="Actualizar" Foreground="White" MouseLeftButtonDown="ActualizarClave_MouseLeftButtonDown" FontSize="20" VerticalAlignment="Center"/>
+                    </Button>
 
                 </Grid>             
                 
                 
                 
                 
-                <Border Grid.ColumnSpan="3" Grid.Row="0" Grid.Column="1">
+                <Border Grid.ColumnSpan="4" Grid.Row="0" Grid.Column="1">
                     <Border.Background>
                         <SolidColorBrush Color="{DynamicResource ColorMenu}"/>
                     </Border.Background>
@@ -79,8 +82,10 @@
                 <TextBlock Grid.Row="0" Margin="5,0,0,0" FontSize="13" Text="IdClave" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
                 <TextBlock Grid.Row="0" FontSize="15" Text="Clave" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
                 <TextBlock Grid.Row="0" FontSize="15" Text="Descripción" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
+                <TextBlock Grid.Row="0" FontSize="15" Text="Acciónes" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
 
-                <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="20" Grid.Column="1">
+
+                <Grid Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="20" Grid.Column="1">
                     <ScrollViewer  BorderBrush="Black" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                         <StackPanel x:Name="DatosStackPanel" Margin="0"/>
                     </ScrollViewer>

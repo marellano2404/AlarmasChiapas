@@ -127,11 +127,19 @@ namespace AlarmasWPF.Eventos
                             };
                             modal.ShowDialog();
                         };
-                        //datosLEventosUC.EliminarEventoClick += (s,a) =>
-                        //{
-                        //    eliminarHistorialEvento(item.Id);
-                        //};
-                       
+                        datosLEventosUC.EliminarEventoClick += (s, a) =>
+                        {
+                            EliminarHistorialEvento(items.Id);
+                            var listaHistorialAlarmas = GetHistorialAlarmas(item.Id);
+                            foreach (var items in listaHistorialAlarmas)
+                            {
+                                eventosUC.DatosStackPanel.Children.Clear();
+                                DatosEventosUC datosLEventosUC = new DatosEventosUC();
+                                datosLEventosUC.AlarmaEmitidaDxC = items;
+                                eventosUC.DatosStackPanel.Children.Add(datosLEventosUC);
+                            }
+                        };
+
                     }           
 
                     GridListadoEventos.Visibility = Visibility.Visible;
@@ -175,12 +183,30 @@ namespace AlarmasWPF.Eventos
                 };
             }
         }
-
-        //private void CargarHistorialAlarmasCliente(List<AlarmasEmitidasVM> response)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
+        private async void EliminarHistorialEvento(Guid Id)
+        {
+            try
+            {               
+                var result = new HttpResponseMessage();
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44310/");    
+                    var response = await client.DeleteAsync("api/Eventos/DelHistorialAlarmaCte/" + Id);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MostrarMensaje("El evento se elimino correctamente");
+                    }
+                    else
+                    {
+                        MostrarMensaje("No se pudo eliminar el evento.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MostrarMensaje(ex.Message);
+            }
+        }
         private List<AlarmasEmitidasVM> GetHistorialAlarmas(Guid IdCliente)
         {
             var _alarmasEm = new List<AlarmasEmitidasVM>();

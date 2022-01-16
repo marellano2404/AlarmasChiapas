@@ -20,8 +20,8 @@
             <TextBlock Name="Password" FontSize="17" Grid.Column="2" TextAlignment="Left"  Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Contraseña}"  />
             <TextBlock Name="Puesto" FontSize="17"  Grid.Column="3" TextAlignment="Left" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" Text="{Binding Puesto}"/>
             <StackPanel Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image x:Name="ModificarImage" Source="/Clientes/Modificar.png" Margin="2" Cursor="Hand" PreviewMouseLeftButtonDown="ModificarImage_PreviewMouseLeftButtonDown" />
-                <Image x:Name="EliminarImage" Source="/Clientes/Eliminar.png" Margin="2" Cursor="Hand" PreviewMouseLeftButtonDown="EliminarImage_PreviewMouseLeftButtonDown" />
+                <Image x:Name="ModificarImage" Source="/Recursos/Modificar.png" Margin="2" Cursor="Hand" PreviewMouseLeftButtonDown="ModificarImage_PreviewMouseLeftButtonDown" />
+                <Image x:Name="EliminarImage" Source="/Recursos/Eliminar.png" Margin="2" Cursor="Hand" PreviewMouseLeftButtonDown="EliminarImage_PreviewMouseLeftButtonDown" />
             </StackPanel>
         </Grid>
     </Border>

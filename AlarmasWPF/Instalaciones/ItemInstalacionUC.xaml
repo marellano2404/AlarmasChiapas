@@ -17,7 +17,7 @@
             <TextBlock Name="ZonaTfxt" FontSize="17" Grid.Column="1" TextAlignment="Left"  Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding LugarInstalacion}"  />
             <TextBlock Name="InstalacionDisTxt" FontSize="17"  Grid.Column="2" TextAlignment="Left" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" Text="{Binding Dispositivo}"/>
             <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image x:Name="EliminarImage" Source="/Clientes/Eliminar.png" Margin="2" Cursor="Hand" />
+                <Image x:Name="EliminarImage" Source="/Recursos/Eliminar.png" Margin="2" Cursor="Hand" />
             </StackPanel>
         </Grid>
     </Border>
