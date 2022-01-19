@@ -1,4 +1,5 @@
 ﻿using AlarmasWPF.Clientes;
+using AlarmasWPF.ControlesPersonalizados;
 using AlarmasWPF.Core.ViewModels;
 using Newtonsoft.Json;
 using System;
@@ -41,13 +42,56 @@ namespace AlarmasWPF.Usuarios
         }
         private void CargarUsuarioCliente(List<UsuarioVM> Usuarios)
         {
+            DatosStackPanelU.Children.Clear();
             foreach (var items in Usuarios)
             {
                 ItemUsuarioUC control = new ItemUsuarioUC();
                 control.UsuariosClienteDataConext = items;
                 DatosStackPanelU.Children.Add(control);
+                control.EliminarUserOnClick += (s, a) =>
+                {
+                    eliminarUsuarioCliente(items.Id);
+                    var lista = ObtenerUsuariosCliente(items.IdCliente);
+                    CargarUsuarioCliente(lista);
+                };
             }
         }
+
+        private async void eliminarUsuarioCliente(Guid Id)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    var response = await client.DeleteAsync("api/Clientes/DeleteUsuario/" + Id);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MostrarMensaje("El usuario se elimino correctamente");
+                    }
+                    else
+                    {
+                        MostrarMensaje("No se pudo eliminar el usuario, verifique eventos del usuario.");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MostrarMensaje(e.Message);
+            }
+        }
+
+        private void MostrarMensaje(string mensaje)
+        {
+            var modal = new MensajeWindowAccion();
+            modal.Mensaje = mensaje;
+            modal.OnClickAceptar += (s, e) =>
+            {
+                modal.Close();
+            };
+            modal.ShowDialog();
+        }
+
         private List<UsuarioVM> ObtenerUsuariosCliente(Guid IdCliente)
         {
             var _usuarios = new List<UsuarioVM>();

@@ -48,6 +48,7 @@ namespace AlarmasWPF.Core.ViewModels
         public Guid? IdUsuario { get; set; }
         public string Descripcion { get; set; }
         public DateTime? Fecha { get; set; }
+        public Guid IdZonaInstalacion { get; set; }
         public string Hora { get; set; }
     }
     public class AlarmasEmitidasVM

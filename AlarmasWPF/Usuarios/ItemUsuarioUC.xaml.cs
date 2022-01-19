@@ -16,7 +16,7 @@ namespace AlarmasWPF.Usuarios
     public partial class ItemUsuarioUC : UserControl
     {
         public event EventHandler ModificarOnClick;
-        public event EventHandler EliminarOnClick;
+        public event EventHandler EliminarUserOnClick;
         public UsuarioVM UsuariosClienteDataConext
         {
             get
@@ -48,7 +48,7 @@ namespace AlarmasWPF.Usuarios
 
         private void EliminarImage_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            EliminarOnClick?.Invoke(this, new EventArgs());
+            EliminarUserOnClick?.Invoke(this, new EventArgs());
         }
     }
 }

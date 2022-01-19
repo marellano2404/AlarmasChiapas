@@ -57,10 +57,10 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="1" Margin="0,0,15,0" FontSize="14" Text="Clave Alarma"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
-                    <TextBox Grid.Row="2" x:Name="txtZona" VerticalAlignment="Center"  Margin="1" Text="{Binding Clave}" MaxLength="20"  />
+                    <TextBox Grid.Row="2" x:Name="txtZona" VerticalAlignment="Center"  Margin="1" Text="{Binding Clave,UpdateSourceTrigger=PropertyChanged}" MaxLength="20"  />
                     
                     <TextBlock Margin="0,0,15,0" FontSize="14" Grid.Row="3" Text="Descripción" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
-                    <TextBox x:Name="txtDescripcion" Grid.Row="4" VerticalAlignment="Center" Margin="3" Text="{Binding Descripcion}" MaxLength="350"  />
+                    <TextBox x:Name="txtDescripcion" Grid.Row="4" VerticalAlignment="Center" Margin="3" Text="{Binding Descripcion,UpdateSourceTrigger=PropertyChanged}" MaxLength="350"  />
 
                     <Button x:Name="btnAgregarInstalacion" Width="220" Grid.Row="5" Style="{StaticResource ButtonAction}" Height="30" HorizontalAlignment="Right" Cursor="Hand" ToolTip="Agregar" Margin="5,0">
                         <TextBlock Text="Agregar" Foreground="White" MouseLeftButtonDown="AgregaClave_MouseLeftButtonDown" FontSize="20" VerticalAlignment="Center"/>

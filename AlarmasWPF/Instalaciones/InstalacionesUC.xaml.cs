@@ -68,11 +68,42 @@ namespace AlarmasWPF.Instalaciones
 
         private void CargarInstalacionesCliente(List<InstalacionVM> lista)
         {
+            DatosStackPanelI.Children.Clear();
             foreach (var items in lista)
             {
                 ItemInstalacionUC control = new ItemInstalacionUC();
                 control.InstalacionCteDataContext = items;
                 DatosStackPanelI.Children.Add(control);
+                control.ClickEliminarInstalacion += (f, g) =>
+                {
+                    EliminarInstalacion(items.Id);
+                    var lista = ObtenerInstalacionesCliente(items.IdCliente);
+                    CargarInstalacionesCliente(lista);
+                };
+            }
+        }
+
+        private async void EliminarInstalacion(Guid? Id)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    var response = await client.DeleteAsync("api/Clientes/DeleteInstalacion/" + Id);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MostrarMensaje("La Instalación se elimino correctamente");
+                    }
+                    else
+                    {
+                        MostrarMensaje("No se pudo eliminar la instalacion.");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MostrarMensaje(e.Message);
             }
         }
 
