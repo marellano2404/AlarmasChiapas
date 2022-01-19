@@ -36,15 +36,20 @@
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Num Cliente" Grid.Row="0" Grid.Column="0" Margin="3"/>
+                <TextBlock Text="Num. Cte." Grid.Row="0" Grid.Column="0" Margin="3"/>
                 <TextBox x:Name="txtnumcliente" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding NumCliente}" MaxLength="5"  />
-                <TextBlock Text="Nombre de la Empresa"  FontSize="16" Grid.Row="0" Grid.Column="1" Margin="3"/>
+                <TextBlock Text="Nombre de la Empresa (Casa Particular)"  FontSize="16" Grid.Row="0" Grid.Column="1" Margin="3"/>
                 <TextBox x:Name="txtempresa" FontSize="16" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Empresa}" MaxLength="60"  />
+                <TextBlock Text="Fecha Alta" Grid.Row="0" Grid.Column="2" Margin="3"/>
+                <DatePicker Grid.Row="1" Grid.Column="2" x:Name="txtFechaNacimiento" SelectedDate="{Binding FechaAlta}" FontSize="15" Width="120" Height="32" Margin="2 0 0 0" 
+                            HorizontalAlignment="Left"></DatePicker>
+                
             </Grid>          
-            <TextBlock Text="Nombre Completo (Casa Particular)" Grid.Row="3" Margin="3"/>
+            <TextBlock Text="Nombre Propietario" Grid.Row="3" Margin="3"/>
             <TextBox x:Name="txtNombre" Height="40" Grid.Row="4" Margin="3" Text="{Binding Propietario}" MaxLength="260"  />
             <Grid Grid.Row="5">
                 <Grid.RowDefinitions>
@@ -53,7 +58,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Rfc" Grid.Row="0" Grid.Column="0" Margin="3"/>
                 <TextBox x:Name="txtSalario" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding Rfc}" MaxLength="13"  />
@@ -67,7 +72,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Tel Particular" Grid.Row="0" Grid.Column="0" Margin="3"/>
                 <TextBox x:Name="txtTabla93" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding TelParticular}" MaxLength="10"  />
@@ -83,10 +88,10 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Tel. Celular" Grid.Row="0" Grid.Column="0" Margin="3" Grid.ColumnSpan="3"/>
-                <TextBox x:Name="txtHorasJornada" Grid.Row="1" Grid.Column="0" Margin="0" Text="{Binding Celular}" MaxLength="10" Grid.ColumnSpan="3"  />
+                <TextBlock Text="Tel. Celular" Grid.Row="0" Grid.Column="0" Margin="3"/>
+                <TextBox x:Name="txtHorasJornada" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding Celular}" MaxLength="13"/>
                 <TextBlock Text="Correo" Grid.Row="0" Grid.Column="1" Margin="3"/>
-                <TextBox x:Name="txtHomologado" Grid.Row="1" Grid.Column="1" Margin="0" Text="{Binding Correo}" MaxLength="25"  />
+                <TextBox x:Name="txtHomologado" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Correo}" MaxLength="50"  />
             </Grid>
             
             <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">

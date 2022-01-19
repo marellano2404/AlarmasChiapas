@@ -48,7 +48,7 @@ namespace Alarmas.API.Controllers
             }
         }
         [HttpPost("PostNuevoCliente")]
-        public async Task<IActionResult>  PostNuevoCliente([FromBody]Cliente cliente)
+        public async Task<IActionResult> PostNuevoCliente([FromBody]Cliente cliente)
         {
             try
             {
@@ -81,7 +81,14 @@ namespace Alarmas.API.Controllers
             try
             {
                 var Result = await _ClientesService.DeleteCliente(Id);
-                return Ok(Result);
+                if (Result == true)
+                {
+                    return Ok(Result);
+                }
+                else
+                {
+                    return Conflict(Result);
+                }
 
             }
             catch (Exception)
@@ -134,7 +141,6 @@ namespace Alarmas.API.Controllers
             }
         }
 
-
         [HttpPost("PostNuevoUsuario")]
         public async Task<IActionResult> PostNuevoUsuario([FromBody] ClienteUsuario usuario)
         {
@@ -149,7 +155,28 @@ namespace Alarmas.API.Controllers
                 return BadRequest("La Conexión no ha sido encontrado!");
             }
         }
+        //DeleteUsuario
+        [HttpDelete("DeleteUsuario/{Id}")]
+        public async Task<IActionResult> DeleteUsuario(Guid Id)
+        {
+            try
+            {
+                var Result = await _ClientesService.DeleteUsuario(Id);
+                if (Result == true)
+                {
+                    return Ok(Result);
+                }
+                else
+                {
+                    return Conflict(Result);
+                }
 
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
 
         [HttpPost("PostNuevaInstalacion")]
         public async Task<IActionResult> PostNuevaInstalacion([FromBody] Instalacion EntidadInstal)
@@ -187,6 +214,28 @@ namespace Alarmas.API.Controllers
                 return BadRequest("La Conexión no ha sido encontrado!");
             }
         }
+        [HttpDelete("DeleteInstalacion/{Id}")]
+        public async Task<IActionResult> DeleteInstalacion(Guid Id)
+        {
+            try
+            {
+                var Result = await _ClientesService.DeleteInstalacion(Id);
+                if (Result == true)
+                {
+                    return Ok(Result);
+                }
+                else
+                {
+                    return Conflict(Result);
+                }
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+
         #endregion
     }
 }

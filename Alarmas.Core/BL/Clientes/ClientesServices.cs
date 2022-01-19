@@ -33,15 +33,16 @@ namespace Alarmas.Core.BL.Clientes
                     comando.CommandType = System.Data.CommandType.StoredProcedure;
                     /*Agregando los parametros*/
                     comando.Parameters.AddWithValue("@Opcion", "Agregar");
-                    comando.Parameters.AddWithValue("@Empresa", cliente.Empresa.Trim());
+                    comando.Parameters.AddWithValue("@Empresa", cliente.Empresa.ToUpper().Trim());
                     comando.Parameters.AddWithValue("@NumCliente", cliente.NumCliente);
-                    comando.Parameters.AddWithValue("@Propietario", cliente.Propietario.Trim());
-                    comando.Parameters.AddWithValue("@Rfc", cliente.Rfc.Trim());
-                    comando.Parameters.AddWithValue("@Direccion", cliente.Direccion.Trim());
-                    comando.Parameters.AddWithValue("@Referencias", cliente.Referencias.Trim());
+                    comando.Parameters.AddWithValue("@Propietario", cliente.Propietario.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@Rfc", cliente.Rfc.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@Direccion", cliente.Direccion.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@Referencias", cliente.Referencias.ToUpper().Trim());
                     comando.Parameters.AddWithValue("@TelParticular", cliente.TelParticular.Trim());
                     comando.Parameters.AddWithValue("@Celular", cliente.Celular.Trim());
                     comando.Parameters.AddWithValue("@Correo", cliente.Correo.Trim());
+                    comando.Parameters.AddWithValue("@FechaAlta", cliente.FechaAlta);
                     Conexion.Open();
                     var Lectura = await comando.ExecuteReaderAsync();
                     if (Lectura.HasRows)
@@ -77,11 +78,11 @@ namespace Alarmas.Core.BL.Clientes
                     /*Agregando los parametros*/
                     comando.Parameters.AddWithValue("@Opcion", "Actualizar");
                     comando.Parameters.AddWithValue("@IdCliente", cliente.Id);
-                    comando.Parameters.AddWithValue("@Empresa", cliente.Empresa.Trim());
-                    comando.Parameters.AddWithValue("@Propietario", cliente.Propietario.Trim());
-                    comando.Parameters.AddWithValue("@Rfc", cliente.Rfc.Trim());
-                    comando.Parameters.AddWithValue("@Direccion", cliente.Direccion.Trim());
-                    comando.Parameters.AddWithValue("@Referencias", cliente.Referencias.Trim());
+                    comando.Parameters.AddWithValue("@Empresa", cliente.Empresa.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@Propietario", cliente.Propietario.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@Rfc", cliente.Rfc.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@Direccion", cliente.Direccion.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@Referencias", cliente.Referencias.ToUpper().Trim());
                     comando.Parameters.AddWithValue("@TelParticular", cliente.TelParticular.Trim());
                     comando.Parameters.AddWithValue("@Celular", cliente.Celular.Trim());
                     comando.Parameters.AddWithValue("@Correo", cliente.Correo.Trim());
@@ -188,6 +189,7 @@ namespace Alarmas.Core.BL.Clientes
                 }
             }
         }
+
         public async Task<bool> PostNuevoUsuario(ClienteUsuario usuario)
         {
             using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
@@ -266,6 +268,41 @@ namespace Alarmas.Core.BL.Clientes
                 }
             }
         }
+        public async Task<bool> DeleteUsuario(Guid id)
+        {
+            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
+            {
+                bool resultado = false;
+                try
+                {
+
+                    var comando = new SqlCommand();
+                    comando.Connection = Conexion;
+                    comando.CommandText = "Procesos.[AdministracionUsuariosCliente]";
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    /*Agregando los parametros*/
+                    comando.Parameters.AddWithValue("@Opcion", "Borrar");
+                    comando.Parameters.AddWithValue("@IdUsuarioCliente", id);
+                    Conexion.Open();
+                    var Lectura = await comando.ExecuteReaderAsync();
+                    if (Lectura.HasRows)
+                    {
+                        while (Lectura.Read())
+                        {
+                            resultado = Lectura.GetBoolean(0);
+                        }
+                    }
+                    Conexion.Close();
+                    return resultado;
+
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message.ToString();
+                    return resultado;
+                }
+            }
+        }
 
         public async Task<List<ClienteUsuario>> GetListaUsuarios(Guid idCliente)
         {
@@ -275,7 +312,6 @@ namespace Alarmas.Core.BL.Clientes
                 return consulta;
             }
         }
-
         public async Task<List<Instalacion>> GetListaInstalaciones(Guid idCliente)
         {
             using (var conexion = new CAlarmasDBContext())
@@ -283,8 +319,41 @@ namespace Alarmas.Core.BL.Clientes
                 var consulta = await(from e in conexion.Instalacions where e.IdCliente == idCliente select e).ToListAsync();
                 return consulta;
             }
+        }      
+        public async Task<bool> DeleteInstalacion(Guid id)
+        {
+            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
+            {
+                bool resultado = false;
+                try
+                {
+
+                    var comando = new SqlCommand();
+                    comando.Connection = Conexion;
+                    comando.CommandText = "Procesos.[AdministracionInstalacion]";
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    /*Agregando los parametros*/
+                    comando.Parameters.AddWithValue("@Opcion", "Borrar");
+                    comando.Parameters.AddWithValue("@IdInstalacion", id);
+                    Conexion.Open();
+                    var Lectura = await comando.ExecuteReaderAsync();
+                    if (Lectura.HasRows)
+                    {
+                        while (Lectura.Read())
+                        {
+                            resultado = Lectura.GetBoolean(0);
+                        }
+                    }
+                    Conexion.Close();
+                    return resultado;
+
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message.ToString();
+                    return resultado;
+                }
+            }
         }
-
-
     }
 }

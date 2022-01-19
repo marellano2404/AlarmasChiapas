@@ -20,7 +20,114 @@ namespace Alarmas.Core.BL.Eventos
                 return consulta;
             }
         }
+        public async Task<bool> PostClaveAlarma(CodigosAlarma codigoAlarma)
+        {
+            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
+            {
+                bool resultado = false;
+                try
+                {
 
+                    var comando = new SqlCommand();
+                    comando.Connection = Conexion;
+                    comando.CommandText = "Catalogos.[AdmonCodigosdeAlarmas]";
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    /*Agregando los parametros*/
+                    comando.Parameters.AddWithValue("@Opcion", "Agregar");
+                    comando.Parameters.AddWithValue("@Clave", codigoAlarma.Clave.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@Descripcion", codigoAlarma.Descripcion.ToUpper().Trim());
+                    Conexion.Open();
+                    var Lectura = await comando.ExecuteReaderAsync();
+                    if (Lectura.HasRows)
+                    {
+                        while (Lectura.Read())
+                        {
+                            resultado = Lectura.GetBoolean(0);
+                        }
+                    }
+                    Conexion.Close();
+                    return resultado;
+
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message.ToString();
+                    return resultado;
+                }
+            }
+        }
+        public async Task<bool> PutClaveAlarma(CodigosAlarma codigoAlarma)
+        {
+            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
+            {
+                bool resultado = false;
+                try
+                {
+
+                    var comando = new SqlCommand();
+                    comando.Connection = Conexion;
+                    comando.CommandText = "Catalogos.[AdmonCodigosdeAlarmas]";
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    /*Agregando los parametros*/
+                    comando.Parameters.AddWithValue("@Opcion", "Actualizar");
+                    comando.Parameters.AddWithValue("@Clave", codigoAlarma.Clave.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@Descripcion", codigoAlarma.Descripcion.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@IdCodigo", codigoAlarma.Id);
+                    Conexion.Open();
+                    var Lectura = await comando.ExecuteReaderAsync();
+                    if (Lectura.HasRows)
+                    {
+                        while (Lectura.Read())
+                        {
+                            resultado = Lectura.GetBoolean(0);
+                        }
+                    }
+                    Conexion.Close();
+                    return resultado;
+
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message.ToString();
+                    return resultado;
+                }
+            }
+        }
+        public async Task<bool> DelClaveAlarma(int id)
+        {
+            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
+            {
+                bool resultado = false;
+                try
+                {
+
+                    var comando = new SqlCommand();
+                    comando.Connection = Conexion;
+                    comando.CommandText = "Catalogos.[AdmonCodigosdeAlarmas]";
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    /*Agregando los parametros*/
+                    comando.Parameters.AddWithValue("@Opcion", "Borrar");
+                    comando.Parameters.AddWithValue("@IdCodigo", id);
+                    Conexion.Open();
+                    var Lectura = await comando.ExecuteReaderAsync();
+                    if (Lectura.HasRows)
+                    {
+                        while (Lectura.Read())
+                        {
+                            resultado = Lectura.GetBoolean(0);
+                        }
+                    }
+                    Conexion.Close();
+                    return resultado;
+
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message.ToString();
+                    return resultado;
+                }
+            }
+        }
         public async Task<List<AlarmasEmitidasVM>> GetListaEventosCte(Guid idCliente)
         {
             using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
@@ -67,7 +174,6 @@ namespace Alarmas.Core.BL.Eventos
                 }
             }
         }
-
         public async Task<bool> PostHistorialAlarmaCte(HistorialAlarma historialAlarma)
         {
             using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
@@ -88,6 +194,7 @@ namespace Alarmas.Core.BL.Eventos
                     comando.Parameters.AddWithValue("@IdClaveAlarma", historialAlarma.IdClaveAlarma);
                     comando.Parameters.AddWithValue("@IdCliente", historialAlarma.IdCliente);
                     comando.Parameters.AddWithValue("@IdUsuario", historialAlarma.IdUsuario);
+                    comando.Parameters.AddWithValue("@IdZona", historialAlarma.IdZonaInstalacion);
                     Conexion.Open();
                     var Lectura = await comando.ExecuteReaderAsync();
                     if (Lectura.HasRows)
@@ -108,7 +215,6 @@ namespace Alarmas.Core.BL.Eventos
                 }
             }
         }
-
         public async Task<bool> PutHistorialAlarmaCte(HistorialAlarma historialAlarma)
         {
             using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
@@ -130,6 +236,7 @@ namespace Alarmas.Core.BL.Eventos
                     comando.Parameters.AddWithValue("@IdUsuario", historialAlarma.IdUsuario);
                     comando.Parameters.AddWithValue("@Id", historialAlarma.Id);
                     comando.Parameters.AddWithValue("@IdCliente", historialAlarma.IdCliente);
+                    comando.Parameters.AddWithValue("@IdZona", historialAlarma.IdZonaInstalacion);
                     Conexion.Open();
                     var Lectura = await comando.ExecuteReaderAsync();
                     if (Lectura.HasRows)
@@ -185,7 +292,6 @@ namespace Alarmas.Core.BL.Eventos
                 }
             }
         }
-
         public async Task<HistorialAlarma> GetHistoriaAlarma(Guid idhistoriaAlarma)
         {
             using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
@@ -214,6 +320,7 @@ namespace Alarmas.Core.BL.Eventos
                             resultado.Descripcion = Lectura.GetString(4);
                             resultado.Hora = Lectura.GetString(5);
                             resultado.Id = Lectura.GetGuid(6);
+                            resultado.IdZonaInstalacion = Lectura.GetGuid(7);
                         }
                     }
                     Conexion.Close();
@@ -227,5 +334,7 @@ namespace Alarmas.Core.BL.Eventos
                 }
             }
         }
+
+     
     }
 }

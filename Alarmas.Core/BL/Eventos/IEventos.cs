@@ -11,11 +11,15 @@ namespace Alarmas.Core.BL.Eventos
     public interface IEventos
     {
         Task<List<CodigosAlarma>> GetCodigoAlarmas();
+        Task<bool> PutClaveAlarma(CodigosAlarma codigoAlarma);
+        Task<bool> DelClaveAlarma(int id);
+        Task<bool> PostClaveAlarma(CodigosAlarma codigoAlarma);
+
         Task<List<AlarmasEmitidasVM>> GetListaEventosCte(Guid idCliente);
         Task<bool> PostHistorialAlarmaCte(HistorialAlarma historialAlarma);
         Task<bool> PutHistorialAlarmaCte(HistorialAlarma historialAlarma);
-
         Task<bool> DelHistorialAlarmaCte(Guid IdHistorialA);
         Task<HistorialAlarma> GetHistoriaAlarma(Guid idhistoriaAlarma);
+        
     }
 }

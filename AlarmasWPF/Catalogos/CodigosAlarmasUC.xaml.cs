@@ -76,6 +76,8 @@ namespace AlarmasWPF.Catalogos
 
         private void CargarClavesdeAlarma(List<CodigosAlarmaVM> lista)
         {
+            DatosStackPanel.Children.Clear();
+            GridFormCodigos.Visibility = Visibility.Collapsed;
             foreach (var items in lista)
             {
                 DatosCodigosAlarmaUC control = new DatosCodigosAlarmaUC();
@@ -84,13 +86,14 @@ namespace AlarmasWPF.Catalogos
                 control.EditarClaveOnclick += (s, a) =>
                 {
                     CodigoAlarmaEntities = items;
-                    GridFormCodigos.Visibility = Visibility.Visible;
                     btnActualizarInstalacion.Visibility = Visibility.Visible;
                     btnAgregarInstalacion.Visibility = Visibility.Collapsed;
+                    GridFormCodigos.Visibility = Visibility.Visible;
                 };
                 control.EliminarClaveOnClick += (s, a) =>
                 {
                     EliminarClaveAlarma(items.Id);
+                    GridFormCodigos.Visibility = Visibility.Collapsed;
                 };
             }
         }
@@ -102,15 +105,16 @@ namespace AlarmasWPF.Catalogos
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri("https://localhost:44310/");
-                    var response = await client.DeleteAsync("api/Clientes/DeleteCliente/" + Id);
+                    var response = await client.DeleteAsync("api/Eventos/DelClaveAlarma/" + Id);
                     if (response.IsSuccessStatusCode)
                     {
-                        //CargasClientes();
-                        MostrarMensaje("El cliente se elimino correctamente");
+                        MostrarMensaje("La Clave se elimino correctamente");
+                        var lista = ObtenerListaClaves();
+                        CargarClavesdeAlarma(lista);
                     }
                     else
                     {
-                        MostrarMensaje("No se pudo eliminar el cliente.");
+                        MostrarMensaje("No se pudo eliminar el codigo de alarma, verifique registros.");
                     }
                 }
             }
@@ -128,9 +132,9 @@ namespace AlarmasWPF.Catalogos
         {
             try
             {
-                if (string.IsNullOrEmpty(CodigoAlarmaEntities.Descripcion))
+                if (string.IsNullOrEmpty(CodigoAlarmaEntities.Descripcion) || CodigoAlarmaEntities.Descripcion is null)
                 {
-                    MostrarMensaje("Campo Vacio!!");
+                    MostrarMensaje("Existen un Campo Vacio!!");
                 }
                 else
                 {
@@ -144,7 +148,7 @@ namespace AlarmasWPF.Catalogos
                         var json = Newtonsoft.Json.JsonConvert.SerializeObject(CodigoAlarmaEntities);
                         var data = new System.Net.Http.StringContent(json, Encoding.UTF8, "application/json");
 
-                        result = await client.PostAsync("api/Clientes/PostNuevaInstalacion", data);
+                        result = await client.PostAsync("api/Eventos/PostClaveAlarma", data);
 
                         var respuesta = await result.Content.ReadAsStringAsync();
                         if (respuesta == "true") //si el resultado de exito es true
@@ -186,9 +190,9 @@ namespace AlarmasWPF.Catalogos
         {
             try
             {
-                if (string.IsNullOrEmpty(CodigoAlarmaEntities.Descripcion))
+                if (string.IsNullOrEmpty(CodigoAlarmaEntities.Descripcion) || CodigoAlarmaEntities.Descripcion is null)
                 {
-                    MostrarMensaje("Campo Vacio!!");
+                    MostrarMensaje("Existen un Campo Vacio!!");
                 }
                 else
                 {
@@ -202,7 +206,7 @@ namespace AlarmasWPF.Catalogos
                         var json = Newtonsoft.Json.JsonConvert.SerializeObject(CodigoAlarmaEntities);
                         var data = new System.Net.Http.StringContent(json, Encoding.UTF8, "application/json");
 
-                        result = await client.PostAsync("api/Clientes/PostNuevaInstalacion", data);
+                        result = await client.PutAsync("api/Eventos/PutClaveAlarma", data);
 
                         var respuesta = await result.Content.ReadAsStringAsync();
                         if (respuesta == "true") //si el resultado de exito es true

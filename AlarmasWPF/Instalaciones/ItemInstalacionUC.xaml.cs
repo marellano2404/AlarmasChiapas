@@ -33,10 +33,14 @@ namespace AlarmasWPF.Instalaciones
                 DataContext = value;
             }
         }
-
+        public event EventHandler ClickEliminarInstalacion;
         public ItemInstalacionUC()
         {
             InitializeComponent();
+        }
+        private void EliminarIns_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ClickEliminarInstalacion?.Invoke(this, new EventArgs());
         }
     }
 }

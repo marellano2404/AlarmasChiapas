@@ -20,5 +20,6 @@ namespace Alarmas.Core.Models
         [Column(TypeName = "datetime")]
         public DateTime? Fecha { get; set; }
         public string Hora { get; set; }
+        public Guid IdZonaInstalacion { get; set; }
     }
 }

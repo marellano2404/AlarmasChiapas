@@ -26,6 +26,7 @@ namespace Alarmas.API.Controllers
             _EventosService = ServicesEventos;
         }
         #endregion
+
         #region M E T O D O S
         [HttpGet("GetListaCodigosAlarmas")]
         public async Task<IActionResult> GetListaCodigosAlarmas()
@@ -48,6 +49,59 @@ namespace Alarmas.API.Controllers
                 return BadRequest("La Conexión no ha sido encontrado!");
             }
         }
+        [HttpPost("PostClaveAlarma")]
+        public async Task<IActionResult> PostClaveAlarma([FromBody] CodigosAlarma CodigoAlarma)
+        {
+            try
+            {
+                var Result = await _EventosService.PostClaveAlarma(CodigoAlarma);
+                return Ok(Result);
+
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+        [HttpDelete("DelClaveAlarma/{Id}")]
+        public async Task<IActionResult> DelClaveAlarma(int Id)
+        {
+            try
+            {
+                var Result = await _EventosService.DelClaveAlarma(Id);
+                if (Result == true)
+                {
+                    return Ok(Result);
+                }
+                else
+                {
+                    return Conflict(Result);
+                }
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+        [HttpPut("PutClaveAlarma")]
+        public async Task<IActionResult> PutClaveAlarma([FromBody] CodigosAlarma CodigoAlarma)
+        {
+            try
+            {
+                var Result = await _EventosService.PutClaveAlarma(CodigoAlarma);
+                return Ok(Result);
+
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+
+
+
         [HttpGet("GetListaEventosCte/{IdCliente}")]
         public async Task<IActionResult> GetListaEventosCte(Guid IdCliente)
         {

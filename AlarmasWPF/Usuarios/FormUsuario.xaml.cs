@@ -76,7 +76,7 @@ namespace AlarmasWPF.Usuarios
                     }
                     else
                     {
-                        result = await client.PutAsync("api/Clientes/PostNuevoUsuario", data);
+                        result = await client.PutAsync("api/Clientes/PutNuevoUsuario", data);
                     }
                     var respuesta = await result.Content.ReadAsStringAsync();
                     if (respuesta == "true") //si el resultado de exito es true

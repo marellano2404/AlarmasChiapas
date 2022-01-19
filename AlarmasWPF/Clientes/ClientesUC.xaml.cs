@@ -52,6 +52,7 @@ namespace AlarmasWPF.Clientes
             modal.cliente = entidad;
             modal.ClickAgregar += (s, e) =>
             {
+                DatosStackPanel.Children.Clear();
                 var response = ObtenerClientes();
                 CargasClientes(response);
                 //CargasClientes();
@@ -76,6 +77,8 @@ namespace AlarmasWPF.Clientes
                 control.EliminarClienteOnClick += (s, a) =>
                 {
                     EliminarCliente(item.Id);
+                    var response = ObtenerClientes();
+                    CargasClientes(response);
                 };
                 control.ModificarUsuarioOnClick += (s, a) =>
                 {
@@ -101,6 +104,7 @@ namespace AlarmasWPF.Clientes
                         CargasClientes(response);
                     };
 
+
                     GridListadoClientes.Visibility = Visibility.Collapsed;
                     GridListadoUsuarios.Visibility = Visibility.Visible;
                     GridListadoUsuarios.Children.Clear();
@@ -124,20 +128,6 @@ namespace AlarmasWPF.Clientes
                         var response = ObtenerClientes();
                         CargasClientes(response);
                     };
-                    //vistaInstalaciones.AgregarOnClick += (s, a) =>
-                    //{
-                    //    var entidad = new InstalacionVM();
-                    //    vistaInstalaciones.EntidadInstalacion = entidad;
-                    //    vistaInstalaciones.EntidadInstalacion.IdCliente = item.Id;
-                    //    vistaInstalaciones.GridDatos.Visibility = Visibility.Collapsed;
-                    //    vistaInstalaciones.GridForm.Visibility = Visibility.Visible;
-
-                    //    //modal.ClickAgregarUser += (s, e) =>
-                    //    //{
-                    //    //    modal.Close();
-                    //    //};
-                    //    //modal.ShowDialog();
-                    //};
                     vistaInstalaciones.ClickAgregarInstalacion += (s, a) =>
                     {
                         vistaInstalaciones.GridDatos.Visibility = Visibility.Visible;
@@ -180,7 +170,8 @@ namespace AlarmasWPF.Clientes
                     var response = await client.DeleteAsync("api/Clientes/DeleteCliente/" + Id);
                     if (response.IsSuccessStatusCode)
                     {
-                        //CargasClientes();
+                        var respons = ObtenerClientes();
+                        CargasClientes(respons);
                         MostrarMensaje("El cliente se elimino correctamente");
                     }
                     else
