@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace AlarmasWPF.Recursos
 {
-    class ConfigServer
+    public static class ConfigServer
     {
+        //public const string UrlServer = "http://localhost/localApi/";
+        public const string UrlServer = "https://localhost:44310/";
     }
 
 }

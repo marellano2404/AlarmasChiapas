@@ -13,7 +13,8 @@ namespace Alarmas.Core.BL.Clientes
         Task<List<Cliente>> BuscarCliente(string valorBusqueda);
         Task<bool> DeleteCliente(Guid idcliente);
 
-        Task<bool> PostNuevoUsuario(ClienteUsuario usuario);   
+        Task<bool> PostNuevoUsuario(ClienteUsuario usuario);
+        Task<bool> PutUsuario(ClienteUsuario usuario);
         Task<List<ClienteUsuario>> GetListaUsuarios(Guid idCliente);
         Task<bool> DeleteUsuario(Guid id);
 

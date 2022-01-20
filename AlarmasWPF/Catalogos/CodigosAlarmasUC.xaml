@@ -36,7 +36,6 @@
             <Grid Grid.Row="2" Grid.ColumnSpan="3" Margin="2" x:Name="GridDatos">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="18*"/>
-                    <ColumnDefinition Width="10*"/>
                     <ColumnDefinition Width="15*"/>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="8*"/>
@@ -79,13 +78,12 @@
                         <SolidColorBrush Color="{DynamicResource ColorMenu}"/>
                     </Border.Background>
                 </Border>                
-                <TextBlock Grid.Row="0" Margin="5,0,0,0" FontSize="13" Text="IdClave" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
-                <TextBlock Grid.Row="0" FontSize="15" Text="Clave" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
-                <TextBlock Grid.Row="0" FontSize="15" Text="Descripción" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
-                <TextBlock Grid.Row="0" FontSize="15" Text="Acciónes" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
+                <TextBlock Grid.Row="0" FontSize="15" Text="Clave" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
+                <TextBlock Grid.Row="0" FontSize="15" Text="Descripción" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
+                <TextBlock Grid.Row="0" FontSize="15" Text="Acciónes" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
 
 
-                <Grid Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="20" Grid.Column="1">
+                <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="20" Grid.Column="1">
                     <ScrollViewer  BorderBrush="Black" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                         <StackPanel x:Name="DatosStackPanel" Margin="0"/>
                     </ScrollViewer>

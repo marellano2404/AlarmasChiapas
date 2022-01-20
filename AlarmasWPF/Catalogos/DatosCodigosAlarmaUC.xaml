@@ -8,17 +8,15 @@
              mc:Ignorable="d" Height="35" Width="890">
     <Border BorderThickness="0,0,0,1" BorderBrush="#FFE7AA">
         <Grid Name="lineaGridClaves" >
-            <Grid.ColumnDefinitions>                
-                <ColumnDefinition Width="10*"/>
+            <Grid.ColumnDefinitions>             
                 <ColumnDefinition Width="15*"/>
                 <ColumnDefinition Width="35*"/>
                 <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Name="IdTextBox" Grid.Column="0" FontSize="17" Foreground="White" TextAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding Id}" />  
-            <TextBlock Name="ClaveATextBox" FontSize="15" Grid.Column="1" TextAlignment="Left"  Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Clave}"  />
-            <TextBlock Name="DescriAlaTextBox" FontSize="17"  Grid.Column="2" TextAlignment="Left" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" Text="{Binding Descripcion}"/>
-            <StackPanel  Orientation="Horizontal" Grid.Column="3"  HorizontalAlignment="Left" >                        
+            <TextBlock Name="ClaveATextBox" FontSize="15" Grid.Column="0" TextAlignment="Left"  Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Clave}"  />
+            <TextBlock Name="DescriAlaTextBox" FontSize="17"  Grid.Column="1" TextAlignment="Left" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" Text="{Binding Descripcion}"/>
+            <StackPanel  Orientation="Horizontal" Grid.Column="2"  HorizontalAlignment="Left" >                        
                 <Image x:Name="ModificarImage" Source="/Recursos/Modificar.png" Margin="2" Cursor="Hand" MouseLeftButtonDown="ModificarCodigo_MouseLeftButtonDown" />
                 <Image x:Name="EliminarImage" Source="/Recursos/Eliminar.png" Margin="2" Cursor="Hand" PreviewMouseLeftButtonDown="EliminarCodigo_PreviewMouseLeftButtonDown" />
               

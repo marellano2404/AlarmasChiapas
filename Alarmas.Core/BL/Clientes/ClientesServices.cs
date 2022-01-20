@@ -78,6 +78,7 @@ namespace Alarmas.Core.BL.Clientes
                     /*Agregando los parametros*/
                     comando.Parameters.AddWithValue("@Opcion", "Actualizar");
                     comando.Parameters.AddWithValue("@IdCliente", cliente.Id);
+                    comando.Parameters.AddWithValue("@NumCliente", cliente.NumCliente);
                     comando.Parameters.AddWithValue("@Empresa", cliente.Empresa.ToUpper().Trim());
                     comando.Parameters.AddWithValue("@Propietario", cliente.Propietario.ToUpper().Trim());
                     comando.Parameters.AddWithValue("@Rfc", cliente.Rfc.ToUpper().Trim());
@@ -86,6 +87,7 @@ namespace Alarmas.Core.BL.Clientes
                     comando.Parameters.AddWithValue("@TelParticular", cliente.TelParticular.Trim());
                     comando.Parameters.AddWithValue("@Celular", cliente.Celular.Trim());
                     comando.Parameters.AddWithValue("@Correo", cliente.Correo.Trim());
+                    comando.Parameters.AddWithValue("@FechaAlta", cliente.FechaAlta);
                     Conexion.Open();
                     var Lectura = await comando.ExecuteReaderAsync();
                     if (Lectura.HasRows)
@@ -206,10 +208,10 @@ namespace Alarmas.Core.BL.Clientes
                     comando.Parameters.AddWithValue("@Opcion", "Agregar");
                     comando.Parameters.AddWithValue("@Contraseña", usuario.Contraseña.Trim());
                     comando.Parameters.AddWithValue("@IdCliente", usuario.IdCliente);
-                    comando.Parameters.AddWithValue("@NombreCompleto", usuario.NombreCompleto.Trim());
-                    comando.Parameters.AddWithValue("@Puesto", usuario.Puesto.Trim());
+                    comando.Parameters.AddWithValue("@NombreCompleto", usuario.NombreCompleto.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@Puesto", usuario.Puesto.ToUpper().Trim());
                     comando.Parameters.AddWithValue("@NumUsuario", usuario.NumUsuario);
-                    comando.Parameters.AddWithValue("@Usuario", usuario.Usuario.Trim());
+                    comando.Parameters.AddWithValue("@Usuario", usuario.Usuario.ToUpper().Trim());
                     Conexion.Open();
                     var Lectura = await comando.ExecuteReaderAsync();
                     if (Lectura.HasRows)
@@ -230,6 +232,92 @@ namespace Alarmas.Core.BL.Clientes
                 }
             }
         }
+        public async Task<bool> PutUsuario(ClienteUsuario usuario)
+        {
+            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
+            {
+                bool resultado = false;
+                try
+                {
+
+                    var comando = new SqlCommand();
+                    comando.Connection = Conexion;
+                    comando.CommandText = "Procesos.[AdministracionUsuariosCliente]";
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    /*Agregando los parametros*/
+                    comando.Parameters.AddWithValue("@Opcion", "Actualizar");
+                    comando.Parameters.AddWithValue("@Contraseña", usuario.Contraseña.Trim());
+                    comando.Parameters.AddWithValue("@IdCliente", usuario.IdCliente);
+                    comando.Parameters.AddWithValue("@NombreCompleto", usuario.NombreCompleto.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@Puesto", usuario.Puesto.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@NumUsuario", usuario.NumUsuario); 
+                    comando.Parameters.AddWithValue("@Usuario", usuario.Usuario.ToUpper().Trim());
+                    comando.Parameters.AddWithValue("@IdUsuarioCliente", usuario.Id);
+                    Conexion.Open();
+                    var Lectura = await comando.ExecuteReaderAsync();
+                    if (Lectura.HasRows)
+                    {
+                        while (Lectura.Read())
+                        {
+                            resultado = Lectura.GetBoolean(0);
+                        }
+                    }
+                    Conexion.Close();
+                    return resultado;
+
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message.ToString();
+                    return resultado;
+                }
+            }
+        }
+        
+        public async Task<bool> DeleteUsuario(Guid id)
+        {
+            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
+            {
+                bool resultado = false;
+                try
+                {
+
+                    var comando = new SqlCommand();
+                    comando.Connection = Conexion;
+                    comando.CommandText = "Procesos.[AdministracionUsuariosCliente]";
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    /*Agregando los parametros*/
+                    comando.Parameters.AddWithValue("@Opcion", "Borrar");
+                    comando.Parameters.AddWithValue("@IdUsuarioCliente", id);
+                    Conexion.Open();
+                    var Lectura = await comando.ExecuteReaderAsync();
+                    if (Lectura.HasRows)
+                    {
+                        while (Lectura.Read())
+                        {
+                            resultado = Lectura.GetBoolean(0);
+                        }
+                    }
+                    Conexion.Close();
+                    return resultado;
+
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message.ToString();
+                    return resultado;
+                }
+            }
+        }
+        public async Task<List<ClienteUsuario>> GetListaUsuarios(Guid idCliente)
+        {
+            using (var conexion = new CAlarmasDBContext())
+            {
+                var consulta = await (from e in conexion.ClienteUsuarios where e.IdCliente == idCliente select e).ToListAsync();
+                return consulta;
+            }
+        }
+
         public async Task<bool> PostNuevaInstalacion(Instalacion instalacion)
         {
             using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
@@ -266,50 +354,6 @@ namespace Alarmas.Core.BL.Clientes
                     var m = e.Message.ToString();
                     return resultado;
                 }
-            }
-        }
-        public async Task<bool> DeleteUsuario(Guid id)
-        {
-            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
-            {
-                bool resultado = false;
-                try
-                {
-
-                    var comando = new SqlCommand();
-                    comando.Connection = Conexion;
-                    comando.CommandText = "Procesos.[AdministracionUsuariosCliente]";
-                    comando.CommandType = System.Data.CommandType.StoredProcedure;
-                    /*Agregando los parametros*/
-                    comando.Parameters.AddWithValue("@Opcion", "Borrar");
-                    comando.Parameters.AddWithValue("@IdUsuarioCliente", id);
-                    Conexion.Open();
-                    var Lectura = await comando.ExecuteReaderAsync();
-                    if (Lectura.HasRows)
-                    {
-                        while (Lectura.Read())
-                        {
-                            resultado = Lectura.GetBoolean(0);
-                        }
-                    }
-                    Conexion.Close();
-                    return resultado;
-
-                }
-                catch (Exception e)
-                {
-                    var m = e.Message.ToString();
-                    return resultado;
-                }
-            }
-        }
-
-        public async Task<List<ClienteUsuario>> GetListaUsuarios(Guid idCliente)
-        {
-            using (var conexion = new CAlarmasDBContext())
-            {
-                var consulta = await (from e in conexion.ClienteUsuarios where e.IdCliente == idCliente select e).ToListAsync();
-                return consulta;
             }
         }
         public async Task<List<Instalacion>> GetListaInstalaciones(Guid idCliente)

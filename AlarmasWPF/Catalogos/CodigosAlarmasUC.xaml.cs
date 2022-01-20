@@ -1,5 +1,6 @@
 ﻿using AlarmasWPF.ControlesPersonalizados;
 using AlarmasWPF.Core.ViewModels;
+using AlarmasWPF.Recursos;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,7 @@ namespace AlarmasWPF.Catalogos
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     client.DefaultRequestHeaders.Accept.Add(
                          new MediaTypeWithQualityHeaderValue("application/json"));
                     var response = client.GetStringAsync("api/Eventos/GetListaCodigosAlarmas").Result;
@@ -104,7 +105,7 @@ namespace AlarmasWPF.Catalogos
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     var response = await client.DeleteAsync("api/Eventos/DelClaveAlarma/" + Id);
                     if (response.IsSuccessStatusCode)
                     {
@@ -141,7 +142,7 @@ namespace AlarmasWPF.Catalogos
                     var result = new HttpResponseMessage();
                     using (var client = new HttpClient())
                     {
-                        client.BaseAddress = new Uri("https://localhost:44310/");
+                        client.BaseAddress = new Uri(ConfigServer.UrlServer);
                         client.DefaultRequestHeaders.Accept.Add(
                              new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -199,7 +200,7 @@ namespace AlarmasWPF.Catalogos
                     var result = new HttpResponseMessage();
                     using (var client = new HttpClient())
                     {
-                        client.BaseAddress = new Uri("https://localhost:44310/");
+                        client.BaseAddress = new Uri(ConfigServer.UrlServer);
                         client.DefaultRequestHeaders.Accept.Add(
                              new MediaTypeWithQualityHeaderValue("application/json"));
 

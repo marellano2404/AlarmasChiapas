@@ -1,6 +1,7 @@
 ﻿using AlarmasWPF.Clientes;
 using AlarmasWPF.ControlesPersonalizados;
 using AlarmasWPF.Core.ViewModels;
+using AlarmasWPF.Recursos;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,18 @@ namespace AlarmasWPF.Usuarios
                     var lista = ObtenerUsuariosCliente(items.IdCliente);
                     CargarUsuarioCliente(lista);
                 };
+                control.ModificarOnClick += (s, a) =>
+                {
+                    FormUsuario modal = new FormUsuario(false);
+                    var entidad = items;
+                    modal.Entidadusuario = entidad;
+                    
+                    modal.ClickCancelarUser += (s, a) =>
+                    {
+                        modal.Close();
+                    };
+                    modal.ShowDialog();
+                };
             }
         }
 
@@ -63,7 +76,8 @@ namespace AlarmasWPF.Usuarios
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     var response = await client.DeleteAsync("api/Clientes/DeleteUsuario/" + Id);
                     if (response.IsSuccessStatusCode)
                     {
@@ -99,7 +113,7 @@ namespace AlarmasWPF.Usuarios
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     client.DefaultRequestHeaders.Accept.Add(
                          new MediaTypeWithQualityHeaderValue("application/json"));
                     var response = client.GetStringAsync("api/Clientes/GetListaUsuarios/" + IdCliente).Result;

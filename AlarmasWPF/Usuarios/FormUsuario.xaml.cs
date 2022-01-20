@@ -1,5 +1,6 @@
 ﻿using AlarmasWPF.ControlesPersonalizados;
 using AlarmasWPF.Core.ViewModels;
+using AlarmasWPF.Recursos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,7 +64,7 @@ namespace AlarmasWPF.Usuarios
                 var result = new HttpResponseMessage();
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     client.DefaultRequestHeaders.Accept.Add(
                          new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -76,7 +77,7 @@ namespace AlarmasWPF.Usuarios
                     }
                     else
                     {
-                        result = await client.PutAsync("api/Clientes/PutNuevoUsuario", data);
+                        result = await client.PutAsync("api/Clientes/PutUsuario", data);
                     }
                     var respuesta = await result.Content.ReadAsStringAsync();
                     if (respuesta == "true") //si el resultado de exito es true
