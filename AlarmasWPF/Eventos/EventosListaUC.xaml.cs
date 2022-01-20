@@ -1,6 +1,7 @@
 ﻿using AlarmasWPF.Clientes;
 using AlarmasWPF.ControlesPersonalizados;
 using AlarmasWPF.Core.ViewModels;
+using AlarmasWPF.Recursos;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -87,7 +88,7 @@ namespace AlarmasWPF.Eventos
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     client.DefaultRequestHeaders.Accept.Add(
                          new MediaTypeWithQualityHeaderValue("application/json"));
                     var response = client.GetStringAsync("api/Eventos/GetListaEventosCte/" + IdCliente).Result;
@@ -107,7 +108,7 @@ namespace AlarmasWPF.Eventos
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     client.DefaultRequestHeaders.Accept.Add(
                          new MediaTypeWithQualityHeaderValue("application/json"));
                     var response = client.GetStringAsync("api/Clientes/ListarAlarmas/" + IdCliente).Result;
@@ -176,7 +177,7 @@ namespace AlarmasWPF.Eventos
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     client.DefaultRequestHeaders.Accept.Add(
                          new MediaTypeWithQualityHeaderValue("application/json"));
                     var response = client.GetStringAsync("api/Clientes/GetListaInstalaciones/" + id).Result;
@@ -196,7 +197,7 @@ namespace AlarmasWPF.Eventos
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     client.DefaultRequestHeaders.Accept.Add(
                          new MediaTypeWithQualityHeaderValue("application/json"));
                     var response = client.GetStringAsync("api/Clientes/GetListaUsuarios/" + IdCliente).Result;
@@ -221,7 +222,7 @@ namespace AlarmasWPF.Eventos
                 var result = new HttpResponseMessage();
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     var response = await client.DeleteAsync("api/Eventos/DelHistorialAlarmaCte/" + Id);
                     if (response.IsSuccessStatusCode)
                     {
@@ -246,7 +247,7 @@ namespace AlarmasWPF.Eventos
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     client.DefaultRequestHeaders.Accept.Add(
                          new MediaTypeWithQualityHeaderValue("application/json"));
                     var response = client.GetStringAsync("api/Eventos/GetListaCodigosAlarmas").Result;

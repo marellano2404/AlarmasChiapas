@@ -155,6 +155,21 @@ namespace Alarmas.API.Controllers
                 return BadRequest("La Conexión no ha sido encontrado!");
             }
         }
+        [HttpPut("PutUsuario")]
+        public async Task<IActionResult> PutUsuario([FromBody] ClienteUsuario usuario)
+        {
+            try
+            {
+                var Result = await _ClientesService.PutUsuario(usuario);
+                return Ok(Result);
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+        //DeleteUsuario
         //DeleteUsuario
         [HttpDelete("DeleteUsuario/{Id}")]
         public async Task<IActionResult> DeleteUsuario(Guid Id)

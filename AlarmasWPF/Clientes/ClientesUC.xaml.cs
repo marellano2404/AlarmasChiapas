@@ -19,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AlarmasWPF.Instalaciones;
+using AlarmasWPF.Recursos;
 
 namespace AlarmasWPF.Clientes
 {
@@ -147,7 +148,7 @@ namespace AlarmasWPF.Clientes
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     client.DefaultRequestHeaders.Accept.Add(
                          new MediaTypeWithQualityHeaderValue("application/json"));
                     var response = client.GetStringAsync("api/Clientes/GetListaClientes").Result;
@@ -166,7 +167,7 @@ namespace AlarmasWPF.Clientes
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44310/");
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
                     var response = await client.DeleteAsync("api/Clientes/DeleteCliente/" + Id);
                     if (response.IsSuccessStatusCode)
                     {
@@ -202,7 +203,7 @@ namespace AlarmasWPF.Clientes
                 var _clientes = new List<Cliente>();
                 using (var client = new HttpClient())
                 {                    
-                client.BaseAddress = new Uri("https://localhost:44310/");
+                client.BaseAddress = new Uri(ConfigServer.UrlServer);
                 client.DefaultRequestHeaders.Accept.Add(
                         new MediaTypeWithQualityHeaderValue("application/json"));
                 var response = client.GetStringAsync("api/Clientes/BuscarCliente/" + TextBoxBuscar.Text.Trim()).Result;

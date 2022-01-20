@@ -35,7 +35,7 @@
                     <TextBlock Text="Cancelar" Foreground="White"></TextBlock>
                 </Button>
                 <Button x:Name="btnAgregar" Width="150" Height="30" Style="{StaticResource ButtonAction}" Click="btnAgregar_MouseLeftButtonDown" Cursor="Hand" Margin="0,-5">
-                    <TextBlock Text="Agregar Usuario" Foreground="White"></TextBlock>
+                    <TextBlock Text="Guardar" Foreground="White"></TextBlock>
                 </Button>
             </StackPanel>
 
