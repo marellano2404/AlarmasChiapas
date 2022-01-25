@@ -86,8 +86,4 @@
     </Page>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Reportes\" />
-  </ItemGroup>
-
 </Project>
