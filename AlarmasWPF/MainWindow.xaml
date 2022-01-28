@@ -37,7 +37,7 @@
                         <Border Width="200" Height="40" Background="#bf9780" MouseLeftButtonDown="Codigos_MouseLeftButtonDown"  Margin="0,20,0,0" CornerRadius="13" Cursor="Hand" >
                             <TextBlock Margin="35,0,9,4" Foreground="White" FontSize="30">Catalogos</TextBlock>
                         </Border>
-                        <Border Width="200" Height="40" Background="#fdfd96"  Margin="0,20,0,0"  CornerRadius="13" Cursor="Hand" >
+                        <Border Width="200" Height="40" Background="#fdfd96" MouseLeftButtonDown="reportes_MouseLeftButtonDown"  Margin="0,20,0,0"  CornerRadius="13" Cursor="Hand" >
                             <TextBlock Margin="35,0,9,4" FontSize="30">Reportes</TextBlock>
                         </Border>
                         <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" Width="200" Height="40" Background="#bdbfbf" Margin="0,20,0,0"  CornerRadius="13">

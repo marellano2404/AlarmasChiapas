@@ -3,9 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d" Height="360" Width="685" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize" 
         WindowStyle="None">
+    <tk:BusyIndicator x:Name="BusyIndicator" BusyContent="Cargando" DisplayAfter="0" IsBusy="False">
     <Border Margin="10" BorderThickness="1,1,1,1" CornerRadius="10">
+        
         <Border.BorderBrush>
             <SolidColorBrush Color="{DynamicResource ColorSubtitulo}"/>
         </Border.BorderBrush>
@@ -118,6 +121,7 @@
 
                 <TextBlock Text="Hora : Minuto" Grid.Row="0" Grid.Column="1"  Margin="3"/>
                 <TextBox  x:Name="HoraTxt" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Hora}" />
+                    <tk:MaskedTextBox></tk:MaskedTextBox>
             </Grid>         
             
             <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -131,4 +135,5 @@
                        
         </Grid>
     </Border>
+    </tk:BusyIndicator>
 </Window>

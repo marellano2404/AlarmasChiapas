@@ -74,5 +74,17 @@ namespace AlarmasWPF
         {
             App.Current.Shutdown();
         }
+
+        private void reportes_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var ReportesuC = new Reportes.ReportesUC();
+
+            MenuGrid.Visibility = Visibility.Collapsed;
+
+            DetallesGrid.Visibility = Visibility.Visible;
+            DetallesGrid.Children.Clear();
+            DetallesGrid.Children.Add(ReportesuC);
+           
+        }
     }
 }
