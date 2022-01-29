@@ -38,10 +38,15 @@
 
   <ItemGroup>
     <PackageReference Include="GemBox.Pdf" Version="17.0.1087" />
-    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.15" />
-    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.15" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>bin\Debug\net5.0-windows\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -83,6 +88,10 @@
     <Resource Include="Clientes\Usuario.png" />
     <Resource Include="fondo3.png" />
     <Resource Include="Recursos\Buscar.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
 
 </Project>

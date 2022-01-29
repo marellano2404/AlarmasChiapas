@@ -62,6 +62,7 @@ namespace AlarmasWPF.Core.ViewModels
         public string DetalleAlarma { get; set; }
         public DateTime? Fecha { get; set; }
         public string Hora { get; set; }
+
     }
 
 }
