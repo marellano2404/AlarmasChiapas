@@ -40,6 +40,8 @@
     <PackageReference Include="GemBox.Pdf" Version="17.0.1087" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.15" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.15" />
   </ItemGroup>
 
   <ItemGroup>
@@ -71,19 +73,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Catalogos\DatosCodigosAlarmaUC.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Eventos\DatosEventosUC.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Eventos\EventosListaUC.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Eventos\FormEvento.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
+    <Resource Include="Clientes\AgregarElement.png" />
+    <Resource Include="Clientes\Buscar.png" />
+    <Resource Include="Clientes\Eliminar.png" />
+    <Resource Include="Clientes\instalacionIcon2.jpg" />
+    <Resource Include="Clientes\instalacionIcon3.png" />
+    <Resource Include="Clientes\MasElementos.png" />
+    <Resource Include="Clientes\Modificar.png" />
+    <Resource Include="Clientes\Usuario.png" />
+    <Resource Include="fondo3.png" />
+    <Resource Include="Recursos\Buscar.png" />
   </ItemGroup>
 
 </Project>

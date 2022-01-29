@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AlarmasWPF.Reportes"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid x:Name="GridListadoClientes">
             <Grid.RowDefinitions>
@@ -32,7 +31,6 @@
                         </TextBox.Effect>
                     </TextBox>
                     <Button x:Name="btnBuscar" Width="60" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand"  Style="{DynamicResource ButtoBuscar}">
-                        <Image Source="/Recursos/Buscar.png" Margin="5" MouseLeftButtonDown="Buscar_MouseLeftButtonDown" ToolTip="Buscar Cliente" Cursor="Hand"/>
                     </Button>
                 </StackPanel>
             </Grid>
@@ -69,7 +67,6 @@
                 <TextBlock Grid.Row="0" FontSize="15" Text="RFC" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
                 <TextBlock Grid.Row="0" FontSize="15" Text="Cliente" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
                 <TextBlock Grid.Row="0" FontSize="15" Text="Empresa" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="White" />
-                <TextBlock Grid.Row="0" FontSize="15" Text="Elementos" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" />
 
                 <Grid Grid.Row="1" Grid.ColumnSpan="5">
                     <ScrollViewer  BorderBrush="Black" ScrollViewer.HorizontalScrollBarVisibility="Auto">
