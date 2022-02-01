@@ -69,7 +69,7 @@ namespace AlarmasWPF.Catalogos
                     return _codigosAl;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return _codigosAl;
             }

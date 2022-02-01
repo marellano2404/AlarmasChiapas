@@ -20,6 +20,6 @@ namespace Alarmas.Core.BL.Eventos
         Task<bool> PutHistorialAlarmaCte(HistorialAlarma historialAlarma);
         Task<bool> DelHistorialAlarmaCte(Guid IdHistorialA);
         Task<HistorialAlarma> GetHistoriaAlarma(Guid idhistoriaAlarma);
-        
+        Task<List<ViewModelReportAlarmas>> GetDatosReporte(Guid idCliente, string fechaInicial, string fechaFinal);
     }
 }

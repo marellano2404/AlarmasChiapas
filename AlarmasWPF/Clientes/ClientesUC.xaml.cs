@@ -156,7 +156,7 @@ namespace AlarmasWPF.Clientes
                     return _clientes;
                 }
             }
-            catch(Exception e)
+            catch(Exception )
             {
                 return _clientes;
             }

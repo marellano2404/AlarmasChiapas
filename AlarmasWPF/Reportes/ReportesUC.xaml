@@ -31,6 +31,8 @@
                         </TextBox.Effect>
                     </TextBox>
                     <Button x:Name="btnBuscar" Width="60" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand"  Style="{DynamicResource ButtoBuscar}">
+                        <Image Source="/Recursos/Buscar.png" Margin="5" MouseLeftButtonDown="Buscar_MouseLeftButtonDown" ToolTip="Buscar Cliente" Cursor="Hand"/>
+
                     </Button>
                 </StackPanel>
             </Grid>
@@ -75,6 +77,5 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid x:Name="GridListadoEventos"></Grid>
     </Grid>
 </UserControl>

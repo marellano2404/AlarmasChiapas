@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Properties\DataSources\**" />
+    <EmbeddedResource Remove="Properties\DataSources\**" />
+    <None Remove="Properties\DataSources\**" />
+    <Page Remove="Properties\DataSources\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Clientes\AgregarElement.png" />
     <None Remove="Clientes\Buscar.png" />
     <None Remove="Clientes\Eliminar.png" />
@@ -17,7 +24,6 @@
     <None Remove="Clientes\Modificar.png" />
     <None Remove="Clientes\Usuario.png" />
     <None Remove="Clientes\Usuarios.png" />
-    <None Remove="fondo3.png" />
     <None Remove="Recursos\AgregarElement.png" />
     <None Remove="Recursos\Buscar.png" />
     <None Remove="Recursos\Eliminar.png" />
@@ -29,6 +35,9 @@
     <None Remove="Recursos\Guardar.png" />
     <None Remove="Recursos\iconPDF.png" />
     <None Remove="Recursos\Instalaciones.png" />
+    <None Remove="Recursos\instalacionIcon1.png" />
+    <None Remove="Recursos\instalacionIcon2.jpg" />
+    <None Remove="Recursos\instalacionIcon3.png" />
     <None Remove="Recursos\MasElementos.png" />
     <None Remove="Recursos\Modificar.png" />
     <None Remove="Recursos\ReportesWhite.png" />
@@ -40,17 +49,23 @@
     <PackageReference Include="GemBox.Pdf" Version="17.0.1087" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.15" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Xceed.Wpf.Toolkit">
-      <HintPath>bin\Debug\net5.0-windows\Xceed.Wpf.Toolkit.dll</HintPath>
-    </Reference>
+    <Compile Update="Core\DataSetHistorialAlarmas.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetHistorialAlarmas.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Eventos\FormEvento.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="fondo3.png" />
+    <Resource Include="Clientes\Instalaciones.png" />
     <Resource Include="Recursos\AgregarElement.png" />
     <Resource Include="Recursos\Buscar.png" />
     <Resource Include="Recursos\Eliminar.png" />
@@ -62,36 +77,25 @@
     <Resource Include="Recursos\Guardar.png" />
     <Resource Include="Recursos\iconPDF.png" />
     <Resource Include="Recursos\Instalaciones.png" />
+    <Resource Include="Recursos\instalacionIcon1.png" />
+    <Resource Include="Recursos\instalacionIcon2.jpg" />
+    <Resource Include="Recursos\instalacionIcon3.png" />
     <Resource Include="Recursos\MasElementos.png" />
     <Resource Include="Recursos\Modificar.png" />
-    <Resource Include="Recursos\ReportesWhite.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Recursos\ReportesWhite.png" />
     <Resource Include="Recursos\Usuario.png" />
     <Resource Include="Recursos\Usuarios.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Eventos\FormEvento.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <None Update="Core\DataSetHistorialAlarmas.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetHistorialAlarmas.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Clientes\AgregarElement.png" />
-    <Resource Include="Clientes\Buscar.png" />
-    <Resource Include="Clientes\Eliminar.png" />
-    <Resource Include="Clientes\instalacionIcon2.jpg" />
-    <Resource Include="Clientes\instalacionIcon3.png" />
-    <Resource Include="Clientes\MasElementos.png" />
-    <Resource Include="Clientes\Modificar.png" />
-    <Resource Include="Clientes\Usuario.png" />
-    <Resource Include="fondo3.png" />
-    <Resource Include="Recursos\Buscar.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>

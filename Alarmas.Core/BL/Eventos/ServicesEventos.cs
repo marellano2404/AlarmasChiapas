@@ -335,6 +335,52 @@ namespace Alarmas.Core.BL.Eventos
             }
         }
 
-     
+        public async Task<List<ViewModelReportAlarmas>> GetDatosReporte(Guid idCliente, string fechaInicial, string fechaFinal)
+        {
+            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
+            {
+                List<ViewModelReportAlarmas> ListaEventos = new List<ViewModelReportAlarmas>();
+                try
+                {
+                    var comando = new SqlCommand();
+                    comando.Connection = Conexion;
+                    comando.CommandText = "Procesos.[AdministracionhistorialAlarmas]";
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    /*Agregando los parametros*/
+                    comando.Parameters.AddWithValue("@Opcion", "ListarAlarmasxFecha");
+                    comando.Parameters.AddWithValue("@IdCliente", idCliente);
+                    comando.Parameters.AddWithValue("@FechaInicial", fechaInicial);
+                    comando.Parameters.AddWithValue("@FechaFinal", fechaFinal);
+                    Conexion.Open();
+                    var Lectura = await comando.ExecuteReaderAsync();
+                    if (Lectura.HasRows)
+                    {
+                        while (Lectura.Read())
+                        {
+                            ListaEventos.Add(
+                                new ViewModelReportAlarmas
+                                {
+                                    NumCliente = Lectura.GetInt32(0),
+                                    Empresa = Lectura.GetString(1),
+                                    Alarma = Lectura.GetString(2),
+                                    ClaveAlarma = Lectura.GetString(3),
+                                    Usuario = Lectura.GetString(4),
+                                    DetalleAlarma = Lectura.GetString(5),
+                                    Fecha = Lectura.GetDateTime(6),
+                                    Hora = Lectura.GetString(7)
+                                });
+                        }
+                    }
+                    Conexion.Close();
+                    return ListaEventos;
+
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message.ToString();
+                    return ListaEventos;
+                }
+            }
+        }
     }
 }

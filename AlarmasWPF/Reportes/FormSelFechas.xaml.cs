@@ -11,28 +11,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AlarmasWPF.Reportes
 {
     /// <summary>
-    /// Lógica de interacción para DatosClientesUC.xaml
+    /// Lógica de interacción para FormSelFechas.xaml
     /// </summary>
-    public partial class ClientesLineaUC : UserControl
+    public partial class FormSelFechas : Window
     {
-        public event EventHandler SelDatoFechasOnClick;
-        public ClientesLineaUC()
-        {
-            InitializeComponent();
-        }
-        public Cliente ClienteDC
+        public event EventHandler ClickReporte;
+        public DatoReporte EntidadReporte
         {
             get
             {
                 try
                 {
-                    return this.DataContext as Cliente;
+                    return DataContext as DatoReporte;
                 }
                 catch (Exception)
                 {
@@ -41,13 +36,17 @@ namespace AlarmasWPF.Reportes
             }
             set
             {
-                this.DataContext = value;
+                DataContext = value;
             }
         }
-
-        private void SelDatosReporteClick(object sender, MouseButtonEventArgs e)
+        public FormSelFechas()
         {
-            SelDatoFechasOnClick?.Invoke(this, new EventArgs());
+            InitializeComponent();
+        }
+
+        private void btnGrarReporte_Click(object sender, RoutedEventArgs e)
+        {
+            ClickReporte?.Invoke(this, new EventArgs());
         }
     }
 }

@@ -21,7 +21,7 @@
             <TextBlock Name="ClienteTextBox" FontSize="17"  Grid.Column="2" TextAlignment="Left" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" Text="{Binding Propietario}"/>
             <TextBlock Name="EmpresaTextBox" FontSize="17"  Grid.Column="3" TextAlignment="Left" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Empresa}"/>
             <StackPanel Grid.Column="4" Orientation="Horizontal">
-                <Image x:Name="UsuariosImage" Source="/Recursos/ReportesWhite.png" Margin="2" Cursor="Hand" ToolTip="Reportes" Width="30" Height="30" />
+                <Image x:Name="UsuariosImage" Source="/Recursos/ReportesWhite.png" MouseLeftButtonDown="SelDatosReporteClick" Margin="2" Cursor="Hand" ToolTip="Reportes" Width="30" Height="30" />
             </StackPanel>
         </Grid>
     </Border>

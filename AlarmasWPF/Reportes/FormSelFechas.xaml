@@ -1,0 +1,23 @@
+﻿<Window x:Class="AlarmasWPF.Reportes.FormSelFechas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AlarmasWPF.Reportes"  mc:Ignorable="d"
+        Title="FormSelFechas" Height="150" Width="450">
+    <Border Margin="10" BorderThickness="1,1,1,1" CornerRadius="10" Localization.Attributes="CenterScreen">
+
+        <Border.BorderBrush>
+            <SolidColorBrush Color="{DynamicResource ColorSubtitulo}"/>
+        </Border.BorderBrush>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <DatePicker  x:Name="txtFechaInicial" SelectedDate="{Binding FechaInicial}" FontSize="15" Width="140" Height="32" Margin="2 0 0 0" 
+                            HorizontalAlignment="Left"></DatePicker>
+            <DatePicker  x:Name="txtFechaFinal" SelectedDate="{Binding FechaFinal}" FontSize="15" Width="140" Height="32" Margin="2 0 0 0" 
+                            HorizontalAlignment="Left"></DatePicker>
+            <Button x:Name="btnG" Width="110" Height="30" Style="{StaticResource ButtoBuscar}"  Click="btnGrarReporte_Click" Cursor="Hand" Margin="4,2">
+                <TextBlock Text="Generar" Foreground="White" ></TextBlock>
+            </Button>
+        </StackPanel>
+    </Border>
+</Window>

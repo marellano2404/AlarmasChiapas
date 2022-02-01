@@ -15,7 +15,7 @@
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="23*"/>
         </Grid.ColumnDefinitions>
-        <Image Source="/fondo3.png" Stretch="UniformToFill" Opacity=".4" Panel.ZIndex="-1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Image Source="/Recursos/fondo3.png" Stretch="UniformToFill" Opacity=".4" Panel.ZIndex="-1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
         <Grid x:Name="GridContenedor" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>

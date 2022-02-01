@@ -1,5 +1,6 @@
 ﻿using Alarmas.Core.BL.Eventos;
 using Alarmas.Core.Models;
+using Alarmas.Core.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -174,6 +175,27 @@ namespace Alarmas.API.Controllers
             try
             {
                 var Result = await _EventosService.GetHistoriaAlarma(IdhistoriaAlarma);
+                if (Result != null)
+                {
+                    return Ok(Result);
+                }
+                else
+                {
+                    return Unauthorized();
+                }
+
+            }
+            catch (Exception)
+            {
+                return BadRequest("La Conexión no ha sido encontrado!");
+            }
+        }
+        [HttpPost("GetEventoAlarma")]
+        public async Task<IActionResult> GetReporteAlarma([FromBody] DatoReporte DatosReporte)
+        {
+            try
+            {
+                var Result = await _EventosService.GetDatosReporte(DatosReporte.IdCliente, DatosReporte.FechaInicial, DatosReporte.FechaFinal);
                 if (Result != null)
                 {
                     return Ok(Result);
