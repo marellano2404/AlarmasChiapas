@@ -360,14 +360,16 @@ namespace Alarmas.Core.BL.Eventos
                             ListaEventos.Add(
                                 new ViewModelReportAlarmas
                                 {
-                                    NumCliente = Lectura.GetInt32(0),
-                                    Empresa = Lectura.GetString(1),
-                                    Alarma = Lectura.GetString(2),
-                                    ClaveAlarma = Lectura.GetString(3),
-                                    Usuario = Lectura.GetString(4),
-                                    DetalleAlarma = Lectura.GetString(5),
-                                    Fecha = Lectura.GetDateTime(6),
-                                    Hora = Lectura.GetString(7)
+                                    ClaveAlarma = Lectura.GetString(0),
+                                    Alarma = Lectura.GetString(1),
+                                    NumUsuario = Lectura.GetInt32(2),
+                                    Usuario = Lectura.GetString(3),
+                                    DetalleAlarma = Lectura.GetString(4),
+                                    Zona = Lectura.GetInt32(5),
+                                    LugarInstalacion = Lectura.GetString(6),
+                                    Dispositivo = Lectura.GetString(7),
+                                    Fecha = Lectura.GetDateTime(8),
+                                    Hora = Lectura.GetString(9)
                                 });
                         }
                     }

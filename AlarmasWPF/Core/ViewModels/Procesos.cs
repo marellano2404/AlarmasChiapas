@@ -66,13 +66,15 @@ namespace AlarmasWPF.Core.ViewModels
     }
     public class ListaAlarmaEmitidasVM
     {
-        public int NumCliente { get; set; }
-        public string Empresa { get; set; }
         public string ClaveAlarma { get; set; }
         public string Alarma { get; set; }
+        public int NumUsuario { get; set; }
         public string Usuario { get; set; }
         public string DetalleAlarma { get; set; }
-        public DateTime? Fecha { get; set; }
+        public int Zona { get; set; }
+        public string LugarInstalacion { get; set; }
+        public string Dispositivo { get; set; }
+        public DateTime Fecha { get; set; }
         public string Hora { get; set; }
 
     }

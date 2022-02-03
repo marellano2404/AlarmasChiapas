@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:AlarmasWPF.Reportes"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid x:Name="GridListadoClientes">
+        
+            <Grid x:Name="GridListadoClientes">
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="5"/>
@@ -16,6 +17,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
+            <WebBrowser Grid.Row="3" Visibility="Collapsed" Grid.ColumnSpan="1" x:Name="VisorReporte"></WebBrowser>
             <Grid Grid.Row="0" HorizontalAlignment="Left" Grid.Column="0" Cursor="Hand">
                 <StackPanel  Orientation="Horizontal"  Margin="5,17,0,0">
                     <TextBox x:Name="TextBoxBuscar" Width="350" Height="35" Margin="10 0 0 0" FontSize="20" VerticalContentAlignment="Center">
@@ -32,6 +34,10 @@
                     </TextBox>
                     <Button x:Name="btnBuscar" Width="60" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand"  Style="{DynamicResource ButtoBuscar}">
                         <Image Source="/Recursos/Buscar.png" Margin="5" MouseLeftButtonDown="Buscar_MouseLeftButtonDown" ToolTip="Buscar Cliente" Cursor="Hand"/>
+
+                    </Button>
+                    <Button x:Name="btnCerrar" Visibility="Collapsed" Width="60" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand"  Style="{DynamicResource ButtoBuscar}">
+                        <Image Source="/Recursos/Close.png" Margin="5" MouseLeftButtonDown="Cerrar_MouseLeftButtonDown" ToolTip="Cerrar Reporte" Cursor="Hand"/>
 
                     </Button>
                 </StackPanel>

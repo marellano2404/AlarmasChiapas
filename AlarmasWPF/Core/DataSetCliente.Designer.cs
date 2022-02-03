@@ -20,17 +20,17 @@ namespace AlarmasWPF.Core {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSetHistorialAlarmas")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DataSetCliente")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSetHistorialAlarmas : global::System.Data.DataSet {
+    public partial class DataSetCliente : global::System.Data.DataSet {
         
-        private ListaEventosDataTable tableListaEventos;
+        private ClienteCabeceraDataTable tableClienteCabecera;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public DataSetHistorialAlarmas() {
+        public DataSetCliente() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace AlarmasWPF.Core {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected DataSetHistorialAlarmas(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DataSetCliente(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace AlarmasWPF.Core {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["ListaEventos"] != null)) {
-                    base.Tables.Add(new ListaEventosDataTable(ds.Tables["ListaEventos"]));
+                if ((ds.Tables["ClienteCabecera"] != null)) {
+                    base.Tables.Add(new ClienteCabeceraDataTable(ds.Tables["ClienteCabecera"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace AlarmasWPF.Core {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ListaEventosDataTable ListaEventos {
+        public ClienteCabeceraDataTable ClienteCabecera {
             get {
-                return this.tableListaEventos;
+                return this.tableClienteCabecera;
             }
         }
         
@@ -127,7 +127,7 @@ namespace AlarmasWPF.Core {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DataSetHistorialAlarmas cln = ((DataSetHistorialAlarmas)(base.Clone()));
+            DataSetCliente cln = ((DataSetCliente)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace AlarmasWPF.Core {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["ListaEventos"] != null)) {
-                    base.Tables.Add(new ListaEventosDataTable(ds.Tables["ListaEventos"]));
+                if ((ds.Tables["ClienteCabecera"] != null)) {
+                    base.Tables.Add(new ClienteCabeceraDataTable(ds.Tables["ClienteCabecera"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace AlarmasWPF.Core {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableListaEventos = ((ListaEventosDataTable)(base.Tables["ListaEventos"]));
+            this.tableClienteCabecera = ((ClienteCabeceraDataTable)(base.Tables["ClienteCabecera"]));
             if ((initTable == true)) {
-                if ((this.tableListaEventos != null)) {
-                    this.tableListaEventos.InitVars();
+                if ((this.tableClienteCabecera != null)) {
+                    this.tableClienteCabecera.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace AlarmasWPF.Core {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSetHistorialAlarmas";
+            this.DataSetName = "DataSetCliente";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSetHistorialAlarmas.xsd";
+            this.Namespace = "http://tempuri.org/DataSetCliente.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableListaEventos = new ListaEventosDataTable();
-            base.Tables.Add(this.tableListaEventos);
+            this.tableClienteCabecera = new ClienteCabeceraDataTable();
+            base.Tables.Add(this.tableClienteCabecera);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeListaEventos() {
+        private bool ShouldSerializeClienteCabecera() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace AlarmasWPF.Core {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DataSetHistorialAlarmas ds = new DataSetHistorialAlarmas();
+            DataSetCliente ds = new DataSetCliente();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,39 +270,41 @@ namespace AlarmasWPF.Core {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void ListaEventosRowChangeEventHandler(object sender, ListaEventosRowChangeEvent e);
+        public delegate void ClienteCabeceraRowChangeEventHandler(object sender, ClienteCabeceraRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ListaEventosDataTable : global::System.Data.TypedTableBase<ListaEventosRow> {
+        public partial class ClienteCabeceraDataTable : global::System.Data.TypedTableBase<ClienteCabeceraRow> {
             
-            private global::System.Data.DataColumn columnNumUsuario;
+            private global::System.Data.DataColumn columnId;
             
-            private global::System.Data.DataColumn columnZona;
+            private global::System.Data.DataColumn columnNumCliente;
             
-            private global::System.Data.DataColumn columnClaveAlarma;
+            private global::System.Data.DataColumn columnEmpresa;
             
-            private global::System.Data.DataColumn columnAlarma;
+            private global::System.Data.DataColumn columnPropietario;
             
-            private global::System.Data.DataColumn columnUsuario;
+            private global::System.Data.DataColumn columnRfc;
             
-            private global::System.Data.DataColumn columnDetalleAlarma;
+            private global::System.Data.DataColumn columnDireccion;
             
-            private global::System.Data.DataColumn columnFecha;
+            private global::System.Data.DataColumn columnReferencias;
             
-            private global::System.Data.DataColumn columnHora;
+            private global::System.Data.DataColumn columnTelParticular;
             
-            private global::System.Data.DataColumn columnLugarInstalacion;
+            private global::System.Data.DataColumn columnCelular;
             
-            private global::System.Data.DataColumn columnDispositivo;
+            private global::System.Data.DataColumn columnCorreo;
+            
+            private global::System.Data.DataColumn columnFechaAlta;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ListaEventosDataTable() {
-                this.TableName = "ListaEventos";
+            public ClienteCabeceraDataTable() {
+                this.TableName = "ClienteCabecera";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -310,7 +312,7 @@ namespace AlarmasWPF.Core {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal ListaEventosDataTable(global::System.Data.DataTable table) {
+            internal ClienteCabeceraDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -327,88 +329,96 @@ namespace AlarmasWPF.Core {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected ListaEventosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ClienteCabeceraDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn NumUsuarioColumn {
+            public global::System.Data.DataColumn IdColumn {
                 get {
-                    return this.columnNumUsuario;
+                    return this.columnId;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ZonaColumn {
+            public global::System.Data.DataColumn NumClienteColumn {
                 get {
-                    return this.columnZona;
+                    return this.columnNumCliente;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ClaveAlarmaColumn {
+            public global::System.Data.DataColumn EmpresaColumn {
                 get {
-                    return this.columnClaveAlarma;
+                    return this.columnEmpresa;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn AlarmaColumn {
+            public global::System.Data.DataColumn PropietarioColumn {
                 get {
-                    return this.columnAlarma;
+                    return this.columnPropietario;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn UsuarioColumn {
+            public global::System.Data.DataColumn RfcColumn {
                 get {
-                    return this.columnUsuario;
+                    return this.columnRfc;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DetalleAlarmaColumn {
+            public global::System.Data.DataColumn DireccionColumn {
                 get {
-                    return this.columnDetalleAlarma;
+                    return this.columnDireccion;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn FechaColumn {
+            public global::System.Data.DataColumn ReferenciasColumn {
                 get {
-                    return this.columnFecha;
+                    return this.columnReferencias;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn HoraColumn {
+            public global::System.Data.DataColumn TelParticularColumn {
                 get {
-                    return this.columnHora;
+                    return this.columnTelParticular;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn LugarInstalacionColumn {
+            public global::System.Data.DataColumn CelularColumn {
                 get {
-                    return this.columnLugarInstalacion;
+                    return this.columnCelular;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DispositivoColumn {
+            public global::System.Data.DataColumn CorreoColumn {
                 get {
-                    return this.columnDispositivo;
+                    return this.columnCorreo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FechaAltaColumn {
+                get {
+                    return this.columnFechaAlta;
                 }
             }
             
@@ -423,54 +433,55 @@ namespace AlarmasWPF.Core {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ListaEventosRow this[int index] {
+            public ClienteCabeceraRow this[int index] {
                 get {
-                    return ((ListaEventosRow)(this.Rows[index]));
+                    return ((ClienteCabeceraRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ListaEventosRowChangeEventHandler ListaEventosRowChanging;
+            public event ClienteCabeceraRowChangeEventHandler ClienteCabeceraRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ListaEventosRowChangeEventHandler ListaEventosRowChanged;
+            public event ClienteCabeceraRowChangeEventHandler ClienteCabeceraRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ListaEventosRowChangeEventHandler ListaEventosRowDeleting;
+            public event ClienteCabeceraRowChangeEventHandler ClienteCabeceraRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ListaEventosRowChangeEventHandler ListaEventosRowDeleted;
+            public event ClienteCabeceraRowChangeEventHandler ClienteCabeceraRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddListaEventosRow(ListaEventosRow row) {
+            public void AddClienteCabeceraRow(ClienteCabeceraRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ListaEventosRow AddListaEventosRow(int NumUsuario, int Zona, string ClaveAlarma, string Alarma, string Usuario, string DetalleAlarma, System.DateTime Fecha, string Hora, string LugarInstalacion, string Dispositivo) {
-                ListaEventosRow rowListaEventosRow = ((ListaEventosRow)(this.NewRow()));
+            public ClienteCabeceraRow AddClienteCabeceraRow(System.Guid Id, int NumCliente, string Empresa, string Propietario, string Rfc, string Direccion, string Referencias, string TelParticular, string Celular, string Correo, System.DateTime FechaAlta) {
+                ClienteCabeceraRow rowClienteCabeceraRow = ((ClienteCabeceraRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        NumUsuario,
-                        Zona,
-                        ClaveAlarma,
-                        Alarma,
-                        Usuario,
-                        DetalleAlarma,
-                        Fecha,
-                        Hora,
-                        LugarInstalacion,
-                        Dispositivo};
-                rowListaEventosRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowListaEventosRow);
-                return rowListaEventosRow;
+                        Id,
+                        NumCliente,
+                        Empresa,
+                        Propietario,
+                        Rfc,
+                        Direccion,
+                        Referencias,
+                        TelParticular,
+                        Celular,
+                        Correo,
+                        FechaAlta};
+                rowClienteCabeceraRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowClienteCabeceraRow);
+                return rowClienteCabeceraRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ListaEventosDataTable cln = ((ListaEventosDataTable)(base.Clone()));
+                ClienteCabeceraDataTable cln = ((ClienteCabeceraDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -478,73 +489,76 @@ namespace AlarmasWPF.Core {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ListaEventosDataTable();
+                return new ClienteCabeceraDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnNumUsuario = base.Columns["NumUsuario"];
-                this.columnZona = base.Columns["Zona"];
-                this.columnClaveAlarma = base.Columns["ClaveAlarma"];
-                this.columnAlarma = base.Columns["Alarma"];
-                this.columnUsuario = base.Columns["Usuario"];
-                this.columnDetalleAlarma = base.Columns["DetalleAlarma"];
-                this.columnFecha = base.Columns["Fecha"];
-                this.columnHora = base.Columns["Hora"];
-                this.columnLugarInstalacion = base.Columns["LugarInstalacion"];
-                this.columnDispositivo = base.Columns["Dispositivo"];
+                this.columnId = base.Columns["Id"];
+                this.columnNumCliente = base.Columns["NumCliente"];
+                this.columnEmpresa = base.Columns["Empresa"];
+                this.columnPropietario = base.Columns["Propietario"];
+                this.columnRfc = base.Columns["Rfc"];
+                this.columnDireccion = base.Columns["Direccion"];
+                this.columnReferencias = base.Columns["Referencias"];
+                this.columnTelParticular = base.Columns["TelParticular"];
+                this.columnCelular = base.Columns["Celular"];
+                this.columnCorreo = base.Columns["Correo"];
+                this.columnFechaAlta = base.Columns["FechaAlta"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnNumUsuario = new global::System.Data.DataColumn("NumUsuario", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNumUsuario);
-                this.columnZona = new global::System.Data.DataColumn("Zona", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnZona);
-                this.columnClaveAlarma = new global::System.Data.DataColumn("ClaveAlarma", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnClaveAlarma);
-                this.columnAlarma = new global::System.Data.DataColumn("Alarma", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAlarma);
-                this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUsuario);
-                this.columnDetalleAlarma = new global::System.Data.DataColumn("DetalleAlarma", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDetalleAlarma);
-                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFecha);
-                this.columnHora = new global::System.Data.DataColumn("Hora", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHora);
-                this.columnLugarInstalacion = new global::System.Data.DataColumn("LugarInstalacion", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLugarInstalacion);
-                this.columnDispositivo = new global::System.Data.DataColumn("Dispositivo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDispositivo);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnNumCliente = new global::System.Data.DataColumn("NumCliente", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumCliente);
+                this.columnEmpresa = new global::System.Data.DataColumn("Empresa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmpresa);
+                this.columnPropietario = new global::System.Data.DataColumn("Propietario", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPropietario);
+                this.columnRfc = new global::System.Data.DataColumn("Rfc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRfc);
+                this.columnDireccion = new global::System.Data.DataColumn("Direccion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDireccion);
+                this.columnReferencias = new global::System.Data.DataColumn("Referencias", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReferencias);
+                this.columnTelParticular = new global::System.Data.DataColumn("TelParticular", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTelParticular);
+                this.columnCelular = new global::System.Data.DataColumn("Celular", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCelular);
+                this.columnCorreo = new global::System.Data.DataColumn("Correo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCorreo);
+                this.columnFechaAlta = new global::System.Data.DataColumn("FechaAlta", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaAlta);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ListaEventosRow NewListaEventosRow() {
-                return ((ListaEventosRow)(this.NewRow()));
+            public ClienteCabeceraRow NewClienteCabeceraRow() {
+                return ((ClienteCabeceraRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ListaEventosRow(builder);
+                return new ClienteCabeceraRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ListaEventosRow);
+                return typeof(ClienteCabeceraRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ListaEventosRowChanged != null)) {
-                    this.ListaEventosRowChanged(this, new ListaEventosRowChangeEvent(((ListaEventosRow)(e.Row)), e.Action));
+                if ((this.ClienteCabeceraRowChanged != null)) {
+                    this.ClienteCabeceraRowChanged(this, new ClienteCabeceraRowChangeEvent(((ClienteCabeceraRow)(e.Row)), e.Action));
                 }
             }
             
@@ -552,8 +566,8 @@ namespace AlarmasWPF.Core {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ListaEventosRowChanging != null)) {
-                    this.ListaEventosRowChanging(this, new ListaEventosRowChangeEvent(((ListaEventosRow)(e.Row)), e.Action));
+                if ((this.ClienteCabeceraRowChanging != null)) {
+                    this.ClienteCabeceraRowChanging(this, new ClienteCabeceraRowChangeEvent(((ClienteCabeceraRow)(e.Row)), e.Action));
                 }
             }
             
@@ -561,8 +575,8 @@ namespace AlarmasWPF.Core {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ListaEventosRowDeleted != null)) {
-                    this.ListaEventosRowDeleted(this, new ListaEventosRowChangeEvent(((ListaEventosRow)(e.Row)), e.Action));
+                if ((this.ClienteCabeceraRowDeleted != null)) {
+                    this.ClienteCabeceraRowDeleted(this, new ClienteCabeceraRowChangeEvent(((ClienteCabeceraRow)(e.Row)), e.Action));
                 }
             }
             
@@ -570,14 +584,14 @@ namespace AlarmasWPF.Core {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ListaEventosRowDeleting != null)) {
-                    this.ListaEventosRowDeleting(this, new ListaEventosRowChangeEvent(((ListaEventosRow)(e.Row)), e.Action));
+                if ((this.ClienteCabeceraRowDeleting != null)) {
+                    this.ClienteCabeceraRowDeleting(this, new ClienteCabeceraRowChangeEvent(((ClienteCabeceraRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveListaEventosRow(ListaEventosRow row) {
+            public void RemoveClienteCabeceraRow(ClienteCabeceraRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -586,7 +600,7 @@ namespace AlarmasWPF.Core {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetHistorialAlarmas ds = new DataSetHistorialAlarmas();
+                DataSetCliente ds = new DataSetCliente();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -604,7 +618,7 @@ namespace AlarmasWPF.Core {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ListaEventosDataTable";
+                attribute2.FixedValue = "ClienteCabeceraDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -648,295 +662,323 @@ namespace AlarmasWPF.Core {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ListaEventosRow : global::System.Data.DataRow {
+        public partial class ClienteCabeceraRow : global::System.Data.DataRow {
             
-            private ListaEventosDataTable tableListaEventos;
+            private ClienteCabeceraDataTable tableClienteCabecera;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal ListaEventosRow(global::System.Data.DataRowBuilder rb) : 
+            internal ClienteCabeceraRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableListaEventos = ((ListaEventosDataTable)(this.Table));
+                this.tableClienteCabecera = ((ClienteCabeceraDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int NumUsuario {
+            public System.Guid Id {
                 get {
                     try {
-                        return ((int)(this[this.tableListaEventos.NumUsuarioColumn]));
+                        return ((global::System.Guid)(this[this.tableClienteCabecera.IdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NumUsuario\' de la tabla \'ListaEventos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'ClienteCabecera\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListaEventos.NumUsuarioColumn] = value;
+                    this[this.tableClienteCabecera.IdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Zona {
+            public int NumCliente {
                 get {
                     try {
-                        return ((int)(this[this.tableListaEventos.ZonaColumn]));
+                        return ((int)(this[this.tableClienteCabecera.NumClienteColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Zona\' de la tabla \'ListaEventos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NumCliente\' de la tabla \'ClienteCabecera\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListaEventos.ZonaColumn] = value;
+                    this[this.tableClienteCabecera.NumClienteColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string ClaveAlarma {
+            public string Empresa {
                 get {
                     try {
-                        return ((string)(this[this.tableListaEventos.ClaveAlarmaColumn]));
+                        return ((string)(this[this.tableClienteCabecera.EmpresaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ClaveAlarma\' de la tabla \'ListaEventos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Empresa\' de la tabla \'ClienteCabecera\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListaEventos.ClaveAlarmaColumn] = value;
+                    this[this.tableClienteCabecera.EmpresaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Alarma {
+            public string Propietario {
                 get {
                     try {
-                        return ((string)(this[this.tableListaEventos.AlarmaColumn]));
+                        return ((string)(this[this.tableClienteCabecera.PropietarioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Alarma\' de la tabla \'ListaEventos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Propietario\' de la tabla \'ClienteCabecera\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListaEventos.AlarmaColumn] = value;
+                    this[this.tableClienteCabecera.PropietarioColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Usuario {
+            public string Rfc {
                 get {
                     try {
-                        return ((string)(this[this.tableListaEventos.UsuarioColumn]));
+                        return ((string)(this[this.tableClienteCabecera.RfcColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Usuario\' de la tabla \'ListaEventos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Rfc\' de la tabla \'ClienteCabecera\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListaEventos.UsuarioColumn] = value;
+                    this[this.tableClienteCabecera.RfcColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string DetalleAlarma {
+            public string Direccion {
                 get {
                     try {
-                        return ((string)(this[this.tableListaEventos.DetalleAlarmaColumn]));
+                        return ((string)(this[this.tableClienteCabecera.DireccionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DetalleAlarma\' de la tabla \'ListaEventos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Direccion\' de la tabla \'ClienteCabecera\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListaEventos.DetalleAlarmaColumn] = value;
+                    this[this.tableClienteCabecera.DireccionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime Fecha {
+            public string Referencias {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableListaEventos.FechaColumn]));
+                        return ((string)(this[this.tableClienteCabecera.ReferenciasColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Fecha\' de la tabla \'ListaEventos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Referencias\' de la tabla \'ClienteCabecera\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListaEventos.FechaColumn] = value;
+                    this[this.tableClienteCabecera.ReferenciasColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Hora {
+            public string TelParticular {
                 get {
                     try {
-                        return ((string)(this[this.tableListaEventos.HoraColumn]));
+                        return ((string)(this[this.tableClienteCabecera.TelParticularColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Hora\' de la tabla \'ListaEventos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TelParticular\' de la tabla \'ClienteCabecera\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListaEventos.HoraColumn] = value;
+                    this[this.tableClienteCabecera.TelParticularColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string LugarInstalacion {
+            public string Celular {
                 get {
                     try {
-                        return ((string)(this[this.tableListaEventos.LugarInstalacionColumn]));
+                        return ((string)(this[this.tableClienteCabecera.CelularColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'LugarInstalacion\' de la tabla \'ListaEventos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Celular\' de la tabla \'ClienteCabecera\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListaEventos.LugarInstalacionColumn] = value;
+                    this[this.tableClienteCabecera.CelularColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Dispositivo {
+            public string Correo {
                 get {
                     try {
-                        return ((string)(this[this.tableListaEventos.DispositivoColumn]));
+                        return ((string)(this[this.tableClienteCabecera.CorreoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Dispositivo\' de la tabla \'ListaEventos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Correo\' de la tabla \'ClienteCabecera\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListaEventos.DispositivoColumn] = value;
+                    this[this.tableClienteCabecera.CorreoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsNumUsuarioNull() {
-                return this.IsNull(this.tableListaEventos.NumUsuarioColumn);
+            public System.DateTime FechaAlta {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableClienteCabecera.FechaAltaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaAlta\' de la tabla \'ClienteCabecera\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableClienteCabecera.FechaAltaColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetNumUsuarioNull() {
-                this[this.tableListaEventos.NumUsuarioColumn] = global::System.Convert.DBNull;
+            public bool IsIdNull() {
+                return this.IsNull(this.tableClienteCabecera.IdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsZonaNull() {
-                return this.IsNull(this.tableListaEventos.ZonaColumn);
+            public void SetIdNull() {
+                this[this.tableClienteCabecera.IdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetZonaNull() {
-                this[this.tableListaEventos.ZonaColumn] = global::System.Convert.DBNull;
+            public bool IsNumClienteNull() {
+                return this.IsNull(this.tableClienteCabecera.NumClienteColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsClaveAlarmaNull() {
-                return this.IsNull(this.tableListaEventos.ClaveAlarmaColumn);
+            public void SetNumClienteNull() {
+                this[this.tableClienteCabecera.NumClienteColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetClaveAlarmaNull() {
-                this[this.tableListaEventos.ClaveAlarmaColumn] = global::System.Convert.DBNull;
+            public bool IsEmpresaNull() {
+                return this.IsNull(this.tableClienteCabecera.EmpresaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsAlarmaNull() {
-                return this.IsNull(this.tableListaEventos.AlarmaColumn);
+            public void SetEmpresaNull() {
+                this[this.tableClienteCabecera.EmpresaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetAlarmaNull() {
-                this[this.tableListaEventos.AlarmaColumn] = global::System.Convert.DBNull;
+            public bool IsPropietarioNull() {
+                return this.IsNull(this.tableClienteCabecera.PropietarioColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsUsuarioNull() {
-                return this.IsNull(this.tableListaEventos.UsuarioColumn);
+            public void SetPropietarioNull() {
+                this[this.tableClienteCabecera.PropietarioColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetUsuarioNull() {
-                this[this.tableListaEventos.UsuarioColumn] = global::System.Convert.DBNull;
+            public bool IsRfcNull() {
+                return this.IsNull(this.tableClienteCabecera.RfcColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDetalleAlarmaNull() {
-                return this.IsNull(this.tableListaEventos.DetalleAlarmaColumn);
+            public void SetRfcNull() {
+                this[this.tableClienteCabecera.RfcColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDetalleAlarmaNull() {
-                this[this.tableListaEventos.DetalleAlarmaColumn] = global::System.Convert.DBNull;
+            public bool IsDireccionNull() {
+                return this.IsNull(this.tableClienteCabecera.DireccionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsFechaNull() {
-                return this.IsNull(this.tableListaEventos.FechaColumn);
+            public void SetDireccionNull() {
+                this[this.tableClienteCabecera.DireccionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetFechaNull() {
-                this[this.tableListaEventos.FechaColumn] = global::System.Convert.DBNull;
+            public bool IsReferenciasNull() {
+                return this.IsNull(this.tableClienteCabecera.ReferenciasColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsHoraNull() {
-                return this.IsNull(this.tableListaEventos.HoraColumn);
+            public void SetReferenciasNull() {
+                this[this.tableClienteCabecera.ReferenciasColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetHoraNull() {
-                this[this.tableListaEventos.HoraColumn] = global::System.Convert.DBNull;
+            public bool IsTelParticularNull() {
+                return this.IsNull(this.tableClienteCabecera.TelParticularColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsLugarInstalacionNull() {
-                return this.IsNull(this.tableListaEventos.LugarInstalacionColumn);
+            public void SetTelParticularNull() {
+                this[this.tableClienteCabecera.TelParticularColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetLugarInstalacionNull() {
-                this[this.tableListaEventos.LugarInstalacionColumn] = global::System.Convert.DBNull;
+            public bool IsCelularNull() {
+                return this.IsNull(this.tableClienteCabecera.CelularColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDispositivoNull() {
-                return this.IsNull(this.tableListaEventos.DispositivoColumn);
+            public void SetCelularNull() {
+                this[this.tableClienteCabecera.CelularColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDispositivoNull() {
-                this[this.tableListaEventos.DispositivoColumn] = global::System.Convert.DBNull;
+            public bool IsCorreoNull() {
+                return this.IsNull(this.tableClienteCabecera.CorreoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCorreoNull() {
+                this[this.tableClienteCabecera.CorreoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFechaAltaNull() {
+                return this.IsNull(this.tableClienteCabecera.FechaAltaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFechaAltaNull() {
+                this[this.tableClienteCabecera.FechaAltaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -944,22 +986,22 @@ namespace AlarmasWPF.Core {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class ListaEventosRowChangeEvent : global::System.EventArgs {
+        public class ClienteCabeceraRowChangeEvent : global::System.EventArgs {
             
-            private ListaEventosRow eventRow;
+            private ClienteCabeceraRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ListaEventosRowChangeEvent(ListaEventosRow row, global::System.Data.DataRowAction action) {
+            public ClienteCabeceraRowChangeEvent(ClienteCabeceraRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ListaEventosRow Row {
+            public ClienteCabeceraRow Row {
                 get {
                     return this.eventRow;
                 }

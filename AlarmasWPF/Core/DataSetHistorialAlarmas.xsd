@@ -14,6 +14,18 @@
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="ListaEventos" msprop:Generator_TableClassName="ListaEventosDataTable" msprop:Generator_TableVarName="tableListaEventos" msprop:Generator_TablePropName="ListaEventos" msprop:Generator_RowDeletingName="ListaEventosRowDeleting" msprop:Generator_RowChangingName="ListaEventosRowChanging" msprop:Generator_RowEvHandlerName="ListaEventosRowChangeEventHandler" msprop:Generator_RowDeletedName="ListaEventosRowDeleted" msprop:Generator_UserTableName="ListaEventos" msprop:Generator_RowChangedName="ListaEventosRowChanged" msprop:Generator_RowEvArgName="ListaEventosRowChangeEvent" msprop:Generator_RowClassName="ListaEventosRow">
           <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NumUsuario" msprop:Generator_ColumnVarNameInTable="columnNumUsuario" msprop:Generator_ColumnPropNameInRow="NumUsuario" msprop:Generator_ColumnPropNameInTable="NumUsuarioColumn" msprop:Generator_UserColumnName="NumUsuario" type="xs:int" minOccurs="0" />
+              <xs:element name="Zona" msprop:Generator_ColumnVarNameInTable="columnZona" msprop:Generator_ColumnPropNameInRow="Zona" msprop:Generator_ColumnPropNameInTable="ZonaColumn" msprop:Generator_UserColumnName="Zona" type="xs:int" minOccurs="0" />
+              <xs:element name="ClaveAlarma" msprop:Generator_ColumnVarNameInTable="columnClaveAlarma" msprop:Generator_ColumnPropNameInRow="ClaveAlarma" msprop:Generator_ColumnPropNameInTable="ClaveAlarmaColumn" msprop:Generator_UserColumnName="ClaveAlarma" type="xs:string" minOccurs="0" />
+              <xs:element name="Alarma" msprop:Generator_ColumnVarNameInTable="columnAlarma" msprop:Generator_ColumnPropNameInRow="Alarma" msprop:Generator_ColumnPropNameInTable="AlarmaColumn" msprop:Generator_UserColumnName="Alarma" type="xs:string" minOccurs="0" />
+              <xs:element name="Usuario" msprop:Generator_ColumnVarNameInTable="columnUsuario" msprop:Generator_ColumnPropNameInRow="Usuario" msprop:Generator_ColumnPropNameInTable="UsuarioColumn" msprop:Generator_UserColumnName="Usuario" type="xs:string" minOccurs="0" />
+              <xs:element name="DetalleAlarma" msprop:Generator_ColumnVarNameInTable="columnDetalleAlarma" msprop:Generator_ColumnPropNameInRow="DetalleAlarma" msprop:Generator_ColumnPropNameInTable="DetalleAlarmaColumn" msprop:Generator_UserColumnName="DetalleAlarma" type="xs:string" minOccurs="0" />
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Hora" msprop:Generator_ColumnVarNameInTable="columnHora" msprop:Generator_ColumnPropNameInRow="Hora" msprop:Generator_ColumnPropNameInTable="HoraColumn" msprop:Generator_UserColumnName="Hora" type="xs:string" minOccurs="0" />
+              <xs:element name="LugarInstalacion" msprop:Generator_ColumnVarNameInTable="columnLugarInstalacion" msprop:Generator_ColumnPropNameInRow="LugarInstalacion" msprop:Generator_ColumnPropNameInTable="LugarInstalacionColumn" msprop:Generator_UserColumnName="LugarInstalacion" type="xs:string" minOccurs="0" />
+              <xs:element name="Dispositivo" msprop:Generator_ColumnVarNameInTable="columnDispositivo" msprop:Generator_ColumnPropNameInRow="Dispositivo" msprop:Generator_ColumnPropNameInTable="DispositivoColumn" msprop:Generator_UserColumnName="Dispositivo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>

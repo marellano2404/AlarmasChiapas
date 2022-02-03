@@ -84,6 +84,11 @@ namespace AlarmasWPF
             DetallesGrid.Visibility = Visibility.Visible;
             DetallesGrid.Children.Clear();
             DetallesGrid.Children.Add(ReportesuC);
+            ReportesuC.SalirOnClick += (s, a) =>
+            {
+                DetallesGrid.Visibility = Visibility.Collapsed;
+                MenuGrid.Visibility = Visibility.Visible;
+            };
            
         }
     }

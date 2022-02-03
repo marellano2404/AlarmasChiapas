@@ -26,6 +26,8 @@
     <None Remove="Clientes\Usuarios.png" />
     <None Remove="Recursos\AgregarElement.png" />
     <None Remove="Recursos\Buscar.png" />
+    <None Remove="Recursos\Close.png" />
+    <None Remove="Recursos\Close_Black.png" />
     <None Remove="Recursos\Eliminar.png" />
     <None Remove="Recursos\Events.png" />
     <None Remove="Recursos\fondo.png" />
@@ -54,6 +56,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Core\DataSetCliente.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetCliente.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Core\DataSetHistorialAlarmas.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -68,6 +75,8 @@
     <Resource Include="Clientes\Instalaciones.png" />
     <Resource Include="Recursos\AgregarElement.png" />
     <Resource Include="Recursos\Buscar.png" />
+    <Resource Include="Recursos\Close.png" />
+    <Resource Include="Recursos\Close_Black.png" />
     <Resource Include="Recursos\Eliminar.png" />
     <Resource Include="Recursos\Events.png" />
     <Resource Include="Recursos\fondo.png" />
@@ -88,6 +97,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Core\DataSetCliente.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCliente.Designer.cs</LastGenOutput>
+    </None>
     <None Update="Core\DataSetHistorialAlarmas.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DataSetHistorialAlarmas.Designer.cs</LastGenOutput>
