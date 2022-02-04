@@ -145,6 +145,7 @@ namespace AlarmasWPF.Reportes
                     localReportPDF.DataSources.Add(rdsCabeceraPDF);
                     localReportPDF.DataSources.Add(rdsListaPDF);
 
+                    string filename = FileName;
                     string reportTypePDF = "PDF";
                     string mimeTypePDF;
                     string encodingPDF;
@@ -165,7 +166,7 @@ namespace AlarmasWPF.Reportes
                     if (!Directory.Exists(@"C:\\Sistemas\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc))
                         System.IO.Directory.CreateDirectory(@"C:\\Sistemas\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc);
 
-                    String filePathPDF = "C:\\Sistemas\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + FileName;
+                    String filePathPDF = @"C:\\Sistemas\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + FileName;
                     fsPDF = new FileStream(filePathPDF, FileMode.Create);
 
                     fsPDF.Write(renderedBytesPDF, 0, renderedBytesPDF.Length);

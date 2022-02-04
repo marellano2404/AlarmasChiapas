@@ -40,6 +40,7 @@
     <None Remove="Recursos\instalacionIcon1.png" />
     <None Remove="Recursos\instalacionIcon2.jpg" />
     <None Remove="Recursos\instalacionIcon3.png" />
+    <None Remove="Recursos\LogoCACHI.png" />
     <None Remove="Recursos\MasElementos.png" />
     <None Remove="Recursos\Modificar.png" />
     <None Remove="Recursos\ReportesWhite.png" />
@@ -89,6 +90,7 @@
     <Resource Include="Recursos\instalacionIcon1.png" />
     <Resource Include="Recursos\instalacionIcon2.jpg" />
     <Resource Include="Recursos\instalacionIcon3.png" />
+    <Resource Include="Recursos\LogoCACHI.png" />
     <Resource Include="Recursos\MasElementos.png" />
     <Resource Include="Recursos\Modificar.png" />
     <Resource Include="Recursos\ReportesWhite.png" />
