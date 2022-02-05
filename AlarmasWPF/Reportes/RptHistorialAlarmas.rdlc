@@ -1018,7 +1018,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=First(Fields!Propietario.Value, "DataSetClientes")</Value>
+                  <Value>=First(Fields!NumCliente.Value &amp; " | " &amp; Fields!Propietario.Value, "DataSetClientes")</Value>
                   <Style>
                     <FontFamily>Arial Narrow</FontFamily>
                     <FontSize>8pt</FontSize>

@@ -10,15 +10,16 @@
     <Border BorderThickness="0,0,0,1" BorderBrush="#FFE7AA">
         <Grid Name="lineaGridClientes" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="8*"/>
-                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="14*"/>
                 <ColumnDefinition Width="31*"/>
                 <ColumnDefinition Width="31*"/>
                 <ColumnDefinition Width="9*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Name="NumClienteTextBox" FontSize="17" Grid.Column="0" Foreground="White" TextAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding NumCliente}" />
             <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Image x:Name="ReporteImage" Source="/Recursos/ReportesWhite.png" MouseLeftButtonDown="SelDatosReporteClick" Margin="2" Cursor="Hand" ToolTip="Reporte Cliente" Width="30" Height="30" />
                 <Image x:Name="ModificarImage" Source="/Recursos/Modificar.png" Margin="2" Cursor="Hand" MouseLeftButtonDown="ModificarImage_MouseLeftButtonDown" />
                 <Image x:Name="EliminarImage" Source="/Recursos/Eliminar.png" Margin="2" Cursor="Hand" PreviewMouseLeftButtonDown="EliminarImage_PreviewMouseLeftButtonDown" />
             </StackPanel>

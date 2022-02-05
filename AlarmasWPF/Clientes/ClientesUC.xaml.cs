@@ -20,6 +20,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AlarmasWPF.Instalaciones;
 using AlarmasWPF.Recursos;
+using Microsoft.Reporting.NETCore;
+using System.IO;
 
 namespace AlarmasWPF.Clientes
 {
@@ -134,12 +136,141 @@ namespace AlarmasWPF.Clientes
                         vistaInstalaciones.GridDatos.Visibility = Visibility.Visible;
                         vistaInstalaciones.GridForm.Visibility = Visibility.Collapsed;
                     };
-
+                };
+                control.ReportesOnClick += (s, v) =>
+                {
+                    List<Cliente> ListaCliente = new List<Cliente>();
+                    ListaCliente.Add(item);
+                    var ListaUsuarios = ObtenerDatoUsuarios(item.Id);
+                    var ListaInstalaciones = ObtenerDatoInstalaciones(item.Id);
+                    ImprimirReporte(ListaCliente,ListaUsuarios,ListaInstalaciones);
+                    var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 19) + item.Rfc + "\\Rpt" + item.Rfc + ".pdf";
+                    if (System.IO.File.Exists(rutaDocumento))
+                    {
+                        GridDatos.Visibility = Visibility.Collapsed;
+                        btnCerrar.Visibility = Visibility.Visible;
+                        VisorReporte.Visibility = Visibility.Visible;
+                        VisorReporte.Source = new Uri(rutaDocumento);
+                    }
 
                 };
                 DatosStackPanel.Children.Add(control);
             }
         }
+
+        private void ImprimirReporte(List<Cliente> listaCliente, List<UsuarioVM> listaUsuarios, List<InstalacionVM> listaInstalaciones)
+        {
+            LocalReport localReportPDF = null;
+            DateTime fechaHoy = DateTime.Now;
+            string FileNamePath = "C:\\Sistemas\\Reportes\\" + listaCliente.FirstOrDefault().Rfc + "\\Rpt" + listaCliente.FirstOrDefault().Rfc + ".pdf";
+            string FileName = "Rpt" + listaCliente.FirstOrDefault().Rfc + ".pdf";
+
+            FileStream fsPDF = null;
+            if (!Directory.Exists(@"C:\\Sistemas\\Reportes\\" + listaCliente.FirstOrDefault().Rfc))
+            { System.IO.Directory.CreateDirectory(@"C:\\Sistemas\\Reportes\\" + listaCliente.FirstOrDefault().Rfc); }
+
+            if (!File.Exists(FileNamePath))
+            {
+                try
+                {
+                    localReportPDF = new LocalReport();
+                    //localReportPDF.ReportPath = "./Reportes/RptHistorialAlarmas.rdlc";
+                    localReportPDF.ReportPath = "C:\\Sistemas\\AlarmasChiapas\\AlarmasWPF\\Reportes\\RptCliente.rdlc";
+
+                    ReportDataSource rdsCabeceraPDF = new ReportDataSource("DataSetCliente", listaCliente);
+                    ReportDataSource rdsListaUsuariosPDF = new ReportDataSource("DataSetUsuarios", listaUsuarios);
+                    ReportDataSource rdsListaInstalacionesPDF = new ReportDataSource("DataSetInstalaciones", listaInstalaciones); 
+                    localReportPDF.DataSources.Add(rdsCabeceraPDF);
+                    localReportPDF.DataSources.Add(rdsListaUsuariosPDF);
+                    localReportPDF.DataSources.Add(rdsListaInstalacionesPDF);
+
+                    string filename = FileName;
+                    string reportTypePDF = "PDF";
+                    string mimeTypePDF;
+                    string encodingPDF;
+                    string fileNameExtensionPDF;
+                    Warning[] warningsPDF;
+                    string[] streamsPDF;
+                    byte[] renderedBytesPDF;
+
+                    renderedBytesPDF = localReportPDF.Render(
+                    reportTypePDF,
+                    null,
+                    out mimeTypePDF,
+                    out encodingPDF,
+                    out fileNameExtensionPDF,
+                    out streamsPDF,
+                    out warningsPDF);
+
+                    if (!Directory.Exists(@"C:\\Sistemas\\Reportes\\" + listaCliente.FirstOrDefault().Rfc))
+                        System.IO.Directory.CreateDirectory(@"C:\\Sistemas\\Reportes\\" + listaCliente.FirstOrDefault().Rfc);
+
+                    String filePathPDF = @"C:\\Sistemas\\Reportes\\" + listaCliente.FirstOrDefault().Rfc + "\\" + FileName;
+                    fsPDF = new FileStream(filePathPDF, FileMode.Create);
+
+                    fsPDF.Write(renderedBytesPDF, 0, renderedBytesPDF.Length);
+                    //Elimina El archivo despues de descargar
+                    //var file = System.IO.Path.Combine("C:\\Sistemas\\Reportes\\" + NombreRpt + ".pdf");
+                    //if (System.IO.File.Exists(file))
+                    //{
+                    //    System.IO.File.Delete(file);
+                    //}
+                }
+                catch (Exception ex)
+                {
+
+                }
+                finally
+                {
+                    localReportPDF.Dispose();
+                    fsPDF.Close();
+                    fsPDF.Dispose();
+                }
+            }
+        }
+
+        private List<InstalacionVM> ObtenerDatoInstalaciones(Guid idCliente)
+        {
+            var _usuarios = new List<InstalacionVM>();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
+                    client.DefaultRequestHeaders.Accept.Add(
+                         new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response = client.GetStringAsync("api/Clientes/GetListaInstalaciones/" + idCliente).Result;
+                    _usuarios = JsonConvert.DeserializeObject<List<InstalacionVM>>(response);
+                    return _usuarios;
+                }
+            }
+            catch (Exception e)
+            {
+                return _usuarios;
+            }
+        }
+
+        private List<UsuarioVM> ObtenerDatoUsuarios(Guid IdCliente)
+        {
+            var _usuarios = new List<UsuarioVM>();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
+                    client.DefaultRequestHeaders.Accept.Add(
+                         new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response = client.GetStringAsync("api/Clientes/GetListaUsuarios/" + IdCliente).Result;
+                    _usuarios = JsonConvert.DeserializeObject<List<UsuarioVM>>(response);
+                    return _usuarios;
+                }
+            }
+            catch (Exception e)
+            {
+                return _usuarios;
+            }
+        }
+
 
         private List<Cliente> ObtenerClientes()
         {
@@ -216,7 +347,14 @@ namespace AlarmasWPF.Clientes
             {
                 MostrarMensaje(ex.Message);
             }
-        } 
+        }
         #endregion
+
+        private void Cerrar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            GridDatos.Visibility = Visibility.Visible;
+            btnCerrar.Visibility = Visibility.Collapsed;
+            VisorReporte.Visibility = Visibility.Collapsed;
+        }
     }
 }
