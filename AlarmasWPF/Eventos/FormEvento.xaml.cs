@@ -44,7 +44,9 @@ namespace AlarmasWPF.Eventos
             }
             set
             {
+                string newidcte = "b1754c14-d296-4b0f-a09a-030017f4461f";
                 this.DataContext = value;
+                value.IdUsuario = Guid.Parse(newidcte.ToString());
             }
         }
         #endregion

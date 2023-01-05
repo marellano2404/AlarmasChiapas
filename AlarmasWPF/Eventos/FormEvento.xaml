@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xd ="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d" Height="360" Width="685" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize" 
         WindowStyle="None">
     <Border Margin="10" BorderThickness="1,1,1,1" CornerRadius="10">        
@@ -86,6 +87,8 @@
                                     <Run FontWeight="Bold" Text="{Binding Zona}" />
                                     <Run Text="| " />
                                     <Run Text="{Binding LugarInstalacion}" />
+                                    <Run Text="| " />
+                                    <Run Text="{Binding Dispositivo}" />
                                 </TextBlock>
                             </StackPanel>
                         </DataTemplate>
@@ -111,8 +114,8 @@
                             HorizontalAlignment="Left"></DatePicker>
 
                 <TextBlock Text="Hora : Minuto" Grid.Row="0" Grid.Column="1"  Margin="3"/>
-                <TextBox  x:Name="HoraTxt" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Hora}" />
-                    <!--<tk:MaskedTextBox></tk:MaskedTextBox>-->
+                <!--<TextBox  x:Name="HoraTxt" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Hora}" />-->
+                <xd:MaskedTextBox x:Name="_maskedTextBox"  Mask="00:00" Text="{Binding Hora}" Grid.Row="1" Grid.Column="1"  Padding="9" FontSize="15"/>
             </Grid>         
             
             <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">

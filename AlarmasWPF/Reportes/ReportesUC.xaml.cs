@@ -31,6 +31,7 @@ namespace AlarmasWPF.Reportes
     public partial class ReportesUC : UserControl
     {
         public event EventHandler SalirOnClick;
+        public string FileName;
         public ReportesUC()
         {
             InitializeComponent();
@@ -69,7 +70,7 @@ namespace AlarmasWPF.Reportes
                         {
                             DateTime fechaHoy = DateTime.Now;
                             ImprimirReporte(Lista, ListaCliente);                            
-                            var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 19) + item.Rfc + "\\" + item.Rfc + "_" + fechaHoy.ToString("yyyy" + "-" + "MM" + "-" + "dd") + ".pdf";
+                            var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
                             if (System.IO.File.Exists(rutaDocumento))
                             {
                                 GridDatos.Visibility = Visibility.Collapsed;
@@ -120,25 +121,36 @@ namespace AlarmasWPF.Reportes
             return _alarmasEm;
         }
       
-        private void ImprimirReporte(List<ListaAlarmaEmitidasVM> lista, List<Cliente> ListadatoCliente)
+        private string ImprimirReporte(List<ListaAlarmaEmitidasVM> lista, List<Cliente> ListadatoCliente)
         {
 
             LocalReport localReportPDF = null;
             DateTime fechaHoy = DateTime.Now;
-            string FileNamePath = "C:\\Sistemas\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + ListadatoCliente.FirstOrDefault().Rfc + "_" + fechaHoy.ToString("yyyy" + "-" + "MM" + "-" + "dd") + ".pdf";
-            string FileName = ListadatoCliente.FirstOrDefault().Rfc + "_" + fechaHoy.ToString("yyyy"+"-"+"MM"+"-"+"dd") + ".pdf";
+            string FileNamePath = "C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + ListadatoCliente.FirstOrDefault().Rfc + "_" + fechaHoy.ToString("yyyy" + "-" + "MM" + "-" + "dd" + "ss") + ".pdf";
+            FileName = ListadatoCliente.FirstOrDefault().Rfc + "_" + fechaHoy.ToString("yyyy"+"-"+"MM"+"-"+ "dd" + "ss") + ".pdf";
+            var file = System.IO.Path.Combine("C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + FileName);
+            if (System.IO.File.Exists(file))
+            {
+                File.Delete(file);
+            }
 
             FileStream fsPDF = null;
-            if (!Directory.Exists(@"C:\\Sistemas\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc))
-            { System.IO.Directory.CreateDirectory(@"C:\\Sistemas\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc); }
+            if (!Directory.Exists(@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc))
+            { System.IO.Directory.CreateDirectory(@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc); }
 
             if (!File.Exists(FileNamePath))
             {
                 try
                 {
-                    localReportPDF = new LocalReport();         
-                    //localReportPDF.ReportPath = "./Reportes/RptHistorialAlarmas.rdlc";
-                    localReportPDF.ReportPath = "C:\\Sistemas\\AlarmasChiapas\\AlarmasWPF\\Reportes\\RptHistorialAlarmas.rdlc";
+                    localReportPDF = new LocalReport();
+                    string _path = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
+                    string ContentStart = _path + @"\Reportes\RptHistorialAlarmas.rdlc";
+
+        
+                    //string path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), @"Reportes\");
+                    //localReportPDF.ReportPath = System.IO.Path.Combine("C:\\Reportes","RptHistorialAlarmas.rdlc");
+
+                    localReportPDF.ReportPath = ContentStart;
 
                     ReportDataSource rdsListaPDF = new ReportDataSource("DataSetHistorialAlarma", lista);
                     ReportDataSource rdsCabeceraPDF = new ReportDataSource("DataSetClientes", ListadatoCliente);
@@ -163,31 +175,33 @@ namespace AlarmasWPF.Reportes
                     out streamsPDF,
                     out warningsPDF);
 
-                    if (!Directory.Exists(@"C:\\Sistemas\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc))
-                        System.IO.Directory.CreateDirectory(@"C:\\Sistemas\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc);
+                    if (!Directory.Exists(@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc))
+                        System.IO.Directory.CreateDirectory(@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc);
 
-                    String filePathPDF = @"C:\\Sistemas\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + FileName;
+                    String filePathPDF = @"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + FileName;
                     fsPDF = new FileStream(filePathPDF, FileMode.Create);
 
                     fsPDF.Write(renderedBytesPDF, 0, renderedBytesPDF.Length);
                     //Elimina El archivo despues de descargar
-                    //var file = System.IO.Path.Combine("C:\\Sistemas\\Reportes\\" + NombreRpt + ".pdf");
-                    //if (System.IO.File.Exists(file))
-                    //{
-                    //    System.IO.File.Delete(file);
-                    //}
+                    if (System.IO.File.Exists(file))
+                    {
+                        File.Delete(file);
+                    }
+                    return string.Empty;
+
                 }
                 catch (Exception ex)
                 {
-
+                    return ex.InnerException.ToString();
                 }
                 finally
                 {
-                    localReportPDF.Dispose();
                     fsPDF.Close();
-                    fsPDF.Dispose();
+                    localReportPDF.Dispose();
                 }
             }
+            else
+                return string.Empty;
         }
         private List<Cliente> ObtenerClientes()
         {
@@ -246,7 +260,7 @@ namespace AlarmasWPF.Reportes
         {
             GridDatos.Visibility = Visibility.Visible;
             btnCerrar.Visibility = Visibility.Collapsed;
-            VisorReporte.Visibility = Visibility.Collapsed;
+            VisorReporte.Visibility = Visibility.Collapsed;           
         }
     }
 }

@@ -22,7 +22,6 @@
             <TextBlock Name="EmpresaTextBox" FontSize="17"  Grid.Column="3" TextAlignment="Left" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Empresa}"/>
             <StackPanel Grid.Column="4" Orientation="Horizontal">
                 <Image x:Name="InstalacionImage" Margin="2" Cursor="Hand" ToolTip="Eventos de Alarma" MouseLeftButtonDown="Eventos_MouseLeftButtonDown" Source="/Recursos/Events.png" />
-                <Image x:Name="UsuariosImage" Source="/Recursos/ReportesWhite.png" Margin="2" Cursor="Hand" ToolTip="Reportes" MouseLeftButtonDown="Reporte_MouseLeftButtonDown" Width="30" Height="30" />
             </StackPanel>
         </Grid>
     </Border>

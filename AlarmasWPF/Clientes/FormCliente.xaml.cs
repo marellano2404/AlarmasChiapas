@@ -45,6 +45,8 @@ namespace AlarmasWPF.Clientes
             set
             {
                 this.DataContext = value;
+                value.Rfc = "CTERFC2022";
+                value.Correo = "SinCorreo2021@hotmail.com";
             }
         }
         #endregion
@@ -67,29 +69,36 @@ namespace AlarmasWPF.Clientes
         {
             try
             {
-                var result = new HttpResponseMessage();
-                using (var client = new HttpClient())
+                if (cliente.Rfc.Length < 5)
                 {
-                    client.BaseAddress = new Uri(ConfigServer.UrlServer);
-                    client.DefaultRequestHeaders.Accept.Add(
-                         new MediaTypeWithQualityHeaderValue("application/json"));
+                    MostrarMensaje("Necesitas escribir al menos 10 letras");
+                }
+                else
+                {
+                    var result = new HttpResponseMessage();
+                    using (var client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri(ConfigServer.UrlServer);
+                        client.DefaultRequestHeaders.Accept.Add(
+                             new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    var json = Newtonsoft.Json.JsonConvert.SerializeObject(cliente);
-                    var data = new System.Net.Http.StringContent(json, Encoding.UTF8, "application/json");
-                    if (_esNuevo)
-                    {
-                        result = await client.PostAsync("api/Clientes/PostNuevoCliente", data);
+                        var json = Newtonsoft.Json.JsonConvert.SerializeObject(cliente);
+                        var data = new System.Net.Http.StringContent(json, Encoding.UTF8, "application/json");
+                        if (_esNuevo)
+                        {
+                            result = await client.PostAsync("api/Clientes/PostNuevoCliente", data);
+                        }
+                        else
+                        {
+                            result = await client.PutAsync("api/Clientes/PutCliente", data);
+                        }
+                        var respuesta = await result.Content.ReadAsStringAsync();
+                        if (respuesta == "true") //si el resultado de exito es true
+                        {
+                            ClickAgregar?.Invoke(this, new EventArgs());
+                        }
                     }
-                    else
-                    {
-                        result = await client.PutAsync("api/Clientes/PutCliente", data);                       
-                    }
-                    var respuesta = await result.Content.ReadAsStringAsync();
-                    if (respuesta == "true") //si el resultado de exito es true
-                    {
-                        ClickAgregar?.Invoke(this, new EventArgs());
-                    }
-                }                
+                }
             }
             catch (Exception ex)
             {

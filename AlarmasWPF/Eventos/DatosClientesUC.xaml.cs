@@ -22,7 +22,6 @@ namespace AlarmasWPF.Eventos
     public partial class DatosClientesUC : UserControl
     {
         public event EventHandler EventosOnClick;
-        public event EventHandler ReporteOnClick;
         public Cliente ClienteDataConext
         {
             get
@@ -51,9 +50,6 @@ namespace AlarmasWPF.Eventos
             EventosOnClick?.Invoke(this, new EventArgs());
         }
 
-        private void Reporte_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            ReporteOnClick?.Invoke(this, new EventArgs());
-        }
+      
     }
 }

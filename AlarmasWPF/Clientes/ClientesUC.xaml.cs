@@ -32,6 +32,7 @@ namespace AlarmasWPF.Clientes
     public partial class ClientesUC : UserControl
     {
         public event EventHandler Regresar;
+        public string FileName;
         //private static HttpClient client = new HttpClient();
         #region Constructor
         public ClientesUC()
@@ -143,39 +144,53 @@ namespace AlarmasWPF.Clientes
                     ListaCliente.Add(item);
                     var ListaUsuarios = ObtenerDatoUsuarios(item.Id);
                     var ListaInstalaciones = ObtenerDatoInstalaciones(item.Id);
-                    ImprimirReporte(ListaCliente,ListaUsuarios,ListaInstalaciones);
-                    var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 19) + item.Rfc + "\\Rpt" + item.Rfc + ".pdf";
-                    if (System.IO.File.Exists(rutaDocumento))
+                    var Mensaje =  ImprimirReporte(ListaCliente,ListaUsuarios,ListaInstalaciones);
+                    if (Mensaje == string.Empty)
                     {
-                        GridDatos.Visibility = Visibility.Collapsed;
-                        btnCerrar.Visibility = Visibility.Visible;
-                        VisorReporte.Visibility = Visibility.Visible;
-                        VisorReporte.Source = new Uri(rutaDocumento);
+                        var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
+                        if (System.IO.File.Exists(rutaDocumento))
+                        {
+                            GridDatos.Visibility = Visibility.Collapsed;
+                            btnCerrar.Visibility = Visibility.Visible;
+                            VisorReporte.Visibility = Visibility.Visible;
+                            VisorReporte.Source = new Uri(rutaDocumento);
+                        }
                     }
+                    else
+                        MessageBox.Show(Mensaje);
 
                 };
                 DatosStackPanel.Children.Add(control);
             }
         }
 
-        private void ImprimirReporte(List<Cliente> listaCliente, List<UsuarioVM> listaUsuarios, List<InstalacionVM> listaInstalaciones)
+        private string ImprimirReporte(List<Cliente> listaCliente, List<UsuarioVM> listaUsuarios, List<InstalacionVM> listaInstalaciones)
         {
             LocalReport localReportPDF = null;
             DateTime fechaHoy = DateTime.Now;
-            string FileNamePath = "C:\\Sistemas\\Reportes\\" + listaCliente.FirstOrDefault().Rfc + "\\Rpt" + listaCliente.FirstOrDefault().Rfc + ".pdf";
-            string FileName = "Rpt" + listaCliente.FirstOrDefault().Rfc + ".pdf";
+            string FileNamePath = "C:\\Reportes\\" + listaCliente.FirstOrDefault().Rfc + "\\Rpt" + listaCliente.FirstOrDefault().Rfc + fechaHoy.ToString("ss") + ".pdf";
+            FileName = "Rpt" + listaCliente.FirstOrDefault().Rfc + fechaHoy.ToString("ss") + ".pdf";
+            var file = System.IO.Path.Combine("C:\\Reportes\\" + listaCliente.FirstOrDefault().Rfc + "\\" + FileName);
+            if (System.IO.File.Exists(file))
+            {
+                System.IO.File.Delete(file);
+            }
 
             FileStream fsPDF = null;
-            if (!Directory.Exists(@"C:\\Sistemas\\Reportes\\" + listaCliente.FirstOrDefault().Rfc))
-            { System.IO.Directory.CreateDirectory(@"C:\\Sistemas\\Reportes\\" + listaCliente.FirstOrDefault().Rfc); }
+            if (!Directory.Exists(@"C:\\Reportes\\" + listaCliente.FirstOrDefault().Rfc))
+            { System.IO.Directory.CreateDirectory("C:\\Reportes\\" + listaCliente.FirstOrDefault().Rfc); }
 
             if (!File.Exists(FileNamePath))
             {
                 try
                 {
                     localReportPDF = new LocalReport();
+                    string _path = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
+                    string ContentStart = _path + @"\Reportes\RptCliente.rdlc";
+
                     //localReportPDF.ReportPath = "./Reportes/RptHistorialAlarmas.rdlc";
-                    localReportPDF.ReportPath = "C:\\Sistemas\\AlarmasChiapas\\AlarmasWPF\\Reportes\\RptCliente.rdlc";
+                    //localReportPDF.ReportPath = "~/Reportes/RptCliente.rdlc";
+                    localReportPDF.ReportPath = ContentStart;
 
                     ReportDataSource rdsCabeceraPDF = new ReportDataSource("DataSetCliente", listaCliente);
                     ReportDataSource rdsListaUsuariosPDF = new ReportDataSource("DataSetUsuarios", listaUsuarios);
@@ -202,10 +217,10 @@ namespace AlarmasWPF.Clientes
                     out streamsPDF,
                     out warningsPDF);
 
-                    if (!Directory.Exists(@"C:\\Sistemas\\Reportes\\" + listaCliente.FirstOrDefault().Rfc))
-                        System.IO.Directory.CreateDirectory(@"C:\\Sistemas\\Reportes\\" + listaCliente.FirstOrDefault().Rfc);
+                    if (!Directory.Exists(@"C:\\Reportes\\" + listaCliente.FirstOrDefault().Rfc))
+                        System.IO.Directory.CreateDirectory(@"C:\\Reportes\\" + listaCliente.FirstOrDefault().Rfc);
 
-                    String filePathPDF = @"C:\\Sistemas\\Reportes\\" + listaCliente.FirstOrDefault().Rfc + "\\" + FileName;
+                    String filePathPDF = @"C:\\Reportes\\" + listaCliente.FirstOrDefault().Rfc + "\\" + FileName;
                     fsPDF = new FileStream(filePathPDF, FileMode.Create);
 
                     fsPDF.Write(renderedBytesPDF, 0, renderedBytesPDF.Length);
@@ -215,10 +230,11 @@ namespace AlarmasWPF.Clientes
                     //{
                     //    System.IO.File.Delete(file);
                     //}
+                    return string.Empty;
                 }
                 catch (Exception ex)
                 {
-
+                    return ex.InnerException.ToString();
                 }
                 finally
                 {
@@ -227,6 +243,8 @@ namespace AlarmasWPF.Clientes
                     fsPDF.Dispose();
                 }
             }
+            else 
+                return "La Ruta no Existe" + FileNamePath;
         }
 
         private List<InstalacionVM> ObtenerDatoInstalaciones(Guid idCliente)

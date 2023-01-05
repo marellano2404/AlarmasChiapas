@@ -42,7 +42,7 @@ namespace Alarmas.API
             services.AddCors(o => o.AddPolicy(MyAllowSpecificOrigins, builder =>
             {
                 //Se llaman a todas las paginas web que va a usar la API
-                builder.WithOrigins("https://localhost", "https://localhost:44377", "https://typingsoft.ddns.net", "https://sistemascobach.cobach.edu.mx", "https://www.sistemascobach.cobach.edu.mx")
+                builder.WithOrigins("https://localhost", "https://localhost:44377")
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
@@ -84,6 +84,7 @@ namespace Alarmas.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Alarmas.API"));
             }
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseHttpsRedirection();
 

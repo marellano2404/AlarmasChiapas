@@ -9,28 +9,31 @@
               <Width>1.61101cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.92942cm</Width>
+              <Width>4.20812cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.65034cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.8789cm</Width>
+              <Width>3.61946cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.7213cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.01878cm</Width>
+              <Width>2.5571cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.53314cm</Width>
+              <Width>2.946cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.33772cm</Width>
+              <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.18872cm</Width>
+              <Width>1.18478cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.87122cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -119,7 +122,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>N.Us</Value>
+                              <Value>Num</Value>
                               <Style>
                                 <FontFamily>Arial Narrow</FontFamily>
                                 <FontSize>7.5pt</FontSize>
@@ -281,6 +284,44 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox2</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>CornflowerBlue</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>3pt</PaddingLeft>
+                        <PaddingRight>1pt</PaddingRight>
+                        <PaddingTop>1pt</PaddingTop>
+                        <PaddingBottom>1pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox12">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Detalle</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>7.5pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox12</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>CornflowerBlue</Color>
@@ -680,6 +721,51 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="DetalleAlarma">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!DetalleAlarma.Value</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>7.5pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>DetalleAlarma</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>1pt</PaddingRight>
+                        <PaddingTop>1pt</PaddingTop>
+                        <PaddingBottom>1pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="ClaveAlarma8">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -767,6 +853,7 @@
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
+            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -993,6 +1080,47 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Textbox Name="Empresa5">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!FechaAlta.Value, "DataSetClientes") &amp; " AL " &amp; Last(Fields!FechaAlta.Value, "DataSetClientes")</Value>
+                      <Style>
+                        <FontFamily>Arial Narrow</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Empresa</rd:DefaultName>
+              <Top>2.35191cm</Top>
+              <Left>17.6357cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.90349cm</Width>
+              <ZIndex>6</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BottomBorder>
+                  <Style>Solid</Style>
+                </BottomBorder>
+                <BackgroundColor>WhiteSmoke</BackgroundColor>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
           </ReportItems>
           <KeepTogether>true</KeepTogether>
           <Left>0.31162cm</Left>
@@ -1034,7 +1162,7 @@
           <Top>3.86884cm</Top>
           <Left>0.31162cm</Left>
           <Height>0.6cm</Height>
-          <Width>5.24494cm</Width>
+          <Width>4.39673cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1069,9 +1197,9 @@
           </Paragraphs>
           <rd:DefaultName>Empresa</rd:DefaultName>
           <Top>3.86884cm</Top>
-          <Left>5.83123cm</Left>
+          <Left>4.87873cm</Left>
           <Height>0.6cm</Height>
-          <Width>5.55594cm</Width>
+          <Width>5.46671cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -1107,9 +1235,9 @@
           </Paragraphs>
           <rd:DefaultName>Empresa</rd:DefaultName>
           <Top>3.86884cm</Top>
-          <Left>11.79183cm</Left>
+          <Left>10.52183cm</Left>
           <Height>0.6cm</Height>
-          <Width>6.01896cm</Width>
+          <Width>5.87785cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -1145,9 +1273,9 @@
           </Paragraphs>
           <rd:DefaultName>Empresa</rd:DefaultName>
           <Top>3.86884cm</Top>
-          <Left>18.09301cm</Left>
+          <Left>16.50551cm</Left>
           <Height>0.6cm</Height>
-          <Width>2.2226cm</Width>
+          <Width>1.96261cm</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -1182,7 +1310,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
           <Top>3.26002cm</Top>
-          <Left>18.09301cm</Left>
+          <Left>16.50551cm</Left>
           <Height>0.57354cm</Height>
           <Width>1.28796cm</Width>
           <ZIndex>5</ZIndex>
@@ -1215,7 +1343,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
           <Top>3.26002cm</Top>
-          <Left>11.79183cm</Left>
+          <Left>10.52183cm</Left>
           <Height>0.58236cm</Height>
           <Width>3.39959cm</Width>
           <ZIndex>6</ZIndex>
@@ -1248,7 +1376,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
           <Top>3.26002cm</Top>
-          <Left>5.83123cm</Left>
+          <Left>4.87873cm</Left>
           <Height>0.58236cm</Height>
           <Width>3.39959cm</Width>
           <ZIndex>7</ZIndex>
@@ -1316,6 +1444,8 @@
                 <TextRun>
                   <Value>AV. FONTANA #203 ESQUINA CALLE ALTADENA FRACC. EL CAMPANARIO    CP.29054    TEL: (961) 6392866   TUXTLA GUTIÉRREZ , CHIAPAS</Value>
                   <Style>
+                    <FontStyle>Italic</FontStyle>
+                    <FontFamily>Arial Narrow</FontFamily>
                     <FontSize>8pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>

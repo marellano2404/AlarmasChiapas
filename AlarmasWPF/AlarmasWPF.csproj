@@ -46,6 +46,7 @@
     <None Remove="Recursos\ReportesWhite.png" />
     <None Remove="Recursos\Usuario.png" />
     <None Remove="Recursos\Usuarios.png" />
+    <None Remove="Reportes\RptCliente.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
@@ -96,6 +97,9 @@
     <Resource Include="Recursos\ReportesWhite.png" />
     <Resource Include="Recursos\Usuario.png" />
     <Resource Include="Recursos\Usuarios.png" />
+    <Resource Include="Reportes\RptCliente.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -107,10 +111,19 @@
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DataSetHistorialAlarmas.Designer.cs</LastGenOutput>
     </None>
+    <None Update="Reportes\RptHistorialAlarmas.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\..\..\Users\marellano\Downloads\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
