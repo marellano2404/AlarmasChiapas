@@ -69,15 +69,20 @@ namespace AlarmasWPF.Reportes
                         if (Lista.Count > 0)
                         {
                             DateTime fechaHoy = DateTime.Now;
-                            ImprimirReporte(Lista, ListaCliente);                            
-                            var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
-                            if (System.IO.File.Exists(rutaDocumento))
+                            var Mensaje = ImprimirReporte(Lista, ListaCliente);
+                            if (Mensaje == string.Empty)
                             {
-                                GridDatos.Visibility = Visibility.Collapsed;
-                                btnCerrar.Visibility = Visibility.Visible;
-                                VisorReporte.Visibility = Visibility.Visible;                                       
-                                VisorReporte.Source = new Uri(rutaDocumento);
-                            }                           
+                                var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
+                                if (System.IO.File.Exists(rutaDocumento))
+                                {
+                                    GridDatos.Visibility = Visibility.Collapsed;
+                                    btnCerrar.Visibility = Visibility.Visible;
+                                    VisorReporte.Visibility = Visibility.Visible;
+                                    VisorReporte.Source = new Uri(rutaDocumento);
+                                }
+                            }
+                            else
+                                MessageBox.Show(Mensaje);
                         }                        
                         modal.Close();
                     };
