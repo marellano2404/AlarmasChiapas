@@ -144,21 +144,38 @@ namespace AlarmasWPF.Clientes
                     ListaCliente.Add(item);
                     var ListaUsuarios = ObtenerDatoUsuarios(item.Id);
                     var ListaInstalaciones = ObtenerDatoInstalaciones(item.Id);
-                    var Mensaje =  ImprimirReporte(ListaCliente,ListaUsuarios,ListaInstalaciones);
-                    if (Mensaje == string.Empty)
+                    if (ListaUsuarios.Count == 0)
                     {
-                        var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
-                        if (System.IO.File.Exists(rutaDocumento))
+                        MessageBox.Show("Ingrese al menos un usuario");
+                        if (ListaInstalaciones.Count == 0)
                         {
-                            GridDatos.Visibility = Visibility.Collapsed;
-                            btnCerrar.Visibility = Visibility.Visible;
-                            VisorReporte.Visibility = Visibility.Visible;
-                            VisorReporte.Source = new Uri(rutaDocumento);
+                            MessageBox.Show("Ingrese al menos una instalación");
                         }
                     }
                     else
-                        MessageBox.Show(Mensaje);
-
+                    {
+                        if (ListaInstalaciones.Count == 0)
+                        {
+                            MessageBox.Show("Ingrese al menos una instalación");
+                        }
+                        else
+                        {
+                            var Mensaje = ImprimirReporte(ListaCliente, ListaUsuarios, ListaInstalaciones);
+                            if (Mensaje == string.Empty)
+                            {
+                                var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
+                                if (System.IO.File.Exists(rutaDocumento))
+                                {
+                                    GridDatos.Visibility = Visibility.Collapsed;
+                                    btnCerrar.Visibility = Visibility.Visible;
+                                    VisorReporte.Visibility = Visibility.Visible;
+                                    VisorReporte.Source = new Uri(rutaDocumento);
+                                }
+                            }
+                            else
+                                MessageBox.Show(Mensaje);
+                        }
+                    }    
                 };
                 DatosStackPanel.Children.Add(control);
             }

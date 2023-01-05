@@ -56,10 +56,10 @@
             <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="2" x:Name="GridDatos">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="10*"/>
                     <ColumnDefinition Width="31*"/>
                     <ColumnDefinition Width="31*"/>
-                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="14*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
