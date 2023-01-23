@@ -1446,7 +1446,7 @@
                   <Style>
                     <FontStyle>Italic</FontStyle>
                     <FontFamily>Arial Narrow</FontFamily>
-                    <FontSize>8pt</FontSize>
+                    <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1458,9 +1458,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox20</rd:DefaultName>
           <Top>0.3175cm</Top>
-          <Left>0.33603cm</Left>
+          <Left>0.31162cm</Left>
           <Height>0.6cm</Height>
-          <Width>20.51478cm</Width>
+          <Width>20.53919cm</Width>
           <Style>
             <Border>
               <Style>None</Style>

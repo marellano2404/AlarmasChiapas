@@ -33,5 +33,6 @@ namespace Alarmas.Core.Models
         public string Correo { get; set; }
         [Column(TypeName = "date")]
         public DateTime? FechaAlta { get; set; }
+
     }
 }

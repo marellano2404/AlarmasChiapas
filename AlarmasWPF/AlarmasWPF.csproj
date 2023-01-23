@@ -122,7 +122,7 @@
 
   <ItemGroup>
     <Reference Include="Xceed.Wpf.Toolkit">
-      <HintPath>..\..\..\Users\marellano\Downloads\Xceed.Wpf.Toolkit.dll</HintPath>
+      <HintPath>D:\Temporal\MisSistemas\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
 
