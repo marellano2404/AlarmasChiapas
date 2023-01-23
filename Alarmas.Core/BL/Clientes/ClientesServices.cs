@@ -1,4 +1,5 @@
 ﻿using Alarmas.Core.Models;
+using Alarmas.Core.ViewModels;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,12 +12,59 @@ namespace Alarmas.Core.BL.Clientes
 {
     public class ClientesServices : IClientes
     {
-        public async Task<List<Cliente>> GetListaClientes()
+        public async Task<List<ClienteVM>> GetListaClientes()
         {
-            using (var conexion = new CAlarmasDBContext())
+            //using (var conexion = new CAlarmasDBContext())
+            //{
+            //    var consulta = await (from e in conexion.Clientes select e).ToListAsync();
+            //    return consulta;
+            //}
+            using (var Conexion = new SqlConnection(Helpers.ContextConfiguration.ConexionString))
             {
-                var consulta = await (from e in conexion.Clientes select e).ToListAsync();
-                return consulta;
+                List<ClienteVM> Listaclientes = new List<ClienteVM>();
+                try
+                {
+                    var comando = new SqlCommand();
+                    comando.Connection = Conexion;
+                    comando.CommandText = "Procesos.[AdministracionCliente]";
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    /*Agregando los parametros*/
+                    comando.Parameters.AddWithValue("@Opcion", "ListarCliente");
+                    Conexion.Open();
+                    var Lectura = await comando.ExecuteReaderAsync();
+                    if (Lectura.HasRows)
+                    {
+                        while (Lectura.Read())
+                        {
+                            Listaclientes.Add(
+                                new ClienteVM
+                                {
+                                    Id = Lectura.GetGuid(0),
+                                    NumCliente = Lectura.GetInt32(1),
+                                    Empresa = Lectura.GetString(2),
+                                    Propietario = Lectura.GetString(3),
+                                    Rfc = Lectura.GetString(4),
+                                    Direccion = Lectura.GetString(5),
+                                    Referencias = Lectura.GetString(6),
+                                    TelParticular = Lectura.GetString(7),
+                                    Celular = Lectura.GetString(8),
+                                    Correo = Lectura.GetString(9),
+                                    FechaAlta = Lectura.GetDateTime(10),
+                                    Users = Lectura.GetInt32(11),
+                                    Inst = Lectura.GetInt32(12),
+                                    Alarmas = Lectura.GetInt32(13)
+                                });
+                        }
+                    }
+                    Conexion.Close();
+                    return Listaclientes;
+
+                }
+                catch (Exception e)
+                {
+                    var m = e.Message.ToString();
+                    return Listaclientes;
+                }
             }
         }
         public async Task<bool> PostNuevoCliente(Cliente cliente)

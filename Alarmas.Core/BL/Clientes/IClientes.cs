@@ -1,4 +1,5 @@
 ﻿using Alarmas.Core.Models;
+using Alarmas.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ namespace Alarmas.Core.BL.Clientes
 {
     public interface IClientes
     {
-        Task<List<Cliente>> GetListaClientes();
+        Task<List<ClienteVM>> GetListaClientes();
         Task<bool> PostNuevoCliente(Cliente cliente);
         Task<bool> PutCliente(Cliente cliente);
         Task<List<Cliente>> BuscarCliente(string valorBusqueda);

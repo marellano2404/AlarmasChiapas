@@ -27,7 +27,7 @@ namespace Alarmas.Core.ViewModels
         public DateTime? Fecha { get; set; }
         public string Hora { get; set; }
     }
-    public class ClientesVM
+    public class ClienteVM
     {
         public Guid Id { get; set; }
         public int NumCliente { get; set; }

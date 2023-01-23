@@ -50,21 +50,31 @@ namespace AlarmasWPF.Eventos
                 control.EventosOnClick += (s, a) =>
                 {
                     EventosListaUC eventosListaUC = new EventosListaUC(item);
-                    GridListadoClientes.Visibility = Visibility.Collapsed;
-                    
-
-                    GridListadoEventos.Visibility = Visibility.Visible;
-                    GridListadoEventos.Children.Clear();
-                    GridListadoEventos.Children.Add(eventosListaUC);
-
-                    eventosListaUC.RegresarClick += (s, a) =>
+                    if (item.Inst == 0)
                     {
-                        GridListadoClientes.Visibility = Visibility.Visible;
-                        GridListadoEventos.Visibility = Visibility.Collapsed;
-                        var response = ObtenerClientes();
-                        CargarClientes(response);
-                    };
-                   
+                        MostrarMensaje("Falta agregar lugares de instalación");
+                    }
+                    else
+                    {
+                        if (item.Users == 0)
+                        {
+                            MostrarMensaje("Falta agregar usuarios");
+                        }
+                        else
+                        {
+                            GridListadoClientes.Visibility = Visibility.Collapsed;
+                            GridListadoEventos.Visibility = Visibility.Visible;
+                            GridListadoEventos.Children.Clear();
+                            GridListadoEventos.Children.Add(eventosListaUC);
+                            eventosListaUC.RegresarClick += (s, a) =>
+                            {
+                                GridListadoClientes.Visibility = Visibility.Visible;
+                                GridListadoEventos.Visibility = Visibility.Collapsed;
+                                var response = ObtenerClientes();
+                                CargarClientes(response);
+                            };
+                        }
+                    }        
                 };
             }
         }

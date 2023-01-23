@@ -22,8 +22,8 @@
             <TextBlock Name="EmpresaTextBox" FontSize="17"  Grid.Column="3" TextAlignment="Left" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Empresa}"/>
             <StackPanel Grid.Column="4" Orientation="Horizontal">
                 <Image x:Name="UsuariosImage" Source="/Recursos/ReportesWhite.png" MouseLeftButtonDown="SelDatosReporteClick" Margin="2" Cursor="Hand" ToolTip="Reportes" Width="30" Height="30" />
-                <TextBlock Name="EventosCountTextBox" FontSize="20" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightGray" VerticalAlignment="Center" Text="0"/>
-                <TextBlock Name="ETextBox" FontSize="16" TextAlignment="Left" Foreground="LightGray" VerticalAlignment="Center" Text=" Eventos"/>
+                <TextBlock Name="ETextBox" FontSize="16" TextAlignment="Left" Foreground="LightGray" VerticalAlignment="Center" Text="{Binding Alarmas}"/>
+                <TextBlock Name="EsTextBox" FontSize="16" TextAlignment="Left" Foreground="LightGray" VerticalAlignment="Center" Text=" Eventos"/>
             </StackPanel>
         </Grid>
     </Border>
