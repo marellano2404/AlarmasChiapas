@@ -6,10 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.61101cm</Width>
+              <Width>1.37986cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.20812cm</Width>
+              <Width>4.0132cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.65034cm</Width>
@@ -18,7 +18,7 @@
               <Width>3.61946cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.7213cm</Width>
+              <Width>0.91622cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5571cm</Width>
@@ -33,7 +33,7 @@
               <Width>1.18478cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.87122cm</Width>
+              <Width>1.10237cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -51,7 +51,7 @@
                               <Value>Clave</Value>
                               <Style>
                                 <FontFamily>Arial Narrow</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>7.2pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -88,7 +88,7 @@
                               <Value>Alarma</Value>
                               <Style>
                                 <FontFamily>Arial Narrow</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>7.2pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -125,7 +125,7 @@
                               <Value>Num</Value>
                               <Style>
                                 <FontFamily>Arial Narrow</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>7pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -162,7 +162,7 @@
                               <Value>Usuario</Value>
                               <Style>
                                 <FontFamily>Arial Narrow</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>7.2pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -199,7 +199,7 @@
                               <Value>Zona</Value>
                               <Style>
                                 <FontFamily>Arial Narrow</FontFamily>
-                                <FontSize>7.5pt</FontSize>
+                                <FontSize>7pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -211,10 +211,7 @@
                       </Paragraphs>
                       <rd:DefaultName>Textbox2</rd:DefaultName>
                       <Style>
-                        <Border>
-                          <Color>CornflowerBlue</Color>
-                          <Style>Solid</Style>
-                        </Border>
+                        <Border />
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>3pt</PaddingLeft>
@@ -839,7 +836,7 @@
                           <Style>None</Style>
                         </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingLeft>1pt</PaddingLeft>
                         <PaddingRight>1pt</PaddingRight>
                         <PaddingTop>1pt</PaddingTop>
                         <PaddingBottom>1pt</PaddingBottom>
@@ -1160,9 +1157,9 @@
           </Paragraphs>
           <rd:DefaultName>Empresa</rd:DefaultName>
           <Top>3.86884cm</Top>
-          <Left>0.31162cm</Left>
+          <Left>0.30561cm</Left>
           <Height>0.6cm</Height>
-          <Width>4.39673cm</Width>
+          <Width>4.71423cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1197,7 +1194,7 @@
           </Paragraphs>
           <rd:DefaultName>Empresa</rd:DefaultName>
           <Top>3.86884cm</Top>
-          <Left>4.87873cm</Left>
+          <Left>5.19623cm</Left>
           <Height>0.6cm</Height>
           <Width>5.46671cm</Width>
           <ZIndex>2</ZIndex>
@@ -1235,7 +1232,7 @@
           </Paragraphs>
           <rd:DefaultName>Empresa</rd:DefaultName>
           <Top>3.86884cm</Top>
-          <Left>10.52183cm</Left>
+          <Left>10.83933cm</Left>
           <Height>0.6cm</Height>
           <Width>5.87785cm</Width>
           <ZIndex>3</ZIndex>
@@ -1273,9 +1270,9 @@
           </Paragraphs>
           <rd:DefaultName>Empresa</rd:DefaultName>
           <Top>3.86884cm</Top>
-          <Left>16.50551cm</Left>
+          <Left>16.82301cm</Left>
           <Height>0.6cm</Height>
-          <Width>1.96261cm</Width>
+          <Width>2.39417cm</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -1310,7 +1307,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
           <Top>3.26002cm</Top>
-          <Left>16.50551cm</Left>
+          <Left>16.82301cm</Left>
           <Height>0.57354cm</Height>
           <Width>1.28796cm</Width>
           <ZIndex>5</ZIndex>
@@ -1343,7 +1340,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
           <Top>3.26002cm</Top>
-          <Left>10.52183cm</Left>
+          <Left>10.83933cm</Left>
           <Height>0.58236cm</Height>
           <Width>3.39959cm</Width>
           <ZIndex>6</ZIndex>
@@ -1376,7 +1373,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
           <Top>3.26002cm</Top>
-          <Left>4.87873cm</Left>
+          <Left>5.19623cm</Left>
           <Height>0.58236cm</Height>
           <Width>3.39959cm</Width>
           <ZIndex>7</ZIndex>

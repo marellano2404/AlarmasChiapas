@@ -8,8 +8,8 @@ namespace AlarmasWPF.Recursos
 {
     public static class ConfigServer
     {
-        //public const string UrlServer = "http://localhost/localApi/";
-        public const string UrlServer = "https://localhost:44310/";
+        public const string UrlServer = "http://localhost/localApi/";
+        //public const string UrlServer = "https://localhost:44310/";
         public const string UrlReport = @"\\Reportes\";
     }
 

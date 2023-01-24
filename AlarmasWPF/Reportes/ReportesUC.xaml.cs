@@ -60,33 +60,48 @@ namespace AlarmasWPF.Reportes
                     FormSelFechas modal = new FormSelFechas();
                     modal.EntidadReporte = new DatoReporte();
                     modal.EntidadReporte.IdCliente = item.Id;
-                    modal.ClickReporte += (s, e) =>
+                    if (item.Inst == 0)
                     {
-                        List<Cliente> ListaCliente = new List<Cliente>();
-                        ListaCliente.Add(item);
-                        var Lista = ObtenerDatoReporte(modal.EntidadReporte);
-                        
-                        if (Lista.Count > 0)
+                        MostrarMensaje("Falta agregar lugares de instalación");
+                    }
+                    else
+                    {
+                        if (item.Users == 0)
                         {
-                            DateTime fechaHoy = DateTime.Now;
-                            var Mensaje = ImprimirReporte(Lista, ListaCliente);
-                            if (Mensaje == string.Empty)
+                            MostrarMensaje("Falta agregar usuarios");
+                        }
+                        else
+                        {
+                            modal.ClickReporte += (s, e) =>
                             {
-                                var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
-                                if (System.IO.File.Exists(rutaDocumento))
+                                List<Cliente> ListaCliente = new List<Cliente>();
+                                ListaCliente.Add(item);
+                                var Lista = ObtenerDatoReporte(modal.EntidadReporte);
+
+                                if (Lista.Count > 0)
                                 {
-                                    GridDatos.Visibility = Visibility.Collapsed;
-                                    btnCerrar.Visibility = Visibility.Visible;
-                                    VisorReporte.Visibility = Visibility.Visible;
-                                    VisorReporte.Source = new Uri(rutaDocumento);
+                                    DateTime fechaHoy = DateTime.Now;
+                                    var Mensaje = ImprimirReporte(Lista, ListaCliente);
+                                    if (Mensaje == string.Empty)
+                                    {
+                                        var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
+                                        if (System.IO.File.Exists(rutaDocumento))
+                                        {
+                                            GridDatos.Visibility = Visibility.Collapsed;
+                                            btnCerrar.Visibility = Visibility.Visible;
+                                            VisorReporte.Visibility = Visibility.Visible;
+                                            VisorReporte.Source = new Uri(rutaDocumento);
+                                        }
+                                    }
+                                    else
+                                        MessageBox.Show(Mensaje);
                                 }
-                            }
-                            else
-                                MessageBox.Show(Mensaje);
-                        }                        
-                        modal.Close();
-                    };
-                    modal.ShowDialog();
+                                modal.Close();
+                            };
+                            modal.ShowDialog();
+                        }
+                    }
+                          
                 };
             }
         }    
@@ -187,26 +202,27 @@ namespace AlarmasWPF.Reportes
                     fsPDF = new FileStream(filePathPDF, FileMode.Create);
 
                     fsPDF.Write(renderedBytesPDF, 0, renderedBytesPDF.Length);
-                    //Elimina El archivo despues de descargar
-                    if (System.IO.File.Exists(file))
-                    {
-                        File.Delete(file);
-                    }
+                    fsPDF.Close();
+                    fsPDF.Dispose();
                     return string.Empty;
 
                 }
                 catch (Exception ex)
                 {
+                    fsPDF.Close();
+                    localReportPDF.Dispose();
                     return ex.InnerException.ToString();
+
                 }
                 finally
                 {
                     fsPDF.Close();
+                    fsPDF.Dispose();
                     localReportPDF.Dispose();
                 }
             }
             else
-                return string.Empty;
+                return "La Ruta no Existe" + FileNamePath;
         }
         private List<Cliente> ObtenerClientes()
         {

@@ -41,16 +41,16 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Num. Cte." Grid.Row="0" Grid.Column="0" Margin="3"/>
-                <TextBox x:Name="txtnumcliente" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding NumCliente}" MaxLength="5"  />
+                <TextBox x:Name="txtnumcliente" FontSize="17" Foreground="Black" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding NumCliente}" MaxLength="5"  />
                 <TextBlock Text="Nombre de la Empresa (Casa Particular)"  FontSize="16" Grid.Row="0" Grid.Column="1" Margin="3"/>
-                <TextBox x:Name="txtempresa" FontSize="16" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Empresa}" MaxLength="60"  />
+                <TextBox x:Name="txtempresa"  FontSize="17" Foreground="Black" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Empresa}" MaxLength="60"  />
                 <TextBlock Text="Fecha Alta" Grid.Row="0" Grid.Column="2" Margin="3"/>
-                <DatePicker Grid.Row="1" Grid.Column="2" x:Name="txtFechaNacimiento" SelectedDate="{Binding FechaAlta}" FontSize="15" Width="120" Height="32" Margin="2 0 0 0" 
+                <DatePicker Grid.Row="1" Grid.Column="2" x:Name="txtFechaNacimiento" SelectedDate="{Binding FechaAlta}"  FontSize="17" Foreground="Black" Width="120" Height="32" Margin="2 0 0 0" 
                             HorizontalAlignment="Left"></DatePicker>
                 
             </Grid>          
             <TextBlock Text="Nombre Propietario" Grid.Row="3" Margin="3"/>
-            <TextBox x:Name="txtNombre" Height="40" Grid.Row="4" Margin="3" Text="{Binding Propietario}" MaxLength="260"  />
+            <TextBox x:Name="txtNombre"  FontSize="17" Foreground="Black"  Height="40" Grid.Row="4" Margin="3" Text="{Binding Propietario}" MaxLength="260"  />
             <Grid Grid.Row="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -61,9 +61,9 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Rfc" Grid.Row="0" Grid.Column="0" Margin="3"/>
-                <TextBox x:Name="txtSaldario" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding Rfc}" MaxLength="13"></TextBox>
+                <TextBox x:Name="txtSaldario"  FontSize="17" Foreground="Black"  Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding Rfc}" MaxLength="13"></TextBox>
                 <TextBlock Text="Dirección" Grid.Row="0" Grid.Column="1" Margin="3"/>
-                <TextBox x:Name="txtBono" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Direccion}" MaxLength="60"/>
+                <TextBox x:Name="txtBono"  FontSize="17" Foreground="Black"  Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Direccion}" MaxLength="60"/>
             </Grid>
             <Grid Grid.Row="6">
                 <Grid.RowDefinitions>
@@ -75,9 +75,9 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Tel Particular" Grid.Row="0" Grid.Column="0" Margin="3"/>
-                <TextBox x:Name="txtTabla93" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding TelParticular}" MaxLength="10"  />
+                <TextBox x:Name="txtTabla93"  FontSize="17" Foreground="Black"  Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding TelParticular}" MaxLength="10"  />
                 <TextBlock Text="Referencias de Ubicación" Grid.Row="0" Grid.Column="1" Margin="3"/>
-                <TextBox x:Name="txtTabla94" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Referencias}" MaxLength="60"  />
+                <TextBox x:Name="txtTabla94"  FontSize="17" Foreground="Black"  Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Referencias}" MaxLength="60"  />
             </Grid>
             <Grid Grid.Row="7">
                 <Grid.RowDefinitions>
@@ -89,9 +89,9 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Tel. Celular" Grid.Row="0" Grid.Column="0" Margin="3"/>
-                <TextBox x:Name="txtHorasJornada" Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding Celular}" MaxLength="13"/>
+                <TextBox x:Name="txtHorasJornada"  FontSize="17" Foreground="Black"  Grid.Row="1" Grid.Column="0" Margin="3" Text="{Binding Celular}" MaxLength="13"/>
                 <TextBlock Text="Correo" Grid.Row="0" Grid.Column="1" Margin="3"/>
-                <TextBox x:Name="txtHomologado" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Correo}" MaxLength="50"  />
+                <TextBox x:Name="txtHomologado"  FontSize="17" Foreground="Black"  Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Correo}" MaxLength="50"  />
             </Grid>
             
             <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">

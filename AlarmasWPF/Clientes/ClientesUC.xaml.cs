@@ -247,10 +247,14 @@ namespace AlarmasWPF.Clientes
                     //{
                     //    System.IO.File.Delete(file);
                     //}
+                    fsPDF.Close();
+                    fsPDF.Dispose();
                     return string.Empty;
                 }
                 catch (Exception ex)
                 {
+                    fsPDF.Close();
+                    fsPDF.Dispose();
                     return ex.InnerException.ToString();
                 }
                 finally

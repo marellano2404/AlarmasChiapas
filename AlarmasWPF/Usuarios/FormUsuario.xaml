@@ -17,18 +17,18 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Num.Usuario" Grid.Row="0" Grid.Column="0" Margin="3"/>
-            <TextBox x:Name="txtNUsuario" Grid.Row="0" Grid.Column="1"  Margin="3" Text="{Binding NumUsuario}" MaxLength="70" />
+            <TextBox FontSize="16" Foreground="Black" x:Name="txtNUsuario" Grid.Row="0" Grid.Column="1"  Margin="3" Text="{Binding NumUsuario}" MaxLength="70" />
             <TextBlock Text="Usuario" Grid.Row="1" Grid.Column="0" Margin="3"/>
-            <TextBox x:Name="txtUsuario" Grid.Row="1" Grid.Column="1"  Margin="3" Text="{Binding Usuario}" MaxLength="70" />
+            <TextBox FontSize="16" Foreground="Black" x:Name="txtUsuario" Grid.Row="1" Grid.Column="1"  Margin="3" Text="{Binding Usuario}" MaxLength="70" />
             <TextBlock Text="Nombre Completo" Grid.Row="2"  Grid.Column="0" Margin="3"/>
-            <TextBox x:Name="txtNombre" Grid.Row="2"  Grid.Column="1" Margin="3" Text="{Binding NombreCompleto}" MaxLength="150"  />
+            <TextBox FontSize="16" Foreground="Black" x:Name="txtNombre" Grid.Row="2"  Grid.Column="1" Margin="3" Text="{Binding NombreCompleto}" MaxLength="150"  />
             <TextBlock Text="Password de Usuario" Grid.Row="3"  Grid.Column="0" Margin="3"/>
-            <TextBox x:Name="txtPassword" Grid.Row="3"  Grid.Column="1" Margin="3" Text="{Binding Contraseña}" MaxLength="50"  />
+            <TextBox FontSize="16" Foreground="Black" x:Name="txtPassword" Grid.Row="3"  Grid.Column="1" Margin="3" Text="{Binding Contraseña}" MaxLength="50"  />
             <TextBlock Text="Puesto del Usuario" Grid.Row="4"  Grid.Column="0" Margin="3"/>
-            <TextBox x:Name="txtPuestp" Grid.Row="4"  Grid.Column="1" Margin="3" Text="{Binding Puesto}" MaxLength="150"  />
+            <TextBox FontSize="16" Foreground="Black" x:Name="txtPuestp" Grid.Row="4"  Grid.Column="1" Margin="3" Text="{Binding Puesto}" MaxLength="150"  />
 
             <StackPanel Margin="1" Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <Button x:Name="btnCAncelar" Width="150" Height="30" Style="{StaticResource ButtonAction}" Click="btnCAncelar_Click" Cursor="Hand" Margin="0,-5">
