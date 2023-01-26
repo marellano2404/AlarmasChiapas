@@ -81,20 +81,15 @@ namespace AlarmasWPF.Reportes
                                 if (Lista.Count > 0)
                                 {
                                     DateTime fechaHoy = DateTime.Now;
-                                    var Mensaje = ImprimirReporte(Lista, ListaCliente);
-                                    if (Mensaje == string.Empty)
+                                    ImprimirReporte(Lista, ListaCliente);                                    
+                                    var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
+                                    if (System.IO.File.Exists(rutaDocumento))
                                     {
-                                        var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
-                                        if (System.IO.File.Exists(rutaDocumento))
-                                        {
-                                            GridDatos.Visibility = Visibility.Collapsed;
-                                            btnCerrar.Visibility = Visibility.Visible;
-                                            VisorReporte.Visibility = Visibility.Visible;
-                                            VisorReporte.Source = new Uri(rutaDocumento);
-                                        }
+                                        GridDatos.Visibility = Visibility.Collapsed;
+                                        btnCerrar.Visibility = Visibility.Visible;
+                                        VisorReporte.Visibility = Visibility.Visible;
+                                        VisorReporte.Source = new Uri(rutaDocumento);
                                     }
-                                    else
-                                        MessageBox.Show(Mensaje);
                                 }
                                 modal.Close();
                             };
@@ -141,13 +136,13 @@ namespace AlarmasWPF.Reportes
             return _alarmasEm;
         }
       
-        private string ImprimirReporte(List<ListaAlarmaEmitidasVM> lista, List<Cliente> ListadatoCliente)
+        private void ImprimirReporte(List<ListaAlarmaEmitidasVM> lista, List<Cliente> ListadatoCliente)
         {
 
             LocalReport localReportPDF = null;
             DateTime fechaHoy = DateTime.Now;
-            string FileNamePath = "C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + ListadatoCliente.FirstOrDefault().Rfc + "_" + fechaHoy.ToString("yyyy" + "-" + "MM" + "-" + "dd" + "ss") + ".pdf";
-            FileName = ListadatoCliente.FirstOrDefault().Rfc + "_" + fechaHoy.ToString("yyyy"+"-"+"MM"+"-"+ "dd" + "ss") + ".pdf";
+            string FileNamePath = "C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\Eventos" + ListadatoCliente.FirstOrDefault().Rfc + "_" + fechaHoy.ToString("yy" + "-" + "MM" + "-" + "dd" + "ss") + ".pdf";
+            FileName = "Eventos" + ListadatoCliente.FirstOrDefault().Rfc + "_" + fechaHoy.ToString("yy"+"-"+"MM"+"-"+ "dd" + "ss") + ".pdf";
             var file = System.IO.Path.Combine("C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + FileName);
             if (System.IO.File.Exists(file))
             {
@@ -204,14 +199,12 @@ namespace AlarmasWPF.Reportes
                     fsPDF.Write(renderedBytesPDF, 0, renderedBytesPDF.Length);
                     fsPDF.Close();
                     fsPDF.Dispose();
-                    return string.Empty;
 
                 }
                 catch (Exception ex)
                 {
                     fsPDF.Close();
                     localReportPDF.Dispose();
-                    return ex.InnerException.ToString();
 
                 }
                 finally
@@ -221,8 +214,6 @@ namespace AlarmasWPF.Reportes
                     localReportPDF.Dispose();
                 }
             }
-            else
-                return "La Ruta no Existe" + FileNamePath;
         }
         private List<Cliente> ObtenerClientes()
         {

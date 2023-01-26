@@ -736,7 +736,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -990,7 +989,7 @@
                   <Value>=First(Fields!NumCliente.Value &amp; " | " &amp; Fields!Propietario.Value, "DataSetCliente")</Value>
                   <Style>
                     <FontFamily>Arial Narrow</FontFamily>
-                    <FontSize>8pt</FontSize>
+                    <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                     <TextDecoration>None</TextDecoration>
                   </Style>
@@ -1028,7 +1027,7 @@
                   <Value>=First(Fields!Empresa.Value, "DataSetCliente")</Value>
                   <Style>
                     <FontFamily>Arial Narrow</FontFamily>
-                    <FontSize>8pt</FontSize>
+                    <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1066,7 +1065,7 @@
                   <Value>=First(Fields!Direccion.Value, "DataSetCliente")</Value>
                   <Style>
                     <FontFamily>Arial Narrow</FontFamily>
-                    <FontSize>8pt</FontSize>
+                    <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1104,7 +1103,7 @@
                   <Value>=First(Fields!Rfc.Value, "DataSetCliente")</Value>
                   <Style>
                     <FontFamily>Arial Narrow</FontFamily>
-                    <FontSize>8pt</FontSize>
+                    <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1274,7 +1273,7 @@
                   <Value>=First(Fields!Referencias.Value, "DataSetCliente")</Value>
                   <Style>
                     <FontFamily>Arial Narrow</FontFamily>
-                    <FontSize>8pt</FontSize>
+                    <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                     <TextDecoration>None</TextDecoration>
                   </Style>
@@ -1312,7 +1311,7 @@
                   <Value>=First(Fields!Celular.Value, "DataSetCliente")</Value>
                   <Style>
                     <FontFamily>Arial Narrow</FontFamily>
-                    <FontSize>8pt</FontSize>
+                    <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1350,7 +1349,7 @@
                   <Value>=First(Fields!Correo.Value, "DataSetCliente")</Value>
                   <Style>
                     <FontFamily>Arial Narrow</FontFamily>
-                    <FontSize>8pt</FontSize>
+                    <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1388,7 +1387,7 @@
                   <Value>=First(Format(Cdate(Fields!FechaAlta.Value),"dd/MM/yy"), "DataSetCliente")</Value>
                   <Style>
                     <FontFamily>Arial Narrow</FontFamily>
-                    <FontSize>8pt</FontSize>
+                    <FontSize>7pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1536,7 +1535,7 @@
           <Top>4.51388cm</Top>
           <Left>0.30005cm</Left>
           <Height>0.54708cm</Height>
-          <Width>1.60042cm</Width>
+          <Width>1.85442cm</Width>
           <ZIndex>16</ZIndex>
           <Style>
             <Border>
@@ -1580,6 +1579,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox20</rd:DefaultName>
+          <Top>0cm</Top>
           <Left>0.30005cm</Left>
           <Height>0.6cm</Height>
           <Width>20.51478cm</Width>

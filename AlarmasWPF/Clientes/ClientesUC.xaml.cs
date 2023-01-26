@@ -73,6 +73,7 @@ namespace AlarmasWPF.Clientes
         private void CargasClientes(List<Cliente> listado)
         {
             DatosStackPanel.Children.Clear();
+            DateTime fechaHoy = DateTime.Now;
             //var response = ObtenerClientes();
             foreach (var item in listado)
             {
@@ -160,20 +161,15 @@ namespace AlarmasWPF.Clientes
                         }
                         else
                         {
-                            var Mensaje = ImprimirReporte(ListaCliente, ListaUsuarios, ListaInstalaciones);
-                            if (Mensaje == string.Empty)
+                            ImprimirReporte(ListaCliente, ListaUsuarios, ListaInstalaciones);
+                            var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
+                            if (System.IO.File.Exists(rutaDocumento))
                             {
-                                var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
-                                if (System.IO.File.Exists(rutaDocumento))
-                                {
-                                    GridDatos.Visibility = Visibility.Collapsed;
-                                    btnCerrar.Visibility = Visibility.Visible;
-                                    VisorReporte.Visibility = Visibility.Visible;
-                                    VisorReporte.Source = new Uri(rutaDocumento);
-                                }
-                            }
-                            else
-                                MessageBox.Show(Mensaje);
+                                GridDatos.Visibility = Visibility.Collapsed;
+                                btnCerrar.Visibility = Visibility.Visible;
+                                VisorReporte.Visibility = Visibility.Visible;
+                                VisorReporte.Source = new Uri(rutaDocumento);
+                            }                            
                         }
                     }    
                 };
@@ -181,12 +177,12 @@ namespace AlarmasWPF.Clientes
             }
         }
 
-        private string ImprimirReporte(List<Cliente> listaCliente, List<UsuarioVM> listaUsuarios, List<InstalacionVM> listaInstalaciones)
+        private void ImprimirReporte(List<Cliente> listaCliente, List<UsuarioVM> listaUsuarios, List<InstalacionVM> listaInstalaciones)
         {
             LocalReport localReportPDF = null;
             DateTime fechaHoy = DateTime.Now;
-            string FileNamePath = "C:\\Reportes\\" + listaCliente.FirstOrDefault().Rfc + "\\Rpt" + listaCliente.FirstOrDefault().Rfc + fechaHoy.ToString("ss") + ".pdf";
-            FileName = "Rpt" + listaCliente.FirstOrDefault().Rfc + fechaHoy.ToString("ss") + ".pdf";
+            string FileNamePath = "C:\\Reportes\\" + listaCliente.FirstOrDefault().Rfc + "\\Rpt" + listaCliente.FirstOrDefault().Rfc + fechaHoy.ToString("mm_ss") + ".pdf";
+            FileName = "Rpt" + listaCliente.FirstOrDefault().Rfc + fechaHoy.ToString("mm_ss") + ".pdf";
             var file = System.IO.Path.Combine("C:\\Reportes\\" + listaCliente.FirstOrDefault().Rfc + "\\" + FileName);
             if (System.IO.File.Exists(file))
             {
@@ -211,7 +207,7 @@ namespace AlarmasWPF.Clientes
 
                     ReportDataSource rdsCabeceraPDF = new ReportDataSource("DataSetCliente", listaCliente);
                     ReportDataSource rdsListaUsuariosPDF = new ReportDataSource("DataSetUsuarios", listaUsuarios);
-                    ReportDataSource rdsListaInstalacionesPDF = new ReportDataSource("DataSetInstalaciones", listaInstalaciones); 
+                    ReportDataSource rdsListaInstalacionesPDF = new ReportDataSource("DataSetInstalaciones", listaInstalaciones);
                     localReportPDF.DataSources.Add(rdsCabeceraPDF);
                     localReportPDF.DataSources.Add(rdsListaUsuariosPDF);
                     localReportPDF.DataSources.Add(rdsListaInstalacionesPDF);
@@ -249,13 +245,12 @@ namespace AlarmasWPF.Clientes
                     //}
                     fsPDF.Close();
                     fsPDF.Dispose();
-                    return string.Empty;
                 }
                 catch (Exception ex)
                 {
                     fsPDF.Close();
                     fsPDF.Dispose();
-                    return ex.InnerException.ToString();
+                    //return ex.InnerException.ToString();
                 }
                 finally
                 {
@@ -264,8 +259,6 @@ namespace AlarmasWPF.Clientes
                     fsPDF.Dispose();
                 }
             }
-            else 
-                return "La Ruta no Existe" + FileNamePath;
         }
 
         private List<InstalacionVM> ObtenerDatoInstalaciones(Guid idCliente)
