@@ -22,6 +22,7 @@ using AlarmasWPF.Instalaciones;
 using AlarmasWPF.Recursos;
 using Microsoft.Reporting.NETCore;
 using System.IO;
+using Microsoft.Extensions.Logging;
 
 namespace AlarmasWPF.Clientes
 {
@@ -33,13 +34,16 @@ namespace AlarmasWPF.Clientes
     {
         public event EventHandler Regresar;
         public string FileName;
+        //private readonly ILogger logger;
+
         //private static HttpClient client = new HttpClient();
         #region Constructor
         public ClientesUC()
         {            
             InitializeComponent();
             var response = ObtenerClientes();
-            CargasClientes(response);                                 
+            CargasClientes(response);
+            //this.logger = logger;
         }
         #endregion
 
@@ -240,16 +244,18 @@ namespace AlarmasWPF.Clientes
                 }
                 catch (Exception ex)
                 {
-                    fsPDF.Close();
-                    localReportPDF.Dispose();
+                    //logger.LogInformation(ex.Message);
+                    //fsPDF.Close();
+                    //localReportPDF.Dispose();
+                    throw;
 
                 }
-                finally
-                {
-                    localReportPDF.Dispose();
-                    fsPDF.Close();
-                    fsPDF.Dispose();
-                }
+                //finally
+                //{
+                //    localReportPDF.Dispose();
+                //    fsPDF.Close();
+                //    fsPDF.Dispose();
+                //}
             }
         }
 
