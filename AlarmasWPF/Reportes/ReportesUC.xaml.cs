@@ -196,10 +196,7 @@ namespace AlarmasWPF.Reportes
                     String filePathPDF = @"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + FileName;
                     fsPDF = new FileStream(filePathPDF, FileMode.Create);
 
-                    fsPDF.Write(renderedBytesPDF, 0, renderedBytesPDF.Length);
-                    fsPDF.Close();
-                    fsPDF.Dispose();
-
+                    fsPDF.Write(renderedBytesPDF, 0, renderedBytesPDF.Length);   
                 }
                 catch (Exception ex)
                 {
@@ -209,9 +206,9 @@ namespace AlarmasWPF.Reportes
                 }
                 finally
                 {
-                    fsPDF.Close();
-                    fsPDF.Dispose();
                     localReportPDF.Dispose();
+                    fsPDF.Close();
+                    fsPDF.Dispose();                    
                 }
             }
         }

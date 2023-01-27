@@ -237,20 +237,12 @@ namespace AlarmasWPF.Clientes
                     fsPDF = new FileStream(filePathPDF, FileMode.Create);
 
                     fsPDF.Write(renderedBytesPDF, 0, renderedBytesPDF.Length);
-                    //Elimina El archivo despues de descargar
-                    //var file = System.IO.Path.Combine("C:\\Sistemas\\Reportes\\" + NombreRpt + ".pdf");
-                    //if (System.IO.File.Exists(file))
-                    //{
-                    //    System.IO.File.Delete(file);
-                    //}
-                    fsPDF.Close();
-                    fsPDF.Dispose();
                 }
                 catch (Exception ex)
                 {
                     fsPDF.Close();
-                    fsPDF.Dispose();
-                    //return ex.InnerException.ToString();
+                    localReportPDF.Dispose();
+
                 }
                 finally
                 {
