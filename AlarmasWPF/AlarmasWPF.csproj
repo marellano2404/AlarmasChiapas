@@ -97,9 +97,9 @@
     <Resource Include="Recursos\ReportesWhite.png" />
     <Resource Include="Recursos\Usuario.png" />
     <Resource Include="Recursos\Usuarios.png" />
-    <Resource Include="Reportes\RptCliente.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Content Include="Reportes\RptCliente.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

@@ -88,6 +88,5 @@
         </Grid>
         <Grid x:Name="GridListadoUsuarios"></Grid>
         <Grid x:Name="GridListadoInstalaciones"></Grid>
-
     </Grid>
 </UserControl>
