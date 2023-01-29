@@ -47,6 +47,7 @@
     <None Remove="Recursos\Usuario.png" />
     <None Remove="Recursos\Usuarios.png" />
     <None Remove="Reportes\RptCliente.rdlc" />
+    <None Remove="Reportes\RptHistorialAlarmas.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
@@ -100,6 +101,9 @@
     <Content Include="Reportes\RptCliente.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Reportes\RptHistorialAlarmas.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -111,9 +115,6 @@
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DataSetHistorialAlarmas.Designer.cs</LastGenOutput>
     </None>
-    <None Update="Reportes\RptHistorialAlarmas.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -122,7 +123,7 @@
 
   <ItemGroup>
     <Reference Include="Xceed.Wpf.Toolkit">
-      <HintPath>bin\Release\net5.0-windows\Xceed.Wpf.Toolkit.dll</HintPath>
+      <HintPath>bin\Debug\net5.0-windows\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
 

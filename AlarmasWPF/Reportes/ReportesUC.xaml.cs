@@ -1,6 +1,7 @@
 ﻿using AlarmasWPF.ControlesPersonalizados;
 using AlarmasWPF.Core.ViewModels;
 using AlarmasWPF.Recursos;
+using Microsoft.Reporting.Map.WebForms.BingMaps;
 using Microsoft.Reporting.NETCore;
 using Newtonsoft.Json;
 using System;
@@ -81,14 +82,23 @@ namespace AlarmasWPF.Reportes
                                 if (Lista.Count > 0)
                                 {
                                     DateTime fechaHoy = DateTime.Now;
-                                    ImprimirReporte(Lista, ListaCliente);                                    
-                                    var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
-                                    if (System.IO.File.Exists(rutaDocumento))
+                                    var response = ImprimirReporte(Lista, ListaCliente);                                    
+                                    //var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
+                                    if (response.Exito)
                                     {
+                                        //GridDatos.Visibility = Visibility.Collapsed;
+                                        //btnCerrar.Visibility = Visibility.Visible;
+                                        //VisorReporte.Visibility = Visibility.Visible;
+                                        //VisorReporte.Source = new Uri(rutaDocumento);
+                                        var visor = new VisorPDF(response.Mensaje);
+                                        visor.Show();
                                         GridDatos.Visibility = Visibility.Collapsed;
                                         btnCerrar.Visibility = Visibility.Visible;
                                         VisorReporte.Visibility = Visibility.Visible;
-                                        VisorReporte.Source = new Uri(rutaDocumento);
+                                    }
+                                    else
+                                    {
+                                        MostrarMensaje(response.Mensaje);
                                     }
                                 }
                                 modal.Close();
@@ -136,32 +146,32 @@ namespace AlarmasWPF.Reportes
             return _alarmasEm;
         }
       
-        private void ImprimirReporte(List<ListaAlarmaEmitidasVM> lista, List<Cliente> ListadatoCliente)
+        private MensajeRespuesta ImprimirReporte(List<ListaAlarmaEmitidasVM> lista, List<Cliente> ListadatoCliente)
         {
-
+            var response = new MensajeRespuesta();
             LocalReport localReportPDF = null;
             DateTime fechaHoy = DateTime.Now;
             string FileNamePath = "C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\Eventos" + ListadatoCliente.FirstOrDefault().Rfc + "_" + fechaHoy.ToString("yy" + "-" + "MM" + "-" + "dd" + "ss") + ".pdf";
             FileName = "Eventos" + ListadatoCliente.FirstOrDefault().Rfc + "_" + fechaHoy.ToString("yy"+"-"+"MM"+"-"+ "dd" + "ss") + ".pdf";
-            var file = System.IO.Path.Combine("C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + FileName);
-            if (System.IO.File.Exists(file))
-            {
-                File.Delete(file);
-            }
+            //var file = System.IO.Path.Combine("C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + FileName);
+            //if (System.IO.File.Exists(file))
+            //{
+            //    File.Delete(file);
+            //}
 
             FileStream fsPDF = null;
-            if (!Directory.Exists(@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc))
-            { System.IO.Directory.CreateDirectory(@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc); }
-
+            //if (!Directory.Exists(@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc))
+            //{ System.IO.Directory.CreateDirectory(@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc); }
+            string path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), @"Reportes\");
             if (!File.Exists(FileNamePath))
             {
                 try
                 {
                     localReportPDF = new LocalReport();
-                    string _path = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
-                    string ContentStart = _path + @"\Reportes\RptHistorialAlarmas.rdlc";
+                    //string _path = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
+                    string ContentStart = path + "RptHistorialAlarmas.rdlc"; //@"\Reportes\RptHistorialAlarmas.rdlc";
 
-        
+
                     //string path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), @"Reportes\");
                     //localReportPDF.ReportPath = System.IO.Path.Combine("C:\\Reportes","RptHistorialAlarmas.rdlc");
 
@@ -172,12 +182,12 @@ namespace AlarmasWPF.Reportes
                     localReportPDF.DataSources.Add(rdsCabeceraPDF);
                     localReportPDF.DataSources.Add(rdsListaPDF);
 
-                    string filename = FileName;
+                    //string filename = FileName;
                     string reportTypePDF = "PDF";
                     string mimeTypePDF;
                     string encodingPDF;
                     string fileNameExtensionPDF;
-                    Warning[] warningsPDF;
+                    Microsoft.Reporting.NETCore.Warning[] warningsPDF;
                     string[] streamsPDF;
                     byte[] renderedBytesPDF;
 
@@ -188,28 +198,64 @@ namespace AlarmasWPF.Reportes
                     out encodingPDF,
                     out fileNameExtensionPDF,
                     out streamsPDF,
-                    out warningsPDF);
+                    out warningsPDF);                    
+                    var directory = System.IO.Path.Combine(path + $"/{ListadatoCliente.FirstOrDefault().Rfc}/");
+                    if (!Directory.Exists(directory)) //@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc)
+                        System.IO.Directory.CreateDirectory(directory); //@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc
 
-                    if (!Directory.Exists(@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc))
-                        System.IO.Directory.CreateDirectory(@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc);
+                    String filePathPDF = directory + FileName;//@"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + FileName;
+                    //fsPDF = new FileStream(filePathPDF, FileMode.Create);
 
-                    String filePathPDF = @"C:\\Reportes\\" + ListadatoCliente.FirstOrDefault().Rfc + "\\" + FileName;
-                    fsPDF = new FileStream(filePathPDF, FileMode.Create);
+                    //fsPDF.Write(renderedBytesPDF, 0, renderedBytesPDF.Length);
 
-                    fsPDF.Write(renderedBytesPDF, 0, renderedBytesPDF.Length);   
+                    using (FileStream fs = System.IO.File.Create(filePathPDF)) //filename
+                    {
+                        fs.Write(renderedBytesPDF, 0, renderedBytesPDF.Length);
+                    }
+                    byte[] data = StreamFile(System.IO.Path.Combine(filePathPDF)); //FileName
+                    response.Exito = true;
+                    response.Mensaje = Convert.ToBase64String(data);
+                    return response;
                 }
+
                 catch (Exception ex)
                 {
-                    fsPDF.Close();
-                    localReportPDF.Dispose();
+                    //fsPDF.Close();
+                    //localReportPDF.Dispose();
+                    response.Exito = false;
+                    response.Mensaje = ex.Message;
+                    return response;
+                }
+                //finally
+                //{
+                //    localReportPDF.Dispose();
+                //    fsPDF.Close();
+                //    fsPDF.Dispose();                    
+                //}                
+            }
+            return response;
+        }
 
-                }
-                finally
-                {
-                    localReportPDF.Dispose();
-                    fsPDF.Close();
-                    fsPDF.Dispose();                    
-                }
+        public byte[] StreamFile(string filename)
+        {
+            try
+            {
+                FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
+
+                // Create a byte array of file stream length
+                byte[] ImageData = new byte[fs.Length];
+
+                //Read block of bytes from stream into the byte array
+                fs.Read(ImageData, 0, System.Convert.ToInt32(fs.Length));
+
+                //Close the File Stream
+                fs.Close();
+                return ImageData; //return the byte data
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
             }
         }
         private List<Cliente> ObtenerClientes()
