@@ -176,9 +176,9 @@ namespace AlarmasWPF.Clientes
                                 //var rutaDocumento = "C:" + ConfigServer.UrlReport.Substring(1, 10) + item.Rfc + "\\" + FileName;
                                 //if (System.IO.File.Exists(rutaDocumento))
                                 //{
-                                GridDatos.Visibility = Visibility.Collapsed;
-                                btnCerrar.Visibility = Visibility.Visible;
-                                VisorReporte.Visibility = Visibility.Visible;
+                                //GridDatos.Visibility = Visibility.Collapsed;
+                                //btnCerrar.Visibility = Visibility.Visible;
+                                //VisorReporte.Visibility = Visibility.Visible;
                                 //VisorReporte.Source = new Uri(Documento64);
                                 //}  
                             }

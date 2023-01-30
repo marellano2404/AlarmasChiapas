@@ -92,9 +92,9 @@ namespace AlarmasWPF.Reportes
                                         //VisorReporte.Source = new Uri(rutaDocumento);
                                         var visor = new VisorPDF(response.Mensaje);
                                         visor.Show();
-                                        GridDatos.Visibility = Visibility.Collapsed;
-                                        btnCerrar.Visibility = Visibility.Visible;
-                                        VisorReporte.Visibility = Visibility.Visible;
+                                        //GridDatos.Visibility = Visibility.Collapsed;
+                                        //btnCerrar.Visibility = Visibility.Visible;
+                                        //VisorReporte.Visibility = Visibility.Visible;
                                     }
                                     else
                                     {
